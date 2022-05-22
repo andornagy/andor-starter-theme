@@ -1,6 +1,6 @@
 const LOCAL_DOMAIN = 'http://sqe-starter-website.local';
 
-const outputPath = 'assets';
+const outputPath = 'dist';
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

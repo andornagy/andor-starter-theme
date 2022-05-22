@@ -68,6 +68,7 @@ class MegaMenu {
     }
 
     moveArrow(item) {
+        if (!item) return;
         const arrow = $(item).find('.sub-menu__arrow').first();
         const position = item.getBoundingClientRect();
         console.log(
