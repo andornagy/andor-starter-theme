@@ -1,0 +1,41 @@
+.header__wrapper {
+    @include breakpoint(large) {
+        min-height: $header_height_desktop;
+    }
+}
+
+// Default header colour
+.header__inner {
+    background-color: $white;
+}
+
+.header {
+    position: relative;
+    z-index: 4;
+
+    @include breakpoint(medium down) {
+        top: 0 !important;
+    }
+
+    .header__inner {
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+
+        @include breakpoint(large) {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+
+    &.is-stuck {
+        .header__inner {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+    }
+
+}
+
+.admin-bar .header.is-stuck {
+    top: 32px !important;
+}

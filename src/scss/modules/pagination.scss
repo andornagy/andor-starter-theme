@@ -1,0 +1,51 @@
+.pagination {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+
+    * {
+        font-weight: bold;
+        line-height: 1em;
+    }
+
+    .next,
+    .prev {
+        display: inline-flex;
+        align-items: center;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            height: 0.4rem;
+            width: 0.4rem;
+            border-width: 0 2px 2px 0;
+            transition: border .4s;
+            border-style: solid;
+            position: relative;
+            border-color: $black;
+        }
+    }
+
+    .next::after {
+        transform: rotate(-45deg);
+    }
+
+    .prev::after {
+        transform: rotate(135deg);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: $primary-color;
+
+        &::after {
+            border-color: $primary-color;
+        }
+    }
+}

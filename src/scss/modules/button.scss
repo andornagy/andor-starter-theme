@@ -1,0 +1,14 @@
+button {
+    outline: none !important;
+    display: inline-flex !important;
+    align-items: center;
+}
+
+.button {
+    transition: border-color .4s, background-color .4s, color .4s;
+    text-decoration: none;
+
+    .sqe-pdf__btn__icon {
+        margin-right: .3rem;
+    }
+}

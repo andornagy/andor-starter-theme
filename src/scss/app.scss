@@ -1,0 +1,109 @@
+@import '_settings';
+@import '../../node_modules/foundation-sites/scss/foundation';
+@import '../../node_modules/motion-ui/src/motion-ui.scss';
+
+
+// Prototypying utilities
+@include foundation-prototype-spacing;
+@include foundation-prototype-separator;
+@include foundation-prototype-overflow;
+@include foundation-prototype-display;
+@include foundation-prototype-position;
+@include foundation-prototype-sizing;
+
+// Global styles
+@include foundation-global-styles;
+@include foundation-forms;
+@include foundation-typography;
+
+// Grids
+@include foundation-xy-grid-classes;
+
+// Generic components
+@include foundation-button;
+//@include foundation-button-group;
+@include foundation-close-button;
+//@include foundation-label;
+//@include foundation-progress-bar;
+//@include foundation-slider;
+//@include foundation-switch;
+// @include foundation-table;
+
+// Basic components
+//@include foundation-badge;
+//@include foundation-breadcrumbs;
+@include foundation-callout;
+//@include foundation-card;
+@include foundation-dropdown;
+@include foundation-pagination;
+@include foundation-tooltip;
+
+// Containers
+@include foundation-accordion;
+//@include foundation-media-object;
+//@include foundation-orbit;
+//@include foundation-responsive-embed;
+@include foundation-tabs;
+//@include foundation-thumbnail;
+// Menu-based containers
+@include foundation-menu;
+//@include foundation-menu-icon;
+@include foundation-accordion-menu;
+@include foundation-drilldown-menu;
+@include foundation-dropdown-menu;
+
+// Layout components
+@include foundation-off-canvas;
+@include foundation-reveal;
+@include foundation-sticky;
+//@include foundation-title-bar;
+//@include foundation-top-bar;
+
+// Helpers
+@include foundation-float-classes;
+@include foundation-flex-classes;
+@include foundation-visibility-classes;
+
+// Motion UI
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+
+/*
+* CUSTOM VARS
+*/
+$header_height_mobile: 50px;
+$header_height_desktop: 70px;
+$logo_small: 150px;
+$logo_medium: 200px;
+$logo_large: 345px;
+$transition_time: 0.4s;
+
+/*
+* CUSTOM MODULES
+*/
+
+@import 'modules/mixins';
+@import 'modules/utils';
+@import 'modules/typography';
+@import 'modules/section';
+@import 'modules/header';
+@import 'modules/logo';
+@import 'modules/navigation';
+@import 'modules/search';
+@import 'modules/offcanvas';
+@import 'modules/button';
+@import 'modules/accordion';
+@import 'modules/breadcrumbs';
+@import 'modules/home';
+@import 'modules/pagination';
+@import 'modules/footer';
+@import 'modules/single';
+@import 'modules/content';
+@import 'modules/loop-item';
+@import 'modules/icon-box';
+@import 'modules/input';
+@import 'modules/loading';
+@import 'modules/pdf';
+@import 'modules/deep-links';
+@import 'modules/ie-object-fit';

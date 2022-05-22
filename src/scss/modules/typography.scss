@@ -1,0 +1,49 @@
+html,
+body {
+    font-size: $global-font-size;
+}
+
+a {
+    transition: all .4s;
+}
+
+blockquote {
+    font-size: rem-calc(22);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-weight: normal;
+
+    &:not(.blockquote--simple) {
+        padding: 0.75rem 0 0.75rem 1.5rem;
+        border-left: 3px solid $primary-color;
+    }
+
+    &.blockquote--simple {
+        font-style: normal;
+    }
+
+    cite {
+        margin-top: 1rem;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    &.blockquote--simple cite {
+        margin-top: 0.5rem;
+    }
+
+    &.blockquote--quote {
+        &::before {
+            content: '';
+            display: block;
+            height: 3rem;
+            min-width: 5rem;
+            background-image: url('../imgs/quote.png');
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 1rem;
+        }
+    }
+}

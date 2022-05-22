@@ -1,0 +1,8 @@
+.accordion-content,
+.tabs-panel {
+    scroll-margin-top: ($header_height_mobile + 36px);
+
+    @include breakpoint(large) {
+        scroll-margin-top: ($header_height_desktop + 36px);
+    }
+}

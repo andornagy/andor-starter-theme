@@ -1,0 +1,25 @@
+#logo {
+    display: inline-block;
+    line-height: 0;
+
+    img {
+        transition: width .4s;
+        width: $logo_small;
+
+        @include breakpoint(medium) {
+            width: $logo_medium;
+        }
+
+        @include breakpoint(xlarge) {
+            width: $logo_large;
+        }
+    }
+}
+
+.header.is-stuck {
+    #logo {
+        img {
+            width: $logo_small;
+        }
+    }
+}

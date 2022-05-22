@@ -1,0 +1,20 @@
+.loading {
+    position: relative;
+
+    &::after {
+        content: '';
+        display: block;
+        @include fill-container;
+        z-index: 10;
+        background-color: transparent;
+        cursor: wait;
+    }
+
+    #response {
+        opacity: .4;
+    }
+}
+
+#response {
+    transition: opacity .4s;
+}

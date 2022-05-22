@@ -1,0 +1,40 @@
+.breadcrumbs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.5rem;
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+            border-color: $dark;
+        }
+    }
+
+    .separator {
+        margin: 0 .5rem;
+        color: $primary-color;
+    }
+}
+
+.text-white {
+    .breadcrumbs {
+        a {
+            color: white;
+
+            &:hover {
+                color: white;
+                border-color: white;
+            }
+        }
+
+        .separator {
+            color: $white;
+        }
+    }
+}

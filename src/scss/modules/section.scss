@@ -1,0 +1,29 @@
+main,
+.main {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.grid-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+
+    @include breakpoint(medium) {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+
+    @include breakpoint(large) {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+
+        &.fluid {
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+        }
+    }
+}
+
+.grid-container {
+    width: 100%;
+}

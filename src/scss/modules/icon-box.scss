@@ -1,0 +1,17 @@
+.icon-box {
+    display: flex;
+    flex-direction: column;
+
+    &__icon {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    &--light {
+        * {
+            color: $white;
+        }
+
+    }
+}

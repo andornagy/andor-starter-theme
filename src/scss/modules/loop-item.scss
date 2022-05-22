@@ -1,0 +1,40 @@
+.posts-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    margin-bottom: 2rem;
+
+    &__img {
+        margin-bottom: 1rem;
+    }
+
+    &__title {
+        transition: color $transition_time;
+    }
+
+    p {
+        margin-bottom: 0.5rem;
+        color: $black;
+    }
+
+    &__meta {
+        color: $primary-color !important;
+        font-family: $font-family-monospace;
+    }
+
+    &:hover {
+        .posts-item__title {
+            color: $secondary-color;
+        }
+    }
+
+    &--list {
+        margin-bottom: 1.5rem;
+
+        .posts-item {
+            &__title {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
