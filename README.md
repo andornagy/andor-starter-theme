@@ -1,20 +1,20 @@
 # Theme guide
 
 -   [Startup theme](#startup-theme)
--   Get GIT repo
--   Theme structure
--   NPM setup
--   Development build
--   Production build
--   DeployHQ setup
--   CSS: Foundation settings
--   CSS: Add foundation modules
--   CSS: Edit existing custom modules
--   CCS: Add custom modules
--   JS: Add foundation modules
--   JS: Edit existing custom modules
--   JS: Add custom modules
--   Problem -> Solution
+-   [Get GIT repo](#get-git-repo)
+-   [Theme structure](#theme-structure)
+-   [NPM setup](#npm-setup)
+-   [Development build](#development-build)
+-   [Production build](#production-build)
+-   [DeployHQ setup](#deployhq-setup)
+-   [CSS: Foundation settings](#css-foundation-settings)
+-   [CSS: Add foundation modules](#css-add-foundation-modules)
+-   [CSS: Edit existing custom modules](#css-edit-existing-custom-modules)
+-   [CCS: Add custom modules](#css-add-custom-modules)
+-   [JS: Add foundation modules](#js-add-foundation-modules)
+-   [JS: Edit existing custom modules](#js-edit-existing-custom-modules)
+-   [JS: Add custom modules](#js-add-custom-modules)
+-   [Solutions](#solutions)
 
 ## Startup theme
 
@@ -27,7 +27,9 @@ To start with the startup theme just download the zip version of `sqe-starter-le
 
 Before pushing this theme to a new client-related repo, delete this **Startup theme** section from the **README.md** file, rename **sqe-starter-legal-foundation** to the actual theme slug and change git repo links.
 
-## Get GIT repo (in case you want to change starter theme itself)
+## Get GIT repo
+
+### (in case you want to change starter theme itself)
 
 To install the theme from git within a command line navigate to `\theme\` folder in your WordPress installation and execute the following command:
 
@@ -255,7 +257,7 @@ var moduleName = new ModuleName(); // Initialize ModuleName class and keep resul
 
 **!!! Note how the variable's first letter isn't capitalized to differentiate it from the Class name.**
 
-## Problem -> Solution
+## Solutions
 
 ### "error: invalid path... warning: Clone succeeded, but checkout failed." in the command line while cloning the repo.
 
