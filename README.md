@@ -117,7 +117,7 @@ npm run build
 
 ## DeployHQ setup
 
-Create a project in DeployHQ connected with the related website's repo and with the wensite's server. But before making the first deployment do the following steps:
+Create a project in DeployHQ connected with the related website's repo and with the website's server. But before making the first deployment do the following:
 
 1. Go to **Build Pipeline**
 2. Click **New Command** button on the right
@@ -131,7 +131,8 @@ npm run build
 
 5. Click **Create Build Command**
 6. Go to **Deployments** page and make a new deployment.
-   **!!!** The first deployment will take a lot of time as the full **node_modules** folder will be pushed to the server. But the following deployments should be really quick.
+
+**!!!** The first deployment will take a lot of time as the full **node_modules** folder will be pushed to the server. But the following deployments should be really quick.
 
 ## CSS: Foundation settings
 
