@@ -1,10 +1,12 @@
 # Theme guide
 
--   Startup theme
+-   [Startup theme](#startup-theme)
 -   Get GIT repo
 -   Theme structure
 -   NPM setup
--   Compilation
+-   Development build
+-   Production build
+-   DeployHQ setup
 -   CSS: Foundation settings
 -   CSS: Add foundation modules
 -   CSS: Edit existing custom modules
