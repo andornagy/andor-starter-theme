@@ -105,7 +105,7 @@ The compilation is handled by **Webpack**. To start to work with **scss** and **
 npm start
 ```
 
-Once you are done editing the files from `src` folder you can press `Ctrl + C` on your keyboard and then `Y` key to stop the script from watching the changes.
+**(Not important)** Once you are done editing the files from `src` folder you can focus your cursor on the launched server and then press `Ctrl + C` on your keyboard and then `Y` key to stop the script from watching the changes.
 
 ## Production build
 
