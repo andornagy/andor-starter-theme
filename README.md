@@ -22,8 +22,9 @@ To start with the startup theme just download the zip version of `sqe-starter-le
 
 1. Rename theme folder and edit `style.css` (change theme name);
 2. Edit `functions.php`: change `WEBSITE_NAME` and `WEBSITE_SLUG` definitions at the top of the file;
-3. Det up NPM and files compilation (guides below);
-4. Develop the theme (you can start with editing `src\css\_settings.scss` to set default theme styling);
+3. In the file `webpack.config.js` set **LOCAL_DOMAIN** variable to your local website url. Ex: **http://website-name.local**.
+4. Set up NPM and files compilation (guides below);
+5. Develop the theme (you can start with editing `src\css\_settings.scss` to set default theme styling);
 
 Before pushing this theme to a new client-related repo, delete this **Startup theme** section from the **README.md** file, rename **sqe-starter-legal-foundation** to the actual theme slug and change git repo links.
 
