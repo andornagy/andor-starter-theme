@@ -32,7 +32,7 @@ import SmoothScroll from './modules/SmoothScroll';
 import ObjectFitIE from './modules/ObjectFitIE';
 import MegaMenu from './modules/MegaMenu';
 import Search from './modules/Search';
-import Example from './modules/Example';
+import Animation from './modules/Animation';
 
 // Launch custom modules
 const ajaxPosts = new AjaxPosts();
@@ -40,4 +40,4 @@ const smoothScroll = new SmoothScroll();
 const objectFitIE = new ObjectFitIE();
 const megaMenu = new MegaMenu();
 const search = new Search();
-const example = new Example();
+const animation = new Animation();
