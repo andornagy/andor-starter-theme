@@ -25,9 +25,8 @@ class Animation {
             ? Number(elem.dataset.animationOffset)
             : 50;
 
-        let movement = {
-            y: length,
-        };
+        let movement = {};
+        if (type === 'fadeInUp') movement = { y: length };
         if (type === 'fadeInLeft') movement = { x: length };
         if (type === 'fadeInRight') movement = { x: -length };
         if (type === 'fadeInBottom') movement = { y: -length };
