@@ -5,7 +5,7 @@ class AjaxPosts {
     this.filter = $("#filters");
     this.response = $("#response");
 
-    this.search = this.filter.find('[name="kw"]');
+    this.search = this.filter.find('[name="kw"], [name="title"]');
     this.previousValue;
     this.typingTimer;
 
