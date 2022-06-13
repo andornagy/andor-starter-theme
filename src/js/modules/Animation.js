@@ -14,7 +14,7 @@ class Animation {
         const type = elem.dataset.animationType;
         const duration = elem.dataset.animationDuration
             ? Number(elem.dataset.animationDuration) / 1000
-            : 1.5;
+            : 2;
         const length = elem.dataset.animationLength
             ? Number(elem.dataset.animationLength)
             : 50;
@@ -33,7 +33,15 @@ class Animation {
 
         gsap.from(elem, {
             ...movement,
-            opacity: 0,
+            duration,
+            delay,
+            scrollTrigger: {
+                trigger: elem,
+                start: `-=${length - offset} bottom`,
+            },
+        });
+        gsap.to(elem, {
+            opacity: 1,
             duration,
             delay,
             scrollTrigger: {
