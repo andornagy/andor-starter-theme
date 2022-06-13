@@ -10,6 +10,12 @@ if (function_exists('acf_add_options_page')) {
     'icon_url' => 'dashicons-admin-generic',
     'position' => 3
   ));
+  
+   acf_add_options_sub_page(array(
+    'page_title'  => __('Defaults'),
+    'menu_title'  => __('Defaults'),
+    'parent_slug' => $parent['menu_slug'],
+  ));
 
   acf_add_options_sub_page(array(
     'page_title'  => __('Contact details'),
