@@ -4,7 +4,7 @@
 
 <main class="section grid-container">
 	
-	<?php get_template_part('parts/page/breadcrumbs'); ?>
+	<?php get_template_part('parts/layout/breadcrumbs'); ?>
         
     <section class="grid-x grid-padding-x grid-padding-y main">
 	    
@@ -16,9 +16,13 @@
 	        
 	        <?php the_post_thumbnail('landscape'); ?>
 	        
+	        <div class="meta">
+	        	<span class="date"><?php the_date(); ?></span>
+	        </div>
+	        
             <?php the_content(); ?>
             
-            <?php get_template_part('parts/page/share'); ?>
+            <?php get_template_part('parts/layout/share'); ?>
             
         </div>
         

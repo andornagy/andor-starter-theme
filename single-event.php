@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<?php get_template_part('parts/banners/banner'); ?>
+<?php get_template_part('parts/banners/banner', 'event'); ?>
 
 <main class="section grid-container">
 	
-	<?php get_template_part('parts/page/breadcrumbs'); ?>
+	<?php get_template_part('parts/layout/breadcrumbs'); ?>
         
     <section class="grid-x grid-padding-x grid-padding-y main">
 	    
@@ -18,7 +18,7 @@
 	        
             <?php the_content(); ?>
             
-            <?php get_template_part('parts/page/share'); ?>
+            <?php get_template_part('parts/layout/share'); ?>
             
         </div>
         
