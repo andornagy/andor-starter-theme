@@ -1,12 +1,22 @@
-<?php
-get_header();
+<?php get_header(); ?>
 
-get_template_part('parts/banners/banner');
-?>
+<?php get_template_part('parts/banners/banner'); ?>
+
+
 <main class="section grid-container">
-    <div class="grid-x grid-margin-x grid-margin-y">
-        <div class="cell">
-            <?php get_search_form(); ?>
+	
+	<?php get_template_part('parts/page/breadcrumbs'); ?>
+        
+    <section class="grid-x grid-padding-x grid-padding-y main">
+	    
+	    <div class="cell small-12 medium-2 large-3">
+	        <?php get_sidebar('left'); ?>
+        </div>
+	    
+        <div class="cell small-12 medium-8 large-6 content">
+	        
+			<?php get_search_form(); ?>
+			
             <?php
             if (have_posts()) {
                 while (have_posts()) {
@@ -14,12 +24,18 @@ get_template_part('parts/banners/banner');
                     get_template_part('parts/search-loop/search', $type);
                 }
             } else {
-                echo '<h2>' . __('No results match that search.', 'squareeue') . '</h2>';
+                echo '<h2>' . __('No results match that search.', 'squareeye') . '</h2>';
             }
             ?>
+            
         </div>
-    </div>
+        
+        <div class="cell small-12 medium-2 large-3">
+	        <?php get_sidebar('right'); ?>
+        </div>
+        
+    </section>   
+    
 </main>
-<?php
-get_footer();
-?>
+
+<?php get_footer(); ?>
