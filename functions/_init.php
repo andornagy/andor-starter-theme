@@ -1,4 +1,16 @@
 <?php
+	
+add_action('after_setup_theme', 'sqe_theme_features');
+
+function sqe_theme_features()
+{
+    add_theme_support('title-tag');
+    add_theme_support('responsive-embeds');
+    add_theme_support('post-thumbnails');
+    add_theme_support('editor-styles');
+
+}
+
 
 /**
  * Clean up WordPress defaults
@@ -100,3 +112,5 @@ if (!function_exists('sqe_theme_remove_recent_comments_style')) :
         }
     }
 endif;
+
+

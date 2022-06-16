@@ -1,8 +1,19 @@
 <?php
+	
+	
+/* Menus  ________________________________________________________ */
 
-/*
-* DESKTOP MENU
-*/
+
+register_nav_menus(array(
+    'main-menu' => 'Main menu',
+    'top-menu' => 'Top menu',
+    'footer-menu' => 'Footer menu'
+));
+    
+    
+
+/* Desktop menu  ________________________________________________________ */
+
 
 class Desktop_Menu_Walker extends Walker_Nav_Menu
 {
@@ -86,10 +97,7 @@ class Desktop_Menu_Walker extends Walker_Nav_Menu
 }
 
 
-
-/*
-* MOBILE MENU
-*/
+/* Mobile menu (remove this if ShiftNav is used)  ________________________________________________________ */
 
 class Mobile_Menu_Walker extends Walker_Nav_Menu
 {

@@ -3,7 +3,7 @@ $page_id = get_the_ID();
 
 if (is_home())  $page_id = get_option('page_for_posts', true);
 
-$title = '';
+$title = null;
 
 if (isset($args['title']) && $args['title']) {
     $title = $args['title'];
@@ -17,16 +17,13 @@ if (isset($args['title']) && $args['title']) {
     }
 }
 ?>
-<div class="section">
+
+<section class="section banner">
     <div class="grid-container">
         <div class="grid-x grid-padding-x grid-padding-y">
             <div class="cell">
-                <h1>
-                    <?php
-                    echo esc_html($title);
-                    ?>
-                </h1>
+                <h1><?php echo esc_html($title); ?></h1>
             </div>
         </div>
     </div>
-</div>
+</section>

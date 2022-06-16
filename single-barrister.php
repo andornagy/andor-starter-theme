@@ -1,20 +1,33 @@
-<?php
-get_header();
+<?php get_header(); ?>
 
-get_template_part('parts/banners/banner', 'barrister');
-?>
-<main class="section">
-    <div class="grid-container">
-        <div class="grid-x grid-margin-x grid-margin-y">
-            <div class="cell">
-                <?php get_template_part('parts/page/breadcrumbs'); ?>
-            </div>
-            <div class="cell">
-                <?php the_content(); ?>
-            </div>
+<?php get_template_part('parts/banners/banner'); ?>
+
+<main class="section grid-container">
+	
+	<?php get_template_part('parts/page/breadcrumbs'); ?>
+        
+    <section class="grid-x grid-padding-x grid-padding-y main">
+	    
+	    <div class="cell small-12 medium-2 large-3">
+	        <?php get_sidebar('left'); ?>
         </div>
-    </div>
+	    
+        <div class="cell small-12 medium-8 large-6 content">
+	        
+	        <?php the_post_thumbnail('landscape'); ?>
+	        
+            <?php the_content(); ?>
+            
+            <?php get_template_part('parts/page/share'); ?>
+            
+        </div>
+        
+        <div class="cell small-12 medium-2 large-3">
+	        <?php get_sidebar('right'); ?>
+        </div>
+        
+    </section>   
+    
 </main>
-<?php
-get_footer();
-?>
+
+<?php get_footer(); ?>

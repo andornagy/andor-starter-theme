@@ -6,13 +6,17 @@ add_action('wp_enqueue_scripts', 'sqe_enqueue_scripts');
 
 function sqe_enqueue_scripts()
 {
-    wp_enqueue_style('theme-fonts', get_theme_file_uri('/assets/theme-fonts.css'), array(), filemtime(get_theme_file_path('/assets/theme-fonts.css')), 'all');
+    wp_enqueue_style('theme-fonts', get_theme_file_uri('/assets/css/theme-fonts.css'), array(), filemtime(get_theme_file_path('/assets/css/theme-fonts.css')), 'all');
 
     wp_enqueue_style('theme-css', get_theme_file_uri('/dist/main.css'), array(), filemtime(get_theme_file_path('/dist/main.css')), 'all');
+    
+    // TODO: Replace clientcode in the line below
 
-    wp_enqueue_style('sqe-custom-css', get_theme_file_uri('/assets/sqe-custom.css'), array(), filemtime(get_theme_file_path('/assets/sqe-custom.css')), 'all');
+    wp_enqueue_style('sqe-custom-css', get_theme_file_uri('/assets/css/clientcode.css'), array(), filemtime(get_theme_file_path('/assets/css/clientcode.css')), 'all');
 
-    wp_enqueue_style('print-css', get_theme_file_uri('/assets/print.css'), array(), filemtime(get_theme_file_path('/assets/print.css')), 'print');
+    wp_enqueue_style('print-css', get_theme_file_uri('/assets/css/print.css'), array(), filemtime(get_theme_file_path('/assets/css/print.css')), 'print');
+    
+    wp_enqueue_style('font-awesome', get_theme_file_uri('/assets/fonts/fontawesome/css/all.css'), array(), filemtime(get_theme_file_path('/assets/fonts/fontawesome/css/all.css')), 'all');
 
     wp_enqueue_script('theme-js', get_theme_file_uri('/dist/bundle.js'), array('jquery'), filemtime(get_theme_file_path('/dist/bundle.js')), true);
 

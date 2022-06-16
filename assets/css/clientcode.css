@@ -1,0 +1,102 @@
+/* Notes  ________________________________________________________ 
+	
+	Styles to be moved into SCSS files;  but keep the empty breakpoints here.
+	
+*/
+
+
+
+/* Globals  ________________________________________________________ */
+
+:root {
+  --primary: black;
+  --secondary: white;
+}
+
+p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6 { }
+h1, h2, h3, h4, h5, h6 {}
+
+a {}
+a:hover { opacity: 0.8; }
+
+i.fa-solid, svg.fa-solid { margin-right: 0.25em; }
+
+
+/* Layout  ________________________________________________________ */
+
+
+.banner {}
+.main {}
+.content {}
+.sidebar {}
+.sidebar-left {}
+.sidebar-right {}
+.footer {}
+
+
+
+/* Lists & grids  ________________________________________________________ */
+
+ul.simple { list-style: none;  padding: 0;  margin: 0 0 1em; }
+ul.simple li { list-style: none; padding: 0;  margin: 0 0 0.25em; }
+
+
+/* Foundation breakpoints  ________________________________________________________ */
+
+
+/* Small __________________ */
+
+@media only screen { } /* Define mobile styles */
+
+@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+/* Medium __________________ */
+
+@media only screen and (min-width: 40.063em) { 
+	
+	ul.two-col { column-count: 2; }
+	ul.three-col { column-count: 3; }
+	
+	.medium-align-top { -webkit-box-align: start; align-items: flex-start; }
+	.medium-align-bottom { -webkit-box-align: end;  align-items: flex-end; }
+	
+} /* min-width 641px, medium screens */
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+
+/* Large __________________ */
+
+@media only screen and (min-width: 64.063em) { 
+	
+	.large-align-top { -webkit-box-align: start;  align-items: flex-start; }
+	.large-align-bottom { -webkit-box-align: end;  align-items: flex-end; }
+	
+	
+} /* min-width 1025px, large screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+
+/* X Large __________________ */
+
+@media only screen and (min-width: 90.063em) { 
+	
+	.x-large-align-top { -webkit-box-align: start;  align-items: flex-start; }
+	.x-large-align-bottom { -webkit-box-align: end;  align-items: flex-end; }
+	
+	
+} /* min-width 1441px, xlarge screens */
+
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+
+/* XX Large __________________ */
+
+@media only screen and (min-width: 120.063em) { 
+	
+	.xx-large-align-top { -webkit-box-align: start;  align-items: flex-start; }
+	.xx-large-align-bottom { -webkit-box-align: end;  align-items: flex-end; }
+	
+	
+} /* min-width 1921px, xxlarge screens */
+
+
+

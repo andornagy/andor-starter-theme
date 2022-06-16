@@ -1,0 +1,97 @@
+
+
+/* Reference  ________________________________________________________ 
+	
+	http://www.smashingmagazine.com/2015/01/07/designing-for-print-with-css/
+		
+*/
+
+/* General  ________________________________________________________ */
+
+@page {
+  size: A4 landscape;
+}
+
+@page :left {
+  margin-left: 3cm;
+}
+
+@page :right {
+  margin-left: 3cm;
+}
+
+@page :first {
+
+}
+
+
+/* Hide things  ________________________________________________________ */
+
+#menu, #footer, #shiftnav-toggle-main, .shiftnav, .hide-for-print { display: none; }
+
+/* Hyperlinks: stop Foundation printing out the URLs */
+
+a[href*="/"]:after, a[href*="/"]:visited:after {content: normal;}
+
+
+
+
+/* Show things  ________________________________________________________ */
+
+.show-for-print { display: block !important; }
+
+img { display: block; }
+
+
+/* Header & footer  ________________________________________________________ */
+
+
+
+
+
+/* Add title and page numbering to header and footer */
+
+@page:right{
+  @bottom-right {
+     content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+@page:left{
+  @bottom-left {
+     content: "Page " counter(page) " of " counter(pages);
+  }
+}
+
+h1 { 
+  string-set: doctitle content(); 
+}
+
+@page :right {
+  @top-right {
+    content: string(doctitle);
+    margin: 30pt 0 10pt 0;
+    font-size: 8pt;
+  }
+}
+
+
+/* Page breaks  ________________________________________________________ */
+
+
+h1, h2, h3, h4, h5 {
+  page-break-after: avoid;
+}
+
+table, figure {
+  page-break-inside: avoid;
+}
+
+.pdf-pagebreak {
+  break-before: always;
+}
+.pdf-nobreak {
+  break-inside: avoid;
+}
+
+
