@@ -9,7 +9,7 @@
     <section class="grid-x grid-padding-x grid-padding-y main">
 	    
 	    <div class="cell small-12 medium-2 large-3">
-	        <?php get_sidebar('left'); ?>
+	        <?php get_sidebar('left-barrister'); ?>
         </div>
 	    
         <div class="cell small-12 medium-8 large-6 content">
@@ -23,7 +23,7 @@
         </div>
         
         <div class="cell small-12 medium-2 large-3">
-	        <?php get_sidebar('right'); ?>
+	        <?php get_sidebar('right-barrister'); ?>
         </div>
         
     </section>   
