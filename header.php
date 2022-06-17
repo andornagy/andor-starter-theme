@@ -53,9 +53,7 @@
                                             ));
                                             ?>
                                             <div class="nav-search">
-                                                <a href="<?php echo esc_url(site_url('/?s=')); ?>" title="<?php _e('Search', 'squareeye'); ?>" class="nav-search__icon">
-                                                    <?php echo getIcon('search'); ?>
-                                                </a>
+                                                <a href="<?php echo esc_url(site_url('/?s=')); ?>" title="<?php _e('Search', 'squareeye'); ?>" class="nav-search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                                                 <div class="sub-menu" id="header-search">
                                                     <div class="sub-menu__arrow"></div>
                                                     <div class="grid-container padding-vertical-2">

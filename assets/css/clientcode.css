@@ -24,6 +24,8 @@ i.fa-solid, svg.fa-solid { margin-right: 0.25em; }
 
 /* Layout  ________________________________________________________ */
 
+body { background: white; }
+
 
 .banner {}
 .main {}
