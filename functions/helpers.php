@@ -90,3 +90,13 @@ function getColumns($columns, $default)
 
     return $default;
 }
+
+/*
+* MAKE PHONE NUMBER CLICKABLE
+*/
+function makePhoneClickable($num)
+{
+    $num = str_replace('(0)', '', $num);
+    $num = str_replace(' ', '', trim($num));
+    return $num;
+}
