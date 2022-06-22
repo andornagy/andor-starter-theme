@@ -18,9 +18,9 @@ function displayCurrentYear()
 add_shortcode('current_year', 'displayCurrentYear');
 
 
-/*
-* DISPLAY BARRISTERS CALL AND SILK YEARS
-*/
+/* Display barrister call & silk years  ________________________________________________________ */
+
+
 function displayBarristerYears($atts)
 {
     $a = shortcode_atts(array(
@@ -32,17 +32,19 @@ function displayBarristerYears($atts)
 
     if (function_exists('get_field')) {
         $call = get_field('call_year', $a['id']);
+        $calloverride = get_field('call_override', $a['id']);
+        if ($calloverride) { $call = $calloverride; }
         $silk = get_field('silk_year', $a['id']);
 
         if ($call || $silk) {
-            $output .= $a['class'] ? '<div class="' . esc_attr($a['class']) . '">' : '<div>';
+            $output .= $a['class'] ? '<span class="' . esc_attr($a['class']) . '">' : '<span>';
 
             $years = array();
             if ($silk) $years[] = sprintf(__('Silk: %s', 'squareeye'), $silk);
             if ($call) $years[] = sprintf(__('Call: %s', 'squareeye'), $call);
             $output .= implode(' | ', $years);
 
-            $output .= '</div>';
+            $output .= '</span>';
         }
     }
 
@@ -51,9 +53,11 @@ function displayBarristerYears($atts)
 
 add_shortcode('barrister_years', 'displayBarristerYears');
 
-/*
-* CHAMBER CONTACT DETAILS
-*/
+
+
+
+/* Chambers contact details  ________________________________________________________ */
+
 
 function displayChambersContacts()
 {

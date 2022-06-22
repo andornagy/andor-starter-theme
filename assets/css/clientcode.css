@@ -21,20 +21,42 @@ a:hover { opacity: 0.8; }
 
 i.fa-solid, svg.fa-solid { margin-right: 0.25em; }
 
+.grid-container { max-width: 1400px; }
+.grid-container-narrow { max-width: 900px;  margin: 0 auto; }
+
+a.button, button, input[type=button], input[type=submit] {
+	background: red;
+	color: white;
+}
+a.button:hover { opacity: 0.8; }
+
 
 /* Layout  ________________________________________________________ */
 
 body { background: white; }
 
-
-.banner {}
 .main {}
 .content {}
 .sidebar {}
 .sidebar-left {}
 .sidebar-right {}
-.footer {}
 
+
+/* Banner  ________________________________________________________ */
+
+
+/* Footer  ________________________________________________________ */
+
+.footer {}
+.footer-top { background: #CCC; color: black; }
+.footer-bottom { background: black; color: white; }
+
+
+/* Cards  ________________________________________________________ */
+
+a.card { text-decoration: none; }
+.card-section span { display: block; }
+span.name { font-weight: bold; }
 
 
 /* Lists & grids  ________________________________________________________ */

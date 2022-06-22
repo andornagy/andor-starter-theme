@@ -1,6 +1,6 @@
 <?php
 /*
-* Template name: _Blank
+* Template name: Landing page
 */
 get_header();
 
@@ -15,11 +15,9 @@ get_template_part('parts/banners/banner');
 	        
 	        <?php get_template_part('parts/layout/breadcrumbs'); ?>
 	        
-	        <?php the_post_thumbnail('medium'); ?>
-	        
             <?php the_content(); ?>
             
-            <?php get_template_part('/parts/layout/share'); ?>         
+            <?php get_template_part('parts/layout/featured-boxes'); ?>        
             
         </div>
     </div>
