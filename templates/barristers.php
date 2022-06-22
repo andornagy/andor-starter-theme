@@ -12,26 +12,8 @@
 
 $barristers = getQuery('barrister');
 
-// TODO: make this dynamic, based on custom taxonomy field 'show_on_barristers_list'
+$barristers_cats = getPublicBarristerCategories(); // query.php
 
-$barristers_cats = [
-    [
-        'slug' => 'qcs',
-        'title' => 'QCs',
-    ],
-    [
-        'slug' => 'juniors',
-        'title' => 'Junior Counsel',
-    ],
-    [
-        'slug' => 'associate-members',
-        'title' => 'Associate members'
-    ],
-    [
-        'slug' => 'pupils',
-        'title' => 'Pupils'
-    ]
-];
 ?>
 
 <main class="section">

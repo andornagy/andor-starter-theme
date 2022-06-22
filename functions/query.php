@@ -286,3 +286,35 @@ function getPosts($params = array())
         }
     }
 }
+
+
+// Get barrister categories where 'show on filter' is set to 1
+// Used to populate filter and list on barristers.php
+
+function getPublicBarristerCategories() {
+	
+	$barcats = get_terms( array(
+	    'taxonomy' => 'barrister_category',
+	    'hide_empty' => true,
+	));
+	
+	if (!empty($barcats)) {
+		$filteredcats = array();
+		foreach($barcats as $barcat) {
+			
+			$include = false;
+			$include = get_term_meta($barcat->term_id, 'show_on_filter', true);
+			
+			if ($include) {
+				$newdata =  array (
+					'slug' => $barcat->slug,
+					'title' => $barcat->name,
+				);
+				$filteredcats[] = $newdata;
+			}
+				
+		}
+	}
+	
+	return $filteredcats;
+}

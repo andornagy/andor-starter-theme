@@ -18,7 +18,7 @@
 	        
             <?php the_content(); ?>
             
-            <?php get_template_part('parts/page/share'); ?>
+            <?php get_template_part('/parts/layout/share'); ?>
             
         </div>
         
