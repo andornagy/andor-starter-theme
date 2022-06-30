@@ -9,8 +9,8 @@ $id = get_the_ID();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php the_title(); ?></title>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/theme-fonts.css" type="text/css" media="all">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/theme.min.css?<?php echo filemtime(get_template_directory() . '/assets/css/theme.min.css'); ?>" type="text/css" media="all">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/sqe-custom.css?<?php echo filemtime(get_template_directory() . '/assets/css/sqe-custom.css'); ?>" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/main.css?<?php echo filemtime(get_template_directory() . '/dist/main.css'); ?>" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/cornerstone.css?<?php echo filemtime(get_template_directory() . '/assets/css/sqe-custom.css'); ?>" type="text/css" media="all">
 </head>
 
 <body <?php body_class('pdf pdf-barrister'); ?>>
