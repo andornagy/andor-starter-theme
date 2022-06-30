@@ -10,7 +10,7 @@ $id = get_the_ID();
     <title><?php the_title(); ?></title>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/theme-fonts.css" type="text/css" media="all">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/dist/main.css?<?php echo filemtime(get_template_directory() . '/dist/main.css'); ?>" type="text/css" media="all">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/cornerstone.css?<?php echo filemtime(get_template_directory() . '/assets/css/sqe-custom.css'); ?>" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/css/sqe-custom.css?<?php echo filemtime(get_template_directory() . '/assets/css/sqe-custom.css'); ?>" type="text/css" media="all">
 </head>
 
 <body <?php body_class('pdf pdf-barrister'); ?>>
