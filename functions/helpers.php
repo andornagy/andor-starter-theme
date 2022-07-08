@@ -4,6 +4,8 @@
 * GET SIMILIAR AREAS
 */
 
+use function PHPSTORM_META\map;
+
 function getSimilarAreas($id = null)
 {
     $id = $id ?: get_the_ID();
