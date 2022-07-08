@@ -17,7 +17,7 @@ p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6 { }
 h1, h2, h3, h4, h5, h6 {}
 
 a {}
-a:hover { opacity: 0.8; }
+a:hover { opacity: 0.7; }
 
 i.fa-solid, svg.fa-solid { margin-right: 0.25em; }
 
@@ -25,7 +25,7 @@ i.fa-solid, svg.fa-solid { margin-right: 0.25em; }
 .grid-container-narrow { max-width: 900px;  margin: 0 auto; }
 
 a.button, button, input[type=button], input[type=submit] {
-	background: red;
+	background: var(--primary);
 	color: white;
 }
 a.button:hover { opacity: 0.8; }
@@ -58,11 +58,61 @@ a.card { text-decoration: none; }
 .card-section span { display: block; }
 span.name { font-weight: bold; }
 
+.card.callout { height: 100%; }
+
 
 /* Lists & grids  ________________________________________________________ */
 
 ul.simple { list-style: none;  padding: 0;  margin: 0 0 1em; }
 ul.simple li { list-style: none; padding: 0;  margin: 0 0 0.25em; }
+
+/* Tabs & accordions  ________________________________________________________ */
+
+
+ul.accordion {}
+ul.accordion li {}
+ul.accordion .accordion-title { padding: 1rem; text-decoration: none; font-weight: bold;  border-color: #EEE; }
+ul.accordion .accordion-content { padding: 1rem; border-color: #EEE;  }
+ul.accordion .accordion-content img {
+	width: 30%;
+	float: right;
+	margin: 0 0 1rem 1rem;
+}
+ul.accordion .accordion-content p:last-child { margin-bottom: 0; }
+ul.accordion .accordion-content ul, ul.accordion .accordion-content ol { margin-bottom: 1.5rem; }
+
+ul.accordion :last-child > .accordion-title, ul.accordion :last-child > .accordion-content:last-child { border-bottom-color: #EEE;  }
+
+/* Share  ________________________________________________________ */
+
+.share-wrapper { margin-top: 1.5rem; }
+.share-wrapper h2 {
+	display: inline-block;
+	margin-top: 1rem;
+	font-size: 1.1rem;
+	text-transform: uppercase;
+}
+
+ul.menu.share { }
+ul.menu.share li { margin: 0 0.5em 0 0; }
+ul.menu.share li a { padding: 0;  font-size: 1.8em; }
+
+
+
+/* Awards  ________________________________________________________ */
+
+.award span { display: block; }
+.award .position { font-weight: bold; }
+
+
+/* Gravity Forms  ________________________________________________________ */
+
+
+body .gform_wrapper .field_description_below .gfield_consent_description, body .gform_wrapper .gfield_consent_description,
+body .gform_wrapper.gravity-theme .gfield_consent_description { 
+	border: 0; font-size: 1em; padding: 0;
+}
+
 
 
 /* Foundation breakpoints  ________________________________________________________ */
