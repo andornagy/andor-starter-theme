@@ -18,6 +18,8 @@
 	        
             <?php the_content(); ?>
             
+            <?php get_template_part('/parts/layout/accordion'); ?> 
+            
             <?php get_template_part('/parts/layout/share'); ?>
             
         </div>

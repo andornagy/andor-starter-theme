@@ -318,3 +318,45 @@ function getPublicBarristerCategories() {
 	
 	return $filteredcats;
 }
+
+
+function getBarristersByCategory($bcat) {
+	
+	// WP_Query arguments
+		$args = array(
+			'post_type'              => array( 'barrister' ),
+			'posts_per_page'         => '-1',
+			'orderby'                => 'menu_order',
+			'order'                => 'ASC',
+		);
+		
+		if ($bcat) {
+			$args['tax_query'] = array(
+		        array (
+		            'taxonomy' => 'barrister_category',
+		            'field' => 'slug',
+		            'terms' => $bcat,
+		        )
+		    );
+		}
+		
+		// The Query
+		$barristers = new WP_Query( $args );
+		
+		// The Loop
+		if ( $barristers->have_posts() ) {
+			
+			while ( $barristers->have_posts() ) {
+				$barristers->the_post();
+				// do something
+			}
+		} else {
+			// no posts found
+		}
+		
+		// Restore original Post Data
+		wp_reset_postdata();
+		
+		return $barristers;
+
+}
