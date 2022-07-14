@@ -163,3 +163,60 @@ function showAccordion($atts)
 }
 
 add_shortcode('accordions', 'showAccordions');
+
+
+
+
+
+/* Display event date(s)  ________________________________________________________ */
+
+
+function displayEventDates($atts)
+{
+    $a = shortcode_atts(array(
+        'class' => null,
+        'id' => get_the_ID()
+    ), $atts);
+
+    $output = '';
+
+    if (function_exists('get_field')) {
+
+        $startdate = get_field('start_date');
+        $startdate = str_replace('/', '-', $startdate);
+        $startdate = date("d M Y", strtotime($startdate));
+        $starttime = get_field('start_time');
+        $enddate = get_field('end_date');
+        if ($enddate) {
+            $enddate = str_replace('/', '-', $enddate);
+            $enddate = date("d M Y", strtotime($enddate));
+        }
+        $endtime = get_field('end_time');
+
+        $output .= $a['class'] ? '<span class="' . esc_attr($a['class']) . '">' : '<span>';
+
+        $output .= $startdate;
+        if ($starttime) {
+            $output .= ', ' . $starttime;
+        }
+        if ($enddate || $endtime) {
+            $output .= ' to ';
+            if ($enddate && ($enddate <> $startdate)) {
+                $output .= $enddate;
+            }
+            if ($enddate && $endtime && ($enddate <> $startdate)) {
+                $output .= ', ';
+            }
+            if ($endtime) {
+                $output .= $endtime;
+            }
+        }
+
+        $output .= '</span>';
+    }
+
+    return $output;
+}
+
+add_shortcode('event_dates', 'displayEventDates');
+
