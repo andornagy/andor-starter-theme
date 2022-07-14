@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+<?php get_header(); 
+	
+$id = get_the_id();
+$venue = get_field('venue');
+
+$booking_url = get_field('booking_url');
+
+$video = get_field('video_embed');
+$slides = get_field('slides');
+
+?>
 
 <?php get_template_part('parts/banners/banner', 'event'); ?>
 
@@ -17,6 +27,26 @@
 	        <?php the_post_thumbnail('landscape'); ?>
 	        
             <?php the_content(); ?>
+            
+            <?php
+	            
+	            $startdate = DateTime::createFromFormat('d/m/Y', get_field('start_date'));
+				$startdateYmd = $startdate->format('Ymd');
+				$today =  date('Ymd');
+
+				if ($booking_url && ($startdateYmd > $today)) {
+					echo '<p><a href="' . $booking_url . '" class="button" target="_blank">Book now</a></p>';
+				}
+				
+				if ($slides) {
+					echo '<p><a href="'.$slides['url'].'" class="button">Download slides</a></p>';
+				}
+				
+				if ($video) {
+					echo '<h2>Watch the video</h2>';
+					echo $video;
+				}
+				?>
             
             <?php get_template_part('parts/layout/share'); ?>
             
