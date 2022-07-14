@@ -143,7 +143,7 @@ npm run build
 
 Initially, only necessary Foundation CSS(SASS) modules are added to the project. You can add any additional Foundation module by following those steps:
 
-1. Navigate to `\src\css\theme.scss` file.
+1. Navigate to `\src\css\app.scss` file.
 2. Just uncomment required module.
 3. That's it. No more steps. It's pretty straightforward. Do we really need steps here in the first place?...
 
