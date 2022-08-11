@@ -131,6 +131,7 @@ function stickyPostsFunctionality($query)
                 // Get normal posts ids to fill in the first page
                 $normal_posts_args = $query->query_vars;
                 $normal_posts_args['fields'] = 'ids';
+                $normal_posts_args['post__not_in'] = $sticky_posts;
                 $normal_posts = new WP_Query($normal_posts_args);
                 $normal_posts_ids = $normal_posts->posts && is_array($normal_posts->posts) ? array_slice($normal_posts->posts, 0, $posts_per_page - $sticky_count) : [];
 
@@ -155,13 +156,13 @@ function stickyPostsFunctionality($query)
             } else {
                 // If second page, then need to set offset
                 $query->set('offset', $sticky_count - $posts_per_page);
+                $query->set('post__not_in', $sticky_posts);
             }
         }
     }
 
     return $query;
 }
-
 
 /*
 * RELATED QUERY
