@@ -34,6 +34,9 @@ function getQuery($type, $cat = null)
 
     // Post type
     $args['post_type'] = $type;
+	
+	// Sticky posts
+    if ($type === 'post') $args['enable_sticky_posts'] = true;
 
     // Posts per page
     $args['posts_per_page'] = $type === 'barrister' ? -1 : 12;
@@ -91,6 +94,69 @@ function getQuery($type, $cat = null)
     // Remove Search By Title filter
     if (isset($_REQUEST['title']) && !empty($_REQUEST['title'])) {
         remove_filter('posts_where', 'searchByTitleFilter', 10, 2);
+    }
+
+    return $query;
+}
+
+/*
+* STICKY POSTS
+*/
+add_action('pre_get_posts', 'stickyPostsFunctionality');
+
+function stickyPostsFunctionality($query)
+{
+    if ($query->get('enable_sticky_posts') === true) {
+        // avoid infinite loop
+        remove_action('pre_get_posts', __FUNCTION__);
+
+        // set the number of posts per page
+        $posts_per_page = $query->get('posts_per_page');
+
+        // get sticky posts array
+        $sticky_posts = get_option('sticky_posts');
+
+        // Check if sticky posts exists
+        if (is_array($sticky_posts) && $sticky_posts) {
+            // count the number of sticky posts
+            $sticky_count = count($sticky_posts);
+            // trim sticky posts to posts_per_page, so they displayed only on the first page
+            if ($sticky_count > $posts_per_page) {
+                $sticky_posts = array_slice($sticky_posts, 0, $posts_per_page);
+                $sticky_count = $posts_per_page;
+            }
+
+            // If not paged or first page
+            if (!$query->is_paged()) {
+                // Get normal posts ids to fill in the first page
+                $normal_posts_args = $query->query_vars;
+                $normal_posts_args['fields'] = 'ids';
+                $normal_posts = new WP_Query($normal_posts_args);
+                $normal_posts_ids = $normal_posts->posts && is_array($normal_posts->posts) ? array_slice($normal_posts->posts, 0, $posts_per_page - $sticky_count) : [];
+
+                // Get sticky posts ids to sort those by date
+                $sticky_posts = new WP_Query([
+                    'post_type' => 'post',
+                    'post_status' => 'publish',
+                    'posts_per_page' => -1,
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'post__in' => $sticky_posts,
+                    'fields' => 'ids'
+                ]);
+                $sticky_posts_ids = $sticky_posts->posts && is_array($sticky_posts->posts) ? $sticky_posts->posts : [];
+
+                // Get final ids
+                $posts_ids = array_merge($sticky_posts_ids, $normal_posts_ids);
+
+                $query->set('post__in', $posts_ids);
+                $query->set('orderby', 'post__in');
+                $query->set('order', 'ASC');
+            } else {
+                // If second page, then need to set offset
+                $query->set('offset', $sticky_count - $posts_per_page);
+            }
+        }
     }
 
     return $query;
