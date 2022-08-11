@@ -214,6 +214,8 @@ function ajax_processor_function()
         $type = $_REQUEST['type'];
 
         remove_all_actions('pre_get_posts');
+        
+        add_action('pre_get_posts', 'stickyPostsFunctionality');
 
         $cat = isset($_REQUEST['cat']) && !empty($_REQUEST['cat']) ? $_REQUEST['cat'] : null;
 
