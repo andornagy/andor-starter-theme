@@ -62,6 +62,17 @@
 
 @import "../../node_modules/foundation-sites/scss/util/util";
 
+/*
+* CUSTOM VARS
+*/
+$header_height_mobile: 50px;
+$header_height_desktop: 70px;
+$logo_small: 150px;
+$logo_medium: 200px;
+$logo_large: 345px;
+$transition_time: 0.4s ease-in-out;
+$transition-time: $transition_time;
+
 // 1. Global
 // ---------
 
@@ -75,10 +86,8 @@ $foundation-palette: (
   warning: #c9a81c,
   alert: #b64d34,
 );
-// $primary-lighter: #B9DCD8;
-// $primary-light: #74B5C3;
+$primary-light: #74b5c3;
 $primary-dark: #0a3b45;
-// $primary-darker: #002A30;
 $light-gray: #eff2f3;
 $medium-gray: #9a9a9a;
 $dark-gray: #263035;

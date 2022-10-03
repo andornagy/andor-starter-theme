@@ -158,10 +158,7 @@ function buildMenuItemsTree(array $elements, $parentId = 0)
   foreach ($elements as $element) {
     if ($element->menu_item_parent == $parentId) {
       $children = buildMenuItemsTree($elements, $element->ID);
-      if ($children) {
-
-        $element->children = $children;
-      }
+      if ($children) $element->children = $children;
       $branch[] = $element;
     }
   }
@@ -191,6 +188,9 @@ function getSubMenu($parent = null, $menu = null)
   // Else check if parent is numeric or string
   else if (!is_numeric($parent)) $is_parent_numeric = false;
 
+  // Prepare parent menu id
+  $parent_menu_item_id = null;
+
   // if menu slug isn't set, then will go through all menus
   if (!$menu) {
 
@@ -217,8 +217,8 @@ function getSubMenu($parent = null, $menu = null)
           $target_menu_id = $menu_id;
           // Set target menu items
           $target_menu_items = $menu_items;
-          // Override parent with ID
-          $parent = $menu_item->ID;
+          // Set parent menu item id
+          $parent_menu_item_id = $menu_item->ID;
           // Break loops
           break 2;
         }
@@ -227,6 +227,22 @@ function getSubMenu($parent = null, $menu = null)
 
     // Set parent menu item
     if ($target_menu_id) $menu = $target_menu_id;
+  } else {
+    // if menu is set, then still need to go through all elements to get menu parent item id
+    $target_menu_items = wp_get_nav_menu_items($menu);
+    foreach ($target_menu_items as $menu_item) {
+      if (
+        ($menu_item->object === 'page' || $menu_item->object === 'custom') &&
+        ($is_parent_numeric && intval($menu_item->object_id) === intval($parent) ||
+          !$is_parent_numeric && $menu_item->title === $parent
+        )
+      ) {
+        // Set parent menu item id
+        $parent_menu_item_id = $menu_item->ID;
+        // Break loops
+        break;
+      }
+    }
   }
 
   // Check if menu is set
@@ -238,17 +254,17 @@ function getSubMenu($parent = null, $menu = null)
   // If no menu items, then exit
   if (!$target_menu_items) return;
 
-  // If parent isn't ID already, then need to loop through all items and set ID
+  // If parent isn't ID, then need to loop through all items and set ID
   if (!is_numeric($parent)) {
     foreach ($target_menu_items as $menu_item) {
       if (($menu_item->object === 'page' || $menu_item->object === 'custom') && $menu_item->title === $parent) {
-        $parent = $menu_item->ID;
+        $parent_menu_item_id = $menu_item->ID;
       }
     }
   }
 
   // Build tree from menu items
-  $menu_items_tree = buildMenuItemsTree($target_menu_items, $parent);
+  $menu_items_tree = buildMenuItemsTree($target_menu_items, $parent_menu_item_id);
 
   // Return
   return $menu_items_tree;

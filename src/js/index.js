@@ -33,11 +33,13 @@ import ObjectFitIE from './modules/ObjectFitIE';
 import MegaMenu from './modules/MegaMenu';
 import Search from './modules/Search';
 import Animation from './modules/Animation';
+import Splide from './modules/Splide';
 
 // Launch custom modules
-const ajaxPosts = new AjaxPosts();
-const smoothScroll = new SmoothScroll();
-const objectFitIE = new ObjectFitIE();
-const megaMenu = new MegaMenu();
-const search = new Search();
-const animation = new Animation();
+new AjaxPosts();
+new SmoothScroll();
+new ObjectFitIE();
+new MegaMenu();
+new Search();
+new Animation();
+new Splide();
