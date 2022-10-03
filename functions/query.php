@@ -106,11 +106,11 @@ add_action('pre_get_posts', 'stickyPostsFunctionality');
 
 function stickyPostsFunctionality($query)
 {
-    if ($query->get('enable_sticky_posts') === true) {
+    if ($query->get('enable_sticky_posts')) {
         // avoid infinite loop
         remove_action('pre_get_posts', __FUNCTION__);
 
-        // set the number of posts per page
+        // get the number of posts per page
         $posts_per_page = $query->get('posts_per_page');
 
         // get sticky posts array
@@ -118,6 +118,7 @@ function stickyPostsFunctionality($query)
 
         // Check if sticky posts exists
         if (is_array($sticky_posts) && $sticky_posts) {
+
             // count the number of sticky posts
             $sticky_count = count($sticky_posts);
             // trim sticky posts to posts_per_page, so they displayed only on the first page
@@ -125,6 +126,7 @@ function stickyPostsFunctionality($query)
                 $sticky_posts = array_slice($sticky_posts, 0, $posts_per_page);
                 $sticky_count = $posts_per_page;
             }
+
 
             // If not paged or first page
             if (!$query->is_paged()) {
@@ -154,8 +156,15 @@ function stickyPostsFunctionality($query)
                 $query->set('orderby', 'post__in');
                 $query->set('order', 'ASC');
             } else {
-                // If second page, then need to set offset
-                $query->set('offset', $sticky_count - $posts_per_page);
+                // Can't use "paged" with offset, so need to real offset manually
+                $current_page = $query->get('paged');
+                // Take previous page as we can't set negative offset
+                $current_page = $current_page - 1;
+                // Calc offset
+                $offset = (($current_page - 1) * $posts_per_page) + ($posts_per_page - $sticky_count);
+
+                // Set offset and remove all sticky posts
+                $query->set('offset',  $offset);
                 $query->set('post__not_in', $sticky_posts);
             }
         }
@@ -163,6 +172,7 @@ function stickyPostsFunctionality($query)
 
     return $query;
 }
+
 
 /*
 * RELATED QUERY
