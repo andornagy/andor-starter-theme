@@ -4,6 +4,8 @@
 		<?php
 		global $post;
 		
+		$title = wp_trim_words(get_the_title(), 6, '...');
+		
 		$separator = '<li class="separator">></li>';
 		
 		echo '<ul class="breadcrumbs">';
@@ -29,14 +31,14 @@
 		        echo '<li>' . get_the_title(get_option('page_for_posts', true)) . '</li>';
 		    } elseif (is_singular('area')) {
 		        echo '<li><a href="' . site_url('areas') . '" title="' . __('Areas', 'squareeye') . '">' . __('Areas', 'squareeye') . '</a></li>' . $separator;
-		        echo '<li>' . get_the_title() . '</li>';
+		        echo '<li>' . $title . '</li>';
 		    } elseif (is_singular('barrister')) {
 		        echo '<li><a href="' . site_url('barristers') . '" title="' . __('Barristers', 'squareeye') . '">' . __('Barristers', 'squareeye') . '</a></li>' . $separator;
-		        echo '<li>' . get_the_title() . '</li>';
+		        echo '<li>' . $title . '</li>';
 		    } elseif (is_single()) {
 		        $blog_id = get_option('page_for_posts', true);
 		        echo '<li><a href="' . get_the_permalink($blog_id) . '" title="' . get_the_title($blog_id) . '">' . get_the_title($blog_id) . '</a></li>' . $separator;
-		        echo '<li>' . get_the_title() . '</li>';
+		        echo '<li>' . $title . '</li>';
 		    } elseif (is_tax() || is_category()) {
 		        echo '<li>';
 		        $term = get_queried_object();
@@ -45,14 +47,14 @@
 		    } elseif (is_page()) {
 		        if ($post->post_parent) {
 		            $anc = get_post_ancestors($post->ID);
-		            $title = get_the_title();
+		            $title = $title;
 		            foreach ($anc as $ancestor) {
 		                $output = '<li><a href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li> ' . $separator;
 		            }
 		            echo $output;
 		            echo $title;
 		        } else {
-		            echo '<li>' . get_the_title() . '</li>';
+		            echo '<li>' . $title . '</li>';
 		        }
 		    }
 		}
