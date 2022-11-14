@@ -4,6 +4,8 @@ class AjaxPosts {
   constructor() {
     this.filter = $("#filters");
     this.response = $("#response");
+    
+    this.filtering = false;
 
     this.search = this.filter.find('[name="kw"], [name="title"]');
     this.previousValue;
@@ -92,38 +94,45 @@ class AjaxPosts {
   }
 
   getResults() {
-    $.ajax({
-      url: themeData.ajax_url,
-      data:
-        this.filter.serialize() +
-        "&nonce=" +
-        themeData.ajax_nonce +
-        "&action=process_ajax", // form data
-      type: this.filter.attr("method"), // POST
-      beforeSend: (xhr) => {
-        this.filter.parents(".section").addClass("loading");
-      },
-      success: (response) => {
-        this.filter.parents(".section").removeClass("loading");
-        this.response.html(response); // insert data
-        if (this.paginationChanged) {
-          $("html").animate(
-            {
-              scrollTop:
-                this.response.offset().top -
-                $(".header__inner").innerHeight() -
-                this.pScrollBuffer,
+        if (this.filtering) return;
+
+        $.ajax({
+            url: window.themeData.ajax_url,
+            data:
+                this.filter.serialize() +
+                '&nonce=' +
+                window.themeData.ajax_nonce +
+                '&action=process_ajax', // form data
+            type: this.filter.attr('method'), // POST
+            beforeSend: xhr => {
+                this.filtering = true;
+                this.response.parents('.section').addClass('loading');
             },
-            800
-          );
-          this.paginationChanged = false;
-        }
-      },
-      error: (response) => {
-        console.log(response);
-      },
-    });
-  }
+            success: response => {
+                console.log('Place html');
+                this.response.html(response); // insert data
+                if (this.paginationChanged) {
+                    $('html').animate(
+                        {
+                            scrollTop:
+                                this.response.offset().top -
+                                $('.header__inner').innerHeight() -
+                                this.pScrollBuffer,
+                        },
+                        800
+                    );
+                    this.paginationChanged = false;
+                }
+            },
+            error: response => {
+                console.log(response);
+            },
+            complete: () => {
+                this.filtering = false;
+                this.response.parents('.section').removeClass('loading');
+            },
+        });
+    }
 }
 
 export default AjaxPosts;
