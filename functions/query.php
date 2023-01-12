@@ -48,6 +48,18 @@ function getQuery($type, $cat = null, $limit = 12)
       $args['paged'] = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
    }
 
+   // scope
+   if ($type === 'event') {
+      $today = date('Y-m-d H:i:s');
+      $args['meta_query'] =
+         array(
+            'key'           => 'start_date',
+            'compare'       => '<',
+            'value'         => $today,
+            'type'          => 'DATETIME',
+         );
+   };
+
    // Categories
    if ($cat) {
       if (is_numeric($cat)) $args['cat'] = $cat;
