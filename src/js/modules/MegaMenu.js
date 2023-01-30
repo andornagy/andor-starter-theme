@@ -71,11 +71,7 @@ class MegaMenu {
         if (!item) return;
         const arrow = $(item).find('.sub-menu__arrow').first();
         const position = item.getBoundingClientRect();
-        console.log(
-            position.left,
-            $(item).width() / 2,
-            Math.abs(arrow.width()) / 2
-        );
+
         arrow.css(
             'left',
             position.left +

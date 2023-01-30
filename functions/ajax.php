@@ -170,30 +170,47 @@ function ajaxFilters($type, $cat = null)
 */
 function ajaxPagination($type, $cat = null)
 {
+    if ($type) {
+        add_action('pre_get_posts', 'stickyPostsFunctionality');
 
-   if ($type) {
-      $query = getQuery($type, $cat);
+        $query = getQuery($type, $cat);
 
-      if (isset($_REQUEST['pg']) && absint($_REQUEST['pg']) > 0) {
-         $current = absint($_REQUEST['pg']);
-      } else {
-         $current = max(1, get_query_var('paged'));
-      }
+        $paged = $query->query_vars['paged'];
+        $max_num_pages = $query->max_num_pages;
 
-      $paginateArgs = array(
-         'base' => '#%#%',
-         'format' => '%#%',
-         'current' => $current,
-         'total' =>  $query->max_num_pages,
-         'prev_text' => '',
-         'next_text' => ''
-      );
+        // if sticky posts and on the first page, then need to count manually without sticky posts
+        if (isset($query->query_vars['enable_sticky_posts']) && $query->query_vars['enable_sticky_posts'] && !$query->query_vars('paged')) {
+            $temp_args = $query->query_vars;
+            $temp_args['post__in'] = '';
+            $temp_args['fields'] = 'ids';
+            $query_temp = new WP_Query($temp_args);
+            $paged = 1;
+            $max_num_pages = $query_temp->max_num_pages;
+        }
 
-      echo '<div class="cell padding-vertical-1 flex-container align-middle">';
-      echo '<ul class="pagination">' . paginate_links($paginateArgs) . '</ul>';
-      echo '</div>';
-   }
+        if ($max_num_pages) {
+            if (isset($_REQUEST['pg']) && absint($_REQUEST['pg']) > 0) {
+                $current = absint($_REQUEST['pg']);
+            } else {
+                $current = max(1, $paged);
+            }
+
+            $paginateArgs = array(
+                'base' => '#%#%',
+                'format' => '%#%',
+                'current' => $current,
+                'total' =>  $max_num_pages,
+                'prev_text' => '',
+                'next_text' => ''
+            );
+
+            echo '<div class="cell cell--no-line padding-vertical-1 flex-container align-middle">';
+            echo '<ul class="pagination">' . paginate_links($paginateArgs) . '</ul>';
+            echo '</div>';
+        }
+    }
 }
+
 
 /*
 * AJAX FILTER PROCESSOR
@@ -275,6 +292,7 @@ function ajax_processor_function()
                else get_template_part('parts/loop/loop', $type);
             }
          }
+
 
 
          if ($query->max_num_pages > 1) {

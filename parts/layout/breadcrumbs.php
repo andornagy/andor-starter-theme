@@ -1,6 +1,5 @@
 <div class="grid-x grid-padding-x grid-padding-y crumbs-wrapper">
    <div class="cell">
-
       <?php
       global $post;
 

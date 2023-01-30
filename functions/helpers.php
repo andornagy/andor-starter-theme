@@ -4,8 +4,6 @@
 * GET SIMILIAR AREAS
 */
 
-use function PHPSTORM_META\map;
-
 function getSimilarAreas($id = null)
 {
    $id = $id ?: get_the_ID();
@@ -124,4 +122,58 @@ function sqe_time_format($time)
 
       return $output;
    }
+}
+
+/*
+* GET PERSON YEARS
+*/
+
+function getPersonYears($id = null)
+{
+    if (!$id) $id = get_the_ID();
+
+    $call_override = get_field('call_override', $id);
+    $call = $call_override ? $call_override : get_field('call_year', $id);
+    $silk = get_field('silk_year', $id);
+
+    $years = [];
+    if ($call) $years[] = __('Call: ', 'squareeye') . esc_html($call);
+    if ($silk) $years[] = __('Silk: ', 'squareeye') . esc_html($silk);
+
+    return implode(', ', $years);
+}
+
+/*
+* GET EVENT DATE 
+*/
+function getEventDate($id = null)
+{
+    if (!$id) $id = get_the_ID();
+
+    $start_date = get_field('start_date', $id);
+    $start_time = get_field('start_time', $id);
+    $end_date = get_field('end_date', $id);
+    $end_time = get_field('end_time', $id);
+
+    $start_date_obj = strtotime($start_date);
+    $end_date_obj = strtotime($end_date);
+
+    $date_str = '';
+
+    if (date('Ymd', $start_date_obj) === date('Ymd', $end_date_obj)) {
+        $date_str = '<span>' . date('F j, Y', $start_date_obj) . '</span>';
+        if ($start_time) {
+            $date_str .= ' <span>' . $start_time;
+            if ($end_time) $date_str .= '-' . $end_time;
+            $date_str .= '</span>';
+        }
+    } else {
+        $date_str = '<span>' . date('F j, Y', $start_date_obj);
+        if ($start_time) $date_str .= ' ' . $start_time;
+        $date_str .= '</span> - <span>' . date('F j, Y', $end_date_obj);
+        if ($end_time) $date_str .= ' ' . $end_time;
+        $date_str .= '<span>';
+    }
+
+    return wp_kses_post($date_str);
 }

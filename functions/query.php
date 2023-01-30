@@ -110,7 +110,6 @@ function getQuery($type, $cat = null, $limit = 12)
 
    return $query;
 }
-
 /*
 * STICKY POSTS
 */
@@ -175,6 +174,7 @@ function stickyPostsFunctionality($query)
 
    return $query;
 }
+
 
 /*
 * RELATED QUERY
@@ -254,7 +254,19 @@ function searchByTitleFilter($where, \WP_Query $q)
 {
    global $wpdb;
    if ($search_term = $q->get('search_by_title')) {
-      $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql($wpdb->esc_like($search_term)) . '%\'';
+
+      $keywords = explode(' ', trim($search_term));
+
+      $where .= ' AND (';
+
+      $keywords_sql = [];
+      foreach ($keywords as $keyword) {
+         $keywords_sql[] = $wpdb->posts . '.post_title LIKE \'%' . esc_sql($wpdb->esc_like($keyword)) . '%\'';
+      }
+      $where .= implode(' AND ', $keywords_sql);
+
+      $where .= ')';
+
    }
    return $where;
 }

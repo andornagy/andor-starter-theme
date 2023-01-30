@@ -1,7 +1,6 @@
-@import '_settings';
-@import '../../node_modules/foundation-sites/scss/foundation';
-@import '../../node_modules/motion-ui/src/motion-ui.scss';
-
+@import "_settings";
+@import "../../node_modules/foundation-sites/scss/foundation";
+@import "../../node_modules/motion-ui/src/motion-ui.scss";
 
 // Prototypying utilities
 @include foundation-prototype-spacing;
@@ -68,43 +67,34 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
-
-/*
-* CUSTOM VARS
-*/
-$header_height_mobile: 50px;
-$header_height_desktop: 70px;
-$logo_small: 150px;
-$logo_medium: 200px;
-$logo_large: 345px;
-$transition_time: 0.4s;
-
 /*
 * CUSTOM MODULES
 */
 
-@import 'modules/mixins';
-@import 'modules/utils';
+@import "modules/mixins";
+@import "modules/utils";
 @import "modules/animate";
-@import 'modules/typography';
-@import 'modules/section';
-@import 'modules/header';
-@import 'modules/logo';
-@import 'modules/navigation';
-@import 'modules/search';
-@import 'modules/offcanvas';
-@import 'modules/button';
-@import 'modules/accordion';
-@import 'modules/breadcrumbs';
-@import 'modules/home';
-@import 'modules/pagination';
-@import 'modules/footer';
-@import 'modules/single';
-@import 'modules/content';
-@import 'modules/loop-item';
-@import 'modules/icon-box';
-@import 'modules/input';
-@import 'modules/loading';
-@import 'modules/pdf';
-@import 'modules/deep-links';
-@import 'modules/ie-object-fit';
+@import "modules/typography";
+@import "modules/section";
+@import "modules/header";
+@import "modules/logo";
+@import "modules/navigation";
+@import "modules/search";
+@import "modules/offcanvas";
+@import "modules/button";
+@import "modules/accordion";
+@import "modules/breadcrumbs";
+@import "modules/home";
+@import "modules/pagination";
+@import "modules/footer";
+@import "modules/single";
+@import "modules/content";
+@import "modules/loop-item";
+@import "modules/icon-box";
+@import "modules/input";
+@import "modules/loading";
+@import "modules/pdf";
+@import "modules/deep-links";
+@import "modules/ie-object-fit";
+@import "modules/splide";
+@import "modules/sidebar";
