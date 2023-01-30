@@ -1,118 +1,249 @@
 .bg {
-    &-primary {
-        background-color: $primary-color;
-    }
+   &-primary {
+      background-color: $primary-color;
+   }
 
-    &-secondary {
-        background-color: $secondary-color;
-    }
+   &-secondary {
+      background-color: $secondary-color;
+   }
 
-    &-gray {
-        background-color: $medium-gray;
-    }
+   &-gray {
+      background-color: $medium-gray;
+   }
 }
 
 .text {
-    &-primary {
-        color: $primary-color;
-    }
+   &-primary {
+      color: $primary-color;
+   }
 
-    &-secondary {
-        color: $secondary-color;
-    }
+   &-secondary {
+      color: $secondary-color;
+   }
 
-    &-white {
-        color: white;
-    }
+   &-white {
+      color: white;
+   }
 }
 
 @include breakpoint(large) {
-    .large {
-        &-text {
-            &-primary {
-                color: $primary-color;
-            }
+   .large {
+      &-text {
+         &-primary {
+            color: $primary-color;
+         }
 
-            &-secondary {
-                color: $secondary-color;
-            }
+         &-secondary {
+            color: $secondary-color;
+         }
 
-            &-white {
-                color: white;
-            }
-        }
-    }
+         &-white {
+            color: white;
+         }
+      }
+   }
 }
 
 @include breakpoint(medium) {
-    .medium {
-        &-text {
-            &-primary {
-                color: $primary-color;
-            }
+   .medium {
+      &-text {
+         &-primary {
+            color: $primary-color;
+         }
 
-            &-secondary {
-                color: $secondary-color;
-            }
+         &-secondary {
+            color: $secondary-color;
+         }
 
-            &-white {
-                color: white;
-            }
-        }
-    }
+         &-white {
+            color: white;
+         }
+      }
+   }
 }
 
-
 .text-decoration {
-    &-underline {
-        text-decoration: underline !important;
-    }
+   &-underline {
+      text-decoration: underline !important;
+   }
 
-    &-none {
-        text-decoration: none !important;
-    }
+   &-none {
+      text-decoration: none !important;
+   }
 }
 
 .circle {
-    border-radius: 50%;
-    overflow: hidden;
+   border-radius: 50%;
+   overflow: hidden;
 }
 
 body {
-    .square-img {
-        @include img-fixed-size(100%);
-    }
+   .square-img {
+      @include img-fixed-size(100%);
+   }
 
-    .rectangle-img {
-        @include img-fixed-size(60%);
-    }
+   .rectangle-img {
+      @include img-fixed-size(60%);
+   }
 }
 
 .img-zoom {
-    img {
-        transition: transform .6s;
-    }
+   img {
+      transition: transform 0.6s;
+   }
 
-    &:hover img {
-        transform: scale(1.05);
-    }
+   &:hover img {
+      transform: scale(1.05);
+   }
 }
 
 .disable {
-    &-small {
-        @include breakpoint(small down) {
-            display: none !important;
-        }
-    }
+   &-small {
+      @include breakpoint(small down) {
+         display: none !important;
+      }
+   }
 
-    &-medium {
-        @include breakpoint(medium down) {
-            display: none !important;
-        }
-    }
+   &-medium {
+      @include breakpoint(medium down) {
+         display: none !important;
+      }
+   }
 }
 
 .round {
-    border-radius: 100%;
-    overflow: hidden;
+   border-radius: 100%;
+   overflow: hidden;
+}
+
+/*Text align center*/
+.center-text {
+   &-small {
+      @include breakpoint(small only) {
+         text-align: center !important;
+      }
+   }
+   &-medium {
+      @include breakpoint(medium only) {
+         text-align: center !important;
+      }
+   }
+   &-large {
+      @include breakpoint(large up) {
+         text-align: center !important;
+      }
+   }
+}
+
+/*Text align right*/
+.right-text {
+   &-small {
+      @include breakpoint(small only) {
+         text-align: right !important;
+      }
+   }
+   &-medium {
+      @include breakpoint(medium only) {
+         text-align: right !important;
+      }
+   }
+   &-large {
+      @include breakpoint(large up) {
+         text-align: right !important;
+      }
+   }
+}
+
+/*Text align left*/
+.left-text {
+   &-small {
+      @include breakpoint(small only) {
+         text-align: left !important;
+      }
+   }
+   &-medium {
+      @include breakpoint(medium only) {
+         text-align: left !important;
+      }
+   }
+   &-large {
+      @include breakpoint(large up) {
+         text-align: left !important;
+      }
+   }
+}
+
+/*Flex align center*/
+.align-center-small {
+   @include breakpoint(small only) {
+      -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+      justify-content: center !important;
+   }
+}
+
+.align-center-medium {
+   @include breakpoint(medium only) {
+      -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+      justify-content: center !important;
+   }
+}
+
+.align-center-large {
+   @include breakpoint(large) {
+      -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+      justify-content: center !important;
+   }
+}
+
+/*Flex align right*/
+.align-right-small {
+   @include breakpoint(small only) {
+      -webkit-box-pack: right !important;
+      -ms-flex-pack: right !important;
+      justify-content: right !important;
+   }
+}
+
+.align-right-medium {
+   @include breakpoint(medium only) {
+      -webkit-box-pack: right !important;
+      -ms-flex-pack: right !important;
+      justify-content: right !important;
+   }
+}
+
+.align-right-large {
+   @include breakpoint(large) {
+      -webkit-box-pack: right !important;
+      -ms-flex-pack: right !important;
+      justify-content: right !important;
+   }
+}
+
+/*Flex align left*/
+.align-left-small {
+   @include breakpoint(small only) {
+      -webkit-box-pack: left !important;
+      -ms-flex-pack: left !important;
+      justify-content: left !important;
+   }
+}
+
+.align-left-medium {
+   @include breakpoint(medium only) {
+      -webkit-box-pack: left !important;
+      -ms-flex-pack: left !important;
+      justify-content: left !important;
+   }
+}
+
+.align-left-large {
+   @include breakpoint(large) {
+      -webkit-box-pack: left !important;
+      -ms-flex-pack: left !important;
+      justify-content: left !important;
+   }
 }
