@@ -19,7 +19,11 @@
                if (have_posts()) {
                   while (have_posts()) {
                      the_post();
-                     get_template_part('parts/loop/loop', get_post_type());
+                     $args = array(
+                        'excerpt' => true,
+                        'columns' => 4,
+                     );
+                     get_template_part('parts/loop/loop', get_post_type(), $args);
                   }
                } else {
                   echo '<div class="cell"><h2>' . __('No posts found.', 'squareeye') . '</h2></div>';

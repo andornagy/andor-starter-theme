@@ -1,6 +1,6 @@
 <?php
 $id = get_the_ID();
-$columns = 'cell large-3 medium-6';
+$columns = 'cell large-4 medium-6';
 if (isset($args['columns'])) {
    $columns = getColumns($args['columns'], $columns); // see helpers.php
 }
