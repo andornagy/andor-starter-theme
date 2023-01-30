@@ -28,6 +28,8 @@ function getQuery($type, $cat = null, $limit = 12)
       'orderby' => 'menu_order',
       'order' => 'ASC'
    );
+   
+       $args['ignore_custom_sort'] = true;
 
    // Page slug (used for ajax)
    $page_slug = isset($_REQUEST['slug']) ? $_REQUEST['slug'] : basename(get_permalink(get_the_ID()));
