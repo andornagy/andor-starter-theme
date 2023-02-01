@@ -28,8 +28,8 @@ function getQuery($type, $cat = null, $limit = 12)
       'orderby' => 'menu_order',
       'order' => 'ASC'
    );
-   
-       $args['ignore_custom_sort'] = true;
+
+   $args['ignore_custom_sort'] = true;
 
    // Page slug (used for ajax)
    $page_slug = isset($_REQUEST['slug']) ? $_REQUEST['slug'] : basename(get_permalink(get_the_ID()));
@@ -63,10 +63,40 @@ function getQuery($type, $cat = null, $limit = 12)
    };
 
    // Categories
-   if ($cat) {
+   if ($cat && $type !== 'barrister') {
       if (is_numeric($cat)) $args['cat'] = $cat;
       else $args['category_name'] = $cat;
    }
+
+   // Barrister cats
+   if ($type === 'barrister' && (!empty($_REQUEST['seniority']) || isset($cat))) {
+      if (isset($_REQUEST['seniority'])) {
+         $b_cat = $_REQUEST['seniority'];
+      } elseif (isset($cat)) {
+         $b_cat = $cat;
+      }
+      $args['tax_query'][] = [
+         [
+            'taxonomy' => 'barrister_category',
+            'field' => 'slug',
+            'terms' => $b_cat
+         ]
+      ];
+   }
+
+
+   // Event category
+   if (isset($_REQUEST['e_cat']) && !empty($_REQUEST['e_cat'])) {
+      $args['tax_query'][] = [
+         [
+            'taxonomy' => 'event_category',
+            'field' => 'slug',
+            'terms' => $_REQUEST['e_cat']
+         ]
+      ];
+   }
+
+
 
    // Barristers
    if (isset($_REQUEST['b']) && !empty($_REQUEST['b'])) {
@@ -268,7 +298,6 @@ function searchByTitleFilter($where, \WP_Query $q)
       $where .= implode(' AND ', $keywords_sql);
 
       $where .= ')';
-
    }
    return $where;
 }
