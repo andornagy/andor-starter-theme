@@ -20,6 +20,7 @@ $barristers = getQuery('barrister', 'public-access');
          <div class="cell">
             <?php the_content() ?>
          </div>
+         <h3> Our Public Access barristers. </h3>
          <div class="cell">
             <div id="response" class="grid-x grid-padding-x grid-margin-y">
                <?php
