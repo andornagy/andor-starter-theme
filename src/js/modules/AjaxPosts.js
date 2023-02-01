@@ -54,7 +54,7 @@ class AjaxPosts {
   }
 
   typingLogic() {
-    if (this.search.val() != this.previousValue) {
+    if (this.search.val() != this.previousValue && !this.filtering) {
       clearTimeout(this.typingTimer);
       this.typingTimer = setTimeout(this.changeFilter.bind(this), 750);
     }
