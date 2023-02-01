@@ -15,7 +15,7 @@ $event_time = sqe_time_format($start_time);
    <?php
    if (has_post_thumbnail() && (!isset($args['no_img']) || !$args['no_img'])) {
       echo '<div class="posts-item__img rectangle-img">';
-      the_post_thumbnail();
+      the_post_thumbnail('landscape');
       echo '</div>';
    }
    ?>
