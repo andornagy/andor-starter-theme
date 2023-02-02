@@ -17,3 +17,4 @@ require_once(get_theme_file_path('/functions/images.php'));
 require_once(get_theme_file_path('/functions/icons.php'));
 require_once(get_theme_file_path('/functions/wordpress.php'));
 require_once(get_theme_file_path('/functions/cron.php'));
+require_once(get_theme_file_path('/functions/newsletter-ajax.php'));
