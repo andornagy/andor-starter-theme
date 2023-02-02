@@ -27,19 +27,11 @@ require('foundation-sites/dist/js/plugins/foundation.dropdownMenu.min.js');
 $(document).foundation();
 
 // Import custom modules
-import AjaxPosts from './modules/AjaxPosts';
-import SmoothScroll from './modules/SmoothScroll';
-import ObjectFitIE from './modules/ObjectFitIE';
-import MegaMenu from './modules/MegaMenu';
-import Search from './modules/Search';
-import Animation from './modules/Animation';
-import Splide from './modules/Splide';
-
-// Launch custom modules
-new AjaxPosts();
-new SmoothScroll();
-new ObjectFitIE();
-new MegaMenu();
-new Search();
-new Animation();
-new Splide();
+import './modules/AjaxPosts';
+import './modules/SmoothScroll';
+import './modules/ObjectFitIE';
+import './modules/MegaMenu';
+import './modules/Search';
+import './modules/Animation';
+import './modules/Splide';
+import './modules/Newsletter';

@@ -1,138 +1,138 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 class AjaxPosts {
-  constructor() {
-    this.filter = $("#filters");
-    this.response = $("#response");
-    
-    this.filtering = false;
+   constructor() {
+      this.filter = $('#filters');
+      this.response = $('#response');
 
-    this.search = this.filter.find('[name="kw"], [name="title"]');
-    this.previousValue;
-    this.typingTimer;
+      this.filtering = false;
 
-    this.reset = this.filter.find(".reset");
+      this.search = this.filter.find('[name="kw"], [name="title"]');
+      this.previousValue;
+      this.typingTimer;
 
-    this.paginationChanged = false;
-    this.pScrollBuffer = 50;
+      this.reset = this.filter.find('.reset');
 
-    this.events();
-  }
+      this.paginationChanged = false;
+      this.pScrollBuffer = 50;
 
-  events() {
-    this.filter
-      .find(".filter__item")
-      .on("change", this.changeFilter.bind(this));
-    this.filter.submit((e) => this.processSubmit(e));
+      this.events();
+   }
 
-    // Keydown fires so fast, that it doesn't give the input enough time to update its value.
-    this.search.on("keyup", this.typingLogic.bind(this));
+   events() {
+      this.filter
+         .find('.filter__item')
+         .on('change', this.changeFilter.bind(this));
+      this.filter.submit(e => this.processSubmit(e));
 
-    this.reset.on("click", this.resetFilter.bind(this));
+      // Keydown fires so fast, that it doesn't give the input enough time to update its value.
+      this.search.on('keyup', this.typingLogic.bind(this));
 
-    $(document).on("click", "#response .pagination a", (e) =>
-      this.changePage(e)
-    );
-  }
+      this.reset.on('click', this.resetFilter.bind(this));
 
-  resetFilter() {
-    // Set custom dropdowns to initial value
-    let items = this.filter.find(".filter__item--reset");
-    items.each(function () {
-      let $this = $(this);
-      $this.val("");
-      // Set default value for custom select and hide dropdown
-      // let resetText = $this.data('title') ? $this.data('title') : $this.children('option').eq(0).text();
-      // $this.siblings('.select-custom__wrapper').text(resetText).removeClass('active');
-      // $this.siblings('.select-custom__options').hide();
-    });
-    this.filter.find('[name="pg"]').val(1);
+      $(document).on('click', '#response .pagination a', e =>
+         this.changePage(e)
+      );
+   }
 
-    // Change filter
-    setTimeout(this.changeFilter.bind(this), 0);
-    return false;
-  }
+   resetFilter() {
+      // Set custom dropdowns to initial value
+      let items = this.filter.find('.filter__item--reset');
+      items.each(function () {
+         let $this = $(this);
+         $this.val('');
+         // Set default value for custom select and hide dropdown
+         // let resetText = $this.data('title') ? $this.data('title') : $this.children('option').eq(0).text();
+         // $this.siblings('.select-custom__wrapper').text(resetText).removeClass('active');
+         // $this.siblings('.select-custom__options').hide();
+      });
+      this.filter.find('[name="pg"]').val(1);
 
-  typingLogic() {
-    if (this.search.val() != this.previousValue && !this.filtering) {
-      clearTimeout(this.typingTimer);
-      this.typingTimer = setTimeout(this.changeFilter.bind(this), 750);
-    }
-    this.previousValue = this.search.val();
-  }
+      // Change filter
+      setTimeout(this.changeFilter.bind(this), 0);
+      return false;
+   }
 
-  changePage(e) {
-    e.preventDefault();
-    let target = $(e.target);
-    let num = target.attr("href").split("#").pop();
-    if (num) {
-      this.filter.find('[name="pg"]').val(num);
-    }
-    this.paginationChanged = true;
-    this.doAjax();
-  }
+   typingLogic() {
+      if (this.search.val() != this.previousValue && !this.filtering) {
+         clearTimeout(this.typingTimer);
+         this.typingTimer = setTimeout(this.changeFilter.bind(this), 750);
+      }
+      this.previousValue = this.search.val();
+   }
 
-  changeFilter() {
-    this.filter.find('[name="pg"]').val(1);
-    setTimeout(this.doAjax.bind(this), 0);
-  }
+   changePage(e) {
+      e.preventDefault();
+      let target = $(e.target);
+      let num = target.attr('href').split('#').pop();
+      if (num) {
+         this.filter.find('[name="pg"]').val(num);
+      }
+      this.paginationChanged = true;
+      this.doAjax();
+   }
 
-  processSubmit(e) {
-    e.preventDefault();
-    setTimeout(this.changeFilter.bind(this), 0);
-  }
+   changeFilter() {
+      this.filter.find('[name="pg"]').val(1);
+      setTimeout(this.doAjax.bind(this), 0);
+   }
 
-  doAjax() {
-    const i = this.filter.serialize();
-    if (this.filter && this.filter.length) {
-      window.history.pushState("", "", "?" + i);
-    }
+   processSubmit(e) {
+      e.preventDefault();
+      setTimeout(this.changeFilter.bind(this), 0);
+   }
 
-    setTimeout(this.getResults.bind(this), 0);
+   doAjax() {
+      const i = this.filter.serialize();
+      if (this.filter && this.filter.length) {
+         window.history.pushState('', '', '?' + i);
+      }
 
-    return false;
-  }
+      setTimeout(this.getResults.bind(this), 0);
 
-  getResults() {
-        if (this.filtering) return;
+      return false;
+   }
 
-        $.ajax({
-            url: window.themeData.ajax_url,
-            data:
-                this.filter.serialize() +
-                '&nonce=' +
-                window.themeData.ajax_nonce +
-                '&action=process_ajax', // form data
-            type: this.filter.attr('method'), // POST
-            beforeSend: xhr => {
-                this.filtering = true;
-                this.response.parents('.section').addClass('loading');
-            },
-            success: response => {
-                console.log('Place html');
-                this.response.html(response); // insert data
-                if (this.paginationChanged) {
-                    $('html').animate(
-                        {
-                            scrollTop:
-                                this.response.offset().top -
-                                $('.header__inner').innerHeight() -
-                                this.pScrollBuffer,
-                        },
-                        800
-                    );
-                    this.paginationChanged = false;
-                }
-            },
-            error: response => {
-                console.log(response);
-            },
-            complete: () => {
-                this.filtering = false;
-                this.response.parents('.section').removeClass('loading');
-            },
-        });
-    }
+   getResults() {
+      if (this.filtering) return;
+
+      $.ajax({
+         url: window.themeData.ajax_url,
+         data:
+            this.filter.serialize() +
+            '&nonce=' +
+            window.themeData.ajax_nonce +
+            '&action=process_ajax', // form data
+         type: this.filter.attr('method'), // POST
+         beforeSend: xhr => {
+            this.filtering = true;
+            this.response.parents('.section').addClass('loading');
+         },
+         success: response => {
+            console.log('Place html');
+            this.response.html(response); // insert data
+            if (this.paginationChanged) {
+               $('html').animate(
+                  {
+                     scrollTop:
+                        this.response.offset().top -
+                        $('.header__inner').innerHeight() -
+                        this.pScrollBuffer
+                  },
+                  800
+               );
+               this.paginationChanged = false;
+            }
+         },
+         error: response => {
+            console.log(response);
+         },
+         complete: () => {
+            this.filtering = false;
+            this.response.parents('.section').removeClass('loading');
+         }
+      });
+   }
 }
 
-export default AjaxPosts;
+export default new AjaxPosts();
