@@ -9,7 +9,7 @@ $barristers = getQuery('barrister', 'public-access');
 
 <?php get_header(); ?>
 
-<?php get_template_part('parts/banners/banner'); ?>
+<?php get_template_part('parts/titles/title'); ?>
 
 <main class="section">
    <div class="grid-container">

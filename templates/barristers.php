@@ -6,13 +6,13 @@
 
 <?php get_header(); ?>
 
-<?php get_template_part('parts/banners/banner'); ?>
+<?php get_template_part('parts/titles/title-barrister'); ?>
 
 <?php
 
 $barristers = getQuery('barrister');
 
-$barristers_cats = getPublicBarristerCategories(); // query.php
+$barristers_cats = getBarristersSepareteByCat(); // query.php
 
 ?>
 

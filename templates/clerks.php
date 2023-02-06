@@ -6,7 +6,7 @@ get_header();
 
 $clerks = getQuery('clerk');
 
-get_template_part('parts/banners/banner');
+get_template_part('parts/titles/title-clerks');
 ?>
 <main class="section grid-container">
    <div class="grid-x grid-padding-x grid-padding-y">
