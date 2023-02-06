@@ -70,17 +70,14 @@ function ajaxFilters($type, $cat = null)
 
       // BARRISTERS CATEGORIES
       if ($type === 'barrister') {
-         $barrister_cats = get_terms(array(
-            'taxonomy' => 'barrister_category',
-            'orderby' => 'menu_order',
-            'order' => 'ASC'
-         ));
+         $barrister_cats = getPublicBarristerCategories(); // query.php
          $options = [];
          foreach ($barrister_cats as $barrister_cat) {
-            $options[$barrister_cat->slug] = $barrister_cat->name;
+            $options[$barrister_cat['slug']] = $barrister_cat['title'];
          }
-         displayFilterSelect($options, 'seniority', __('Seniority', 'squareeye'));
+         displayFilterSelect($options, 'b_cat', __('All Categories', 'squareeye'));
       }
+
 
       // AREAS
       if ($type === 'post' || $type === 'barrister') {
@@ -170,45 +167,45 @@ function ajaxFilters($type, $cat = null)
 */
 function ajaxPagination($type, $cat = null)
 {
-    if ($type) {
-        add_action('pre_get_posts', 'stickyPostsFunctionality');
+   if ($type) {
+      add_action('pre_get_posts', 'stickyPostsFunctionality');
 
-        $query = getQuery($type, $cat);
+      $query = getQuery($type, $cat);
 
-        $paged = $query->query_vars['paged'];
-        $max_num_pages = $query->max_num_pages;
+      $paged = $query->query_vars['paged'];
+      $max_num_pages = $query->max_num_pages;
 
-        // if sticky posts and on the first page, then need to count manually without sticky posts
-        if (isset($query->query_vars['enable_sticky_posts']) && $query->query_vars['enable_sticky_posts'] && !$query->query_vars('paged')) {
-            $temp_args = $query->query_vars;
-            $temp_args['post__in'] = '';
-            $temp_args['fields'] = 'ids';
-            $query_temp = new WP_Query($temp_args);
-            $paged = 1;
-            $max_num_pages = $query_temp->max_num_pages;
-        }
+      // if sticky posts and on the first page, then need to count manually without sticky posts
+      if (isset($query->query_vars['enable_sticky_posts']) && $query->query_vars['enable_sticky_posts'] && !$query->query_vars('paged')) {
+         $temp_args = $query->query_vars;
+         $temp_args['post__in'] = '';
+         $temp_args['fields'] = 'ids';
+         $query_temp = new WP_Query($temp_args);
+         $paged = 1;
+         $max_num_pages = $query_temp->max_num_pages;
+      }
 
-        if ($max_num_pages) {
-            if (isset($_REQUEST['pg']) && absint($_REQUEST['pg']) > 0) {
-                $current = absint($_REQUEST['pg']);
-            } else {
-                $current = max(1, $paged);
-            }
+      if ($max_num_pages) {
+         if (isset($_REQUEST['pg']) && absint($_REQUEST['pg']) > 0) {
+            $current = absint($_REQUEST['pg']);
+         } else {
+            $current = max(1, $paged);
+         }
 
-            $paginateArgs = array(
-                'base' => '#%#%',
-                'format' => '%#%',
-                'current' => $current,
-                'total' =>  $max_num_pages,
-                'prev_text' => '',
-                'next_text' => ''
-            );
+         $paginateArgs = array(
+            'base' => '#%#%',
+            'format' => '%#%',
+            'current' => $current,
+            'total' =>  $max_num_pages,
+            'prev_text' => '',
+            'next_text' => ''
+         );
 
-            echo '<div class="cell cell--no-line padding-vertical-1 flex-container align-middle">';
-            echo '<ul class="pagination">' . paginate_links($paginateArgs) . '</ul>';
-            echo '</div>';
-        }
-    }
+         echo '<div class="cell cell--no-line padding-vertical-1 flex-container align-middle">';
+         echo '<ul class="pagination">' . paginate_links($paginateArgs) . '</ul>';
+         echo '</div>';
+      }
+   }
 }
 
 
@@ -242,46 +239,32 @@ function ajax_processor_function()
 
          // If barristers archive
          if ($type === 'barrister') {
-            $barristers_cats = [
-               [
-                  'slug' => 'tenants',
-                  'title' => 'Tenants',
-               ],
-               [
-                  'slug' => 'qcs',
-                  'title' => 'QCs',
-               ],
-               [
-                  'slug' => 'juniors',
-                  'title' => 'Junior Counsel',
-               ],
-               [
-                  'slug' => 'associate-members',
-                  'title' => 'Associate members'
-               ],
-               [
-                  'slug' => 'pupils',
-                  'title' => 'Pupils'
-               ]
-            ];
-            while ($query->have_posts()) {
-               $query->the_post();
-               foreach ($barristers_cats as $i => $cat) {
-                  if (has_term($cat['slug'], 'barrister_category')) {
-                     ob_start();
-                     get_template_part('parts/loop/loop', 'barrister');
-                     $barristers_cats[$i]['output'][] = ob_get_contents();
-                     ob_end_clean();
+            $barristers_cats = getBarristersSepareteByCat();
+            if (!empty($barristers_cats)) {
+               while ($query->have_posts()) {
+                  $query->the_post();
+                  foreach ($barristers_cats as $i => $cat) {
+                     if (has_term($cat['slug'], 'barrister_category')) {
+                        ob_start();
+                        get_template_part('parts/loop/loop', 'barrister');
+                        $barristers_cats[$i]['output'][] = ob_get_contents();
+                        ob_end_clean();
+                     }
                   }
                }
-            }
 
-            wp_reset_postdata();
+               wp_reset_postdata();
 
-            foreach ($barristers_cats as $cat) {
-               if (isset($cat['output']) && $cat['output']) {
-                  echo '<div class="cell"><h3 class="margin-bottom-0"><strong>' . esc_html($cat['title']) . '</strong></h3></div>';
-                  echo implode('', $cat['output']);
+               foreach ($barristers_cats as $cat) {
+                  if (isset($cat['output']) && $cat['output']) {
+                     echo '<div class="cell"><h2>' . esc_html($cat['title']) . '</h2></div>';
+                     echo implode('', $cat['output']);
+                  }
+               }
+            } else {
+               while ($query->have_posts()) {
+                  $query->the_post();
+                  get_template_part('parts/loop/loop', 'barrister');
                }
             }
          } else {

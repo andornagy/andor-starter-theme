@@ -69,9 +69,9 @@ function getQuery($type, $cat = null, $limit = 12)
    }
 
    // Barrister cats
-   if ($type === 'barrister' && (!empty($_REQUEST['seniority']) || isset($cat))) {
-      if (isset($_REQUEST['seniority'])) {
-         $b_cat = $_REQUEST['seniority'];
+   if ($type === 'barrister' && (!empty($_REQUEST['b_cat']) || isset($cat))) {
+      if (isset($_REQUEST['b_cat'])) {
+         $b_cat = $_REQUEST['b_cat'];
       } elseif (isset($cat)) {
          $b_cat = $cat;
       }
@@ -481,4 +481,31 @@ function getBarristersByCategory($bcat)
    wp_reset_postdata();
 
    return $barristers;
+}
+
+function getBarristersSepareteByCat()
+{
+   $barcats = get_terms(array(
+      'taxonomy' => 'barrister_category',
+      'hide_empty' => true,
+   ));
+
+   if (!empty($barcats)) {
+      $filteredcats = array();
+      foreach ($barcats as $barcat) {
+
+         $include = false;
+         $include = get_term_meta($barcat->term_id, 'show_separate', true);
+
+         if ($include) {
+            $newdata =  array(
+               'slug' => $barcat->slug,
+               'title' => $barcat->name,
+            );
+            $filteredcats[] = $newdata;
+         }
+      }
+   }
+
+   return $filteredcats;
 }
