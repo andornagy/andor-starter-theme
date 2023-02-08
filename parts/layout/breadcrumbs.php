@@ -32,6 +32,15 @@
          } elseif (is_singular('barrister')) {
             echo '<li><a href="' . site_url('barristers') . '" title="' . __('Barristers', 'squareeye') . '">' . __('Barristers', 'squareeye') . '</a></li>' . $separator;
             echo '<li>' . get_the_title() . '</li>';
+         } elseif (is_singular('case')) {
+            echo '<li><a href="' . site_url('cases') . '" title="' . __('Cases', 'squareeye') . '">' . __('Cases', 'squareeye') . '</a></li>' . $separator;
+            echo '<li>' . get_the_title() . '</li>';
+         } elseif (is_singular('clerk')) {
+            echo '<li><a href="' . site_url('clerks') . '" title="' . __('Clerks', 'squareeye') . '">' . __('Clerks', 'squareeye') . '</a></li>' . $separator;
+            echo '<li>' . get_the_title() . '</li>';
+         } elseif (is_singular('publication')) {
+            echo '<li><a href="' . site_url('publications') . '" title="' . __('Publications', 'squareeye') . '">' . __('Publications', 'squareeye') . '</a></li>' . $separator;
+            echo '<li>' . get_the_title() . '</li>';
          } elseif (is_single()) {
             $blog_id = get_option('page_for_posts', true);
             echo '<li><a href="' . get_the_permalink($blog_id) . '" title="' . get_the_title($blog_id) . '">' . get_the_title($blog_id) . '</a></li>' . $separator;
