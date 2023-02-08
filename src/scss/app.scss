@@ -71,30 +71,12 @@
 * CUSTOM MODULES
 */
 
-@import "modules/mixins";
-@import "modules/utils";
-@import "modules/animate";
-@import "modules/typography";
-@import "modules/section";
-@import "modules/header";
-@import "modules/logo";
-@import "modules/navigation";
-@import "modules/search";
-@import "modules/offcanvas";
-@import "modules/button";
-@import "modules/accordion";
-@import "modules/breadcrumbs";
-@import "modules/home";
-@import "modules/pagination";
-@import "modules/footer";
-@import "modules/single";
-@import "modules/content";
-@import "modules/loop-item";
-@import "modules/icon-box";
-@import "modules/input";
-@import "modules/loading";
-@import "modules/pdf";
-@import "modules/deep-links";
-@import "modules/ie-object-fit";
-@import "modules/splide";
-@import "modules/sidebar";
+@import "./mixins";
+@import "./base";
+@import "./layout";
+@import "./components";
+@import "./loops";
+@import "./archives";
+@import "./pages";
+@import "./utils";
+@import "./vendor";
