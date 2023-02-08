@@ -38,7 +38,9 @@ $past_events = new WP_Query(array(
    <?php get_template_part('parts/page/breadcrumbs'); ?>
 
    <section class="grid-x grid-padding-x grid-padding-y main">
-
+      <div class="cell">
+         <?php ajaxFilters('barrister'); ?>
+      </div>
       <div class="cell small-12 content">
          <div class="cell small-12">
             <h2>Future events</h2>
