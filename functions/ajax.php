@@ -239,7 +239,7 @@ function ajax_processor_function()
 
          // If barristers archive
          if ($type === 'barrister') {
-            $barristers_cats = getBarristersSepareteByCat();
+            $barristers_cats = getBarristersByShowOnArchive();
             if (!empty($barristers_cats)) {
                while ($query->have_posts()) {
                   $query->the_post();

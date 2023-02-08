@@ -483,7 +483,7 @@ function getBarristersByCategory($bcat)
    return $barristers;
 }
 
-function getBarristersSepareteByCat()
+function getBarristersByShowOnArchive()
 {
    $barcats = get_terms(array(
       'taxonomy' => 'barrister_category',
@@ -495,7 +495,7 @@ function getBarristersSepareteByCat()
       foreach ($barcats as $barcat) {
 
          $include = false;
-         $include = get_term_meta($barcat->term_id, 'show_separate', true);
+         $include = get_term_meta($barcat->term_id, 'show_on_archive', true);
 
          if ($include) {
             $newdata =  array(

@@ -12,7 +12,7 @@
 
 $barristers = getQuery('barrister');
 
-$barristers_cats = getBarristersSepareteByCat(); // query.php
+$barristers_cats = getBarristersByShowOnArchive(); // query.php
 
 ?>
 
