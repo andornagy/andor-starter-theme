@@ -75,7 +75,7 @@ function ajaxFilters($type, $cat = null)
          foreach ($barrister_cats as $barrister_cat) {
             $options[$barrister_cat['slug']] = $barrister_cat['title'];
          }
-         displayFilterSelect($options, 'b_cat', __('All Categories', 'squareeye'));
+         displayFilterSelect($options, 'b_cat', __('Any categories', 'squareeye'));
       }
 
 
@@ -95,7 +95,7 @@ function ajaxFilters($type, $cat = null)
             $options[get_the_ID()] = get_the_title();
          }
          wp_reset_postdata();
-         displayFilterSelect($options, 'a', __('All areas of expertise', 'squareeye'));
+         displayFilterSelect($options, 'a', __('Any expertise', 'squareeye'));
       }
 
       // BARRISTERS
@@ -140,7 +140,7 @@ function ajaxFilters($type, $cat = null)
       if ($type === 'barrister') {
          $current = isset($_GET['title']) ? $_GET['title'] : '';
          echo '<div class="cell medium-6 large-2">';
-         echo '<input type="text" name="title" class="input__search filter__item filter__item--reset" value="' . esc_attr($current) . '" placeholder="' . __('Search name', 'squareeye') . '">';
+         echo '<input type="text" name="title" class="input__search filter__item filter__item--reset" value="' . esc_attr($current) . '" placeholder="' . __('Search by name', 'squareeye') . '">';
          echo '</div>';
       }
 

@@ -2,17 +2,7 @@
 $id = get_the_id();
 $name = get_the_title($id);
 
-$fallbackimg = get_field('barrister_fallback');
-if ($fallbackimg) {
-   $fallbackimgurl = $fallbackimg['sizes']['landscape'];
-} else {
-   $fallbackimgurl = 'https://via.placeholder.com/600x533/CCC?text=?';
-}
-
-$imgurl = get_the_post_thumbnail_url($id, 'landscape');
-if (!$imgurl) {
-   $imgurl = $fallbackimgurl;
-}
+$thumb_url = sqeGetThumbnailURL($id, 'landscape');
 
 ?>
 
@@ -20,7 +10,7 @@ if (!$imgurl) {
    <a class="card" href="<?php echo get_the_permalink($id); ?>" title="<?php echo $name; ?>">
       <!--<div class="card-divider">Heading goes here</div>-->
       <div class="posts-item__img rectangle-img">
-         <img src="<?php echo $imgurl; ?>" alt="<?php echo $name; ?>" />
+         <img src="<?php echo $thumb_url; ?>" alt="<?php echo $name; ?>" />
       </div>
       <div class="card-section">
          <span class="name"><?php echo $name; ?></span>

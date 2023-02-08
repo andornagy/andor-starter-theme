@@ -1,9 +1,20 @@
-<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" id="post-<?php the_ID(); ?>" <?php post_class('posts-item cell large-2 medium-4 small-6'); ?>>
-   <div class="posts-item__img rectangle-img margin-bottom-1" style="background-color: #002C30;">
-      <?php the_post_thumbnail('landscape'); ?>
-   </div>
-   <h5 class="posts-item__title"><?php the_title(); ?></h5>
-   <?php
-   echo do_shortcode('[barrister_years class="barrister-years"]');
-   ?>
-</a>
+<?php
+$id = get_the_id();
+$name = get_the_title($id);
+
+$thumb_url = sqeGetThumbnailURL($id, 'landscape');
+
+?>
+
+<div class="cell small-6 medium-4 large-3">
+   <a class="card" href="<?php echo get_the_permalink($id); ?>" title="<?php echo $name; ?>">
+      <!--<div class="card-divider">Heading goes here</div>-->
+      <div class="posts-item__img rectangle-img">
+         <img src="<?php echo $thumb_url; ?>" alt="<?php echo $name; ?>" />
+      </div>
+      <div class="card-section">
+         <span class="name"><?php echo $name; ?></span>
+         <span class="meta years"> <?php echo do_shortcode('[barrister_years]'); ?></span>
+      </div>
+   </a>
+</div>

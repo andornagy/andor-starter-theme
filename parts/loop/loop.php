@@ -4,15 +4,12 @@ $columns = 'cell large-4 medium-6';
 if (isset($args['columns'])) {
    $columns = getColumns($args['columns'], $columns); // see helpers.php
 }
+$thumb_url = sqeGetThumbnailURL($id, 'landscape');
 ?>
 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" id="post-<?php the_ID(); ?>" <?php post_class('posts-item ' . esc_attr($columns)); ?>>
-   <?php
-   if (has_post_thumbnail() && (!isset($args['no_img']) || !$args['no_img'])) {
-      echo '<div class="posts-item__img rectangle-img">';
-      the_post_thumbnail('landscape');
-      echo '</div>';
-   }
-   ?>
+   <div class="posts-item__img rectangle-img">
+      <img src="<?php echo $thumb_url; ?>" alt="<?php echo $name; ?>" />
+   </div>
    <div class="posts-item__content">
       <h3 class="posts-item__title">
          <?php the_title(); ?>
