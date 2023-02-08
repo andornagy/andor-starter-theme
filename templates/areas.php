@@ -10,6 +10,13 @@ $areas = new WP_Query(array(
    'post_status' => 'publish',
    'orderby' => 'menu_order',
    'order' => 'ASC',
+   'tax_query' => array(
+      array(
+         'taxonomy' => 'area_category',
+         'field' => 'slug',
+         'terms' => 'primary',
+      )
+   )
 ));
 
 get_template_part('parts/titles/title-area');
