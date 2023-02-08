@@ -80,7 +80,7 @@ function ajaxFilters($type, $cat = null)
 
 
       // AREAS
-      if ($type === 'post' || $type === 'barrister' || $type === 'case' || $type === 'event') {
+      if ($type === 'post' || $type === 'barrister' || $type === 'case' || $type === 'event' || $type === 'publication') {
          $areas = new WP_Query(array(
             'post_type' => 'area',
             'posts_per_page' => -1,
@@ -99,7 +99,7 @@ function ajaxFilters($type, $cat = null)
       }
 
       // BARRISTERS
-      if ($type === 'post' || $type === 'case' || $type === 'event') {
+      if ($type === 'post' || $type === 'case' || $type === 'event' || $type === 'publication') {
          $barristers = new WP_Query(array(
             'post_type' => 'barrister',
             'posts_per_page' => -1,
