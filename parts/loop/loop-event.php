@@ -1,5 +1,5 @@
 <?php
-$id = get_the_ID();
+$id = isset($args['id']) && $args['id'] ? $args['id'] : get_the_ID();
 $columns = 'cell large-4 medium-6';
 if (isset($args['columns'])) {
    $columns = getColumns($args['columns'], $columns); // see helpers.php
@@ -21,7 +21,7 @@ $event_time = sqe_time_format($start_time);
       <h3 class="posts-item__title">
          <?php the_title(); ?>
       </h3>
-      <div class="posts-item__meta margin-bottom-1"><?php echo $event_date . ' ' . $event_time ?></div>
+      <div class="posts-item__meta margin-bottom-1">Date: <?php echo $event_date . ' ' . $event_time ?></div>
       <?php echo has_excerpt() ? wpautop(get_the_excerpt()) : wpautop(wp_trim_words(get_the_content(), 24, '...')); ?>
    </div>
 </a>

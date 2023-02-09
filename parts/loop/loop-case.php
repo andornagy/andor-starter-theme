@@ -1,5 +1,5 @@
 <?php
-$id = get_the_ID();
+$id = isset($args['id']) && $args['id'] ? $args['id'] : get_the_ID();
 
 $columns = 'cell large-4 medium-6';
 if (isset($args['columns'])) {
