@@ -1,12 +1,17 @@
 <?php
-$id = get_the_id();
+$id = isset($args['id']) && $args['id'] ? $args['id'] : get_the_ID();
 $name = get_the_title($id);
+
+$columns = 'cell large-4 medium-6';
+if (isset($args['columns'])) {
+   $columns = getColumns($args['columns'], $columns); // see helpers.php
+}
 
 $thumb_url = sqeGetThumbnailURL($id, 'landscape');
 
 ?>
 
-<div class="cell small-6 medium-4 large-3">
+<div <?php post_class('posts-item ' . esc_attr($columns)); ?>>
    <a class="card" href="<?php echo get_the_permalink($id); ?>" title="<?php echo $name; ?>">
       <!--<div class="card-divider">Heading goes here</div>-->
       <div class="posts-item__img rectangle-img">
