@@ -180,7 +180,47 @@ $area_id = $id;
 
                wp_reset_query();
             } ?>
+            <?php
+            // Related Events
+            $related_events = getRelatedQuery(
+               array(
+                  'type' => 'event',
+                  'limit' => -1,
+                  'orderby' => 'meta_value',
+                  'metakey' => 'start_date',
+                  'order' => 'DESC',
+               )
+            );
 
+            if ($related_events->have_posts()) {
+               echo '<h2 class="margin-top-2">Related events</h2>';
+               echo '<div class="grid-x related-items__small grid-margin-x grid-margin-y margin-top-1">';
+
+               $total_events = $related_events->found_posts;
+               while ($related_events->have_posts()) {
+                  $related_events->the_post();
+
+                  $args = array(
+                     'id' => get_the_ID(),
+                     'columns' => 3
+                  );
+
+                  get_template_part('parts/loop/loop', 'event', $args);
+
+                  if ($related_events->current_post >= 3) break;
+               }
+
+               if ($total_events > 3) { ?>
+                  <p class="cell"><a class="tiny button" href="<?php echo esc_url(home_url('/news-events/events/')); ?>?a=<?php echo $area_id; ?>">All <?php echo get_the_title($area_id) ?> events</a></p>
+
+            <?php }
+
+               echo '</div>';
+            }
+
+
+            wp_reset_query();
+            ?>
          </div>
 
       </div>
