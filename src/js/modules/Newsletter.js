@@ -24,6 +24,8 @@ class Newsletter {
          return;
       }
 
+      console.log(this.form.serialize());
+
       $.ajax({
          url: window.themeData.ajax_url,
          data:
@@ -64,10 +66,12 @@ class Newsletter {
    }
 
    validate() {
-      const emailInput = this.form.find('input[name^="input_"]');
+      const emailInput = this.form.find('.sqe_gf_input_email');
+      const nameInput = this.form.find('.sqe_gf_input_name');
+      const orgInput = this.form.find('.sqe_gf_input_org');
+
       console.log(emailInput);
       const emailVal = emailInput.val();
-
       if (!emailVal)
          return {
             status: 'error',
@@ -78,6 +82,20 @@ class Newsletter {
          return {
             status: 'error',
             message: 'Please check email format'
+         };
+
+      const nameVal = nameInput.val();
+      if (!nameVal)
+         return {
+            status: 'error',
+            message: 'Please fill in the field'
+         };
+
+      const orgVal = orgInput.val();
+      if (!orgVal)
+         return {
+            status: 'error',
+            message: 'Please fill in the field'
          };
 
       return { status: 'success' };

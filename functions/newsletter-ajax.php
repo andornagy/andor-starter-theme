@@ -27,6 +27,8 @@ function newsletterAjaxProcessor()
       }
    }
 
+
+
    // Empty $_POST object, cuz otherwise it messes with GFAPI::submit_form function
    $_POST = [];
 
@@ -44,7 +46,8 @@ function newsletterAjaxProcessor()
    if (!rgar($result, 'is_valid'))
       wp_die(json_encode([
          'status' => 1,
-         'message' => 'Submission is invalid'
+         // 'message' => 'Submission is invalid'
+         'message' => rgar($result, 'validation_messages', array())
       ]));
 
    $confirmation_message = rgar($result, 'confirmation_message');
