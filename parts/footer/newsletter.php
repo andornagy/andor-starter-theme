@@ -18,7 +18,7 @@ Important parts:
    <div class="newsletter__inner">
       <input type="hidden" name="form_id" value="<?php echo $form_id; ?>" />
       <input type="text" name="input_<?php echo $email_field_id; ?>" placeholder="Enter your email" />
-      <button type="submit"><span class="show-for-sr">Submit</span><?php echo getIcon('enter'); ?></button>
+      <button type="submit"><span class="show-for-sr">Submit</span><i class="fa-light fa-2x fa-circle-arrow-right"></i></button>
    </div>
    <div class="newsletter__notification"></div>
 </form>

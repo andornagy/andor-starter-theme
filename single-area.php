@@ -217,7 +217,6 @@ $area_id = $id;
                echo '</div>';
             }
 
-
             wp_reset_query();
             ?>
          </div>
