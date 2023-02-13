@@ -1,0 +1,8 @@
+.barrister__awards {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   @include breakpoint(medium down) {
+      margin-top: 1.5rem;
+   }
+}

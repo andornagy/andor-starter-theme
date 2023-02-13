@@ -16,6 +16,8 @@
 
       <div class="cell small-12 medium-8 large-6 content">
 
+         <?php get_template_part('parts/person/logos'); ?>
+
          <?php get_template_part('parts/person/area-expertise'); ?>
 
          <?php get_template_part('parts/person/profile-sections'); ?>
