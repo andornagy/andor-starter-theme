@@ -19,7 +19,7 @@ $thumb_url = sqeGetThumbnailURL($id, 'landscape');
       </div>
       <div class="card-section">
          <span class="name"><?php echo $name; ?></span>
-         <span class="meta years"> <?php echo do_shortcode('[barrister_years]'); ?></span>
+         <span class="meta years"> <?php echo get_field('job_title', $id) ?></span>
       </div>
    </a>
 </div>
