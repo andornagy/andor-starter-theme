@@ -16,7 +16,9 @@
 
       <div class="cell small-12 medium-8 large-6 content">
 
-         <?php the_content(); ?>
+         <?php get_template_part('parts/person/area-expertise'); ?>
+
+         <?php get_template_part('parts/person/profile-sections'); ?>
 
          <?php get_template_part('parts/layout/share'); ?>
 
