@@ -41,14 +41,14 @@ $banner_img = get_field('banner_background');
             $list = [];
 
             // email
-            if ($email) $list[] = '<li><a href="mailto:' . esc_attr($email) . ' title="' . sprintf(__('Email %s', 'squareeye'), $title) . '"><i class="fa-solid fa-envelope"></i>' . esc_html($email) . '</a></li>';
+            if ($email) $list[] = '<li><a href="mailto:' . esc_attr($email) . '" title="' . sprintf(__('Email %s', 'squareeye'), $title) . '"><i class="fa-solid fa-envelope"></i>' . esc_html($email) . '</a></li>';
             // phone
-            if ($phone) $list[] = '<li><a href="tel:' . esc_attr($phone) . ' title="' . sprintf(__('Call %s', 'squareeye'), $title) . '"><i class="fa-solid fa-phone"></i>' . esc_html($phone) . '</a></li>';
+            if ($phone) $list[] = '<li><a href="tel:' . esc_attr($phone) . '" title="' . sprintf(__('Call %s', 'squareeye'), $title) . '"><i class="fa-solid fa-phone"></i>' . esc_html($phone) . '</a></li>';
 
             // twitter
             if ($twitter) $list[] = '<li><a href="https://twitter.com/' . esc_url($twitter) . '" title="' . __('Twitter', 'squareeye') . '" target="_blank"><i class="fa-brands fa-twitter"></i>' . __('Twitter', 'squareeye') . '</a></li>';
             // linked
-            if ($linkedin) $list[] = '<li><a href="' . esc_attr($linkedin) . ' title="' . __('LinkedIn', 'squareeye') . '" target="_blank"><i class="fa-brands fa-linkedin"></i>' . __('LinkedIn', 'squareeye') . '</a></li>';
+            if ($linkedin) $list[] = '<li><a href="' . esc_attr($linkedin) . '" title="' . __('LinkedIn', 'squareeye') . '" target="_blank"><i class="fa-brands fa-linkedin"></i>' . __('LinkedIn', 'squareeye') . '</a></li>';
 
             if ($post_type === 'barrister') {
                // pdf 
