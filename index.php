@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php get_header();
+
+$posts = getQuery('post', '', 12);
+
+?>
 
 <?php get_template_part('parts/banners/banner'); ?>
 
@@ -16,18 +20,19 @@
          <div class="cell">
             <div id="response" class="grid-x grid-padding-x grid-padding-y">
                <?php
-               if (have_posts()) {
-                  while (have_posts()) {
-                     the_post();
+               if ($posts->have_posts()) {
+                  while ($posts->have_posts()) {
+                     $posts->the_post();
                      $args = array(
                         'excerpt' => true,
-                        'columns' => 4,
+                        'columns' => 3,
                      );
                      get_template_part('parts/loop/loop', get_post_type(), $args);
                   }
                } else {
                   echo '<div class="cell"><h2>' . __('No posts found.', 'squareeye') . '</h2></div>';
                }
+               wp_reset_postdata();
                echo ajaxPagination('post');
                ?>
 

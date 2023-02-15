@@ -14,7 +14,7 @@ $thumb_url = sqeGetThumbnailURL($id, 'landscape');
       <h3 class="posts-item__title">
          <?php the_title(); ?>
       </h3>
-      <div class="posts-item__meta margin-bottom-1"><?php the_date(); ?></div>
+      <div class="posts-item__meta margin-bottom-1"><?php echo get_the_time(get_option('date_format'), $id); ?></div>
       <?php echo has_excerpt() ? wpautop(get_the_excerpt()) : wpautop(wp_trim_words(get_the_content(), 24, '...')); ?>
    </div>
 </a>

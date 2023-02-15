@@ -271,8 +271,12 @@ function ajax_processor_function()
             // if not barristers archive
             while ($query->have_posts()) {
                $query->the_post();
-               if ($type === 'post') get_template_part('parts/loop/loop');
-               else get_template_part('parts/loop/loop', $type);
+               $args = array(
+                  'excerpt' => true,
+                  'columns' => 3,
+               );
+               if ($type === 'post') get_template_part('parts/loop/loop', '', $args);
+               else get_template_part('parts/loop/loop', $type, $args);
             }
          }
 

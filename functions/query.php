@@ -19,7 +19,7 @@ add_filter('pre_get_posts', function ($query) {
 /*
 * GET QUERY (FOR BOTH NORMAL AND AJAX QUERIES)
 */
-function getQuery($type, $cat = null, $limit = 12)
+function getQuery($type, $cat = null, $limit = null)
 {
    // Default args
    $args = array(
