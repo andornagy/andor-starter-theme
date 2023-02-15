@@ -52,9 +52,14 @@ $banner_img = get_field('banner_background');
 
             if ($post_type === 'barrister') {
                // pdf 
-               $list[] = '<li><i class="fa-solid fa-file-pdf"></i>' . do_shortcode(' [sqe-pdf-btn title="' . __('Save PDF', 'squareeye') . '" class="" container_class="" icon="" display="inline-block"]') . '</li>';
+               if (get_field('pdf_generation', 'option')) {
+                  $list[] = '<li><i class="fa-solid fa-file-pdf"></i>' . do_shortcode(' [sqe-pdf-btn title="' . __('Save PDF', 'squareeye') . '" class="" container_class="" icon="" display="inline-block"]') . '</li>';
+               }
                // vcard
-               $list[] = '<li><i class="fa-solid fa-address-card"></i>' . do_shortcode('[sqe-vcard-btn title="' . __('Download vCard', 'squareeye') . '" class="" display="inline-block"]') . '</li>';
+               if (get_field('vcard_module', 'option')) {
+                  $list[] = '<li><i class="fa-solid fa-address-card"></i>' . do_shortcode('[sqe-vcard-btn title="' . __('Download vCard', 'squareeye') . '" class="" display="inline-block"]') . '</li>';
+               }
+
                if ($policy)  $list[] = '<li><a href="' . esc_attr($policy) . '" target="_blank"><i class="fa-solid fa-user-secret"></i>' . __('Privacy policy', 'squareeye') . '</a></li>';
             }
 
@@ -67,11 +72,12 @@ $banner_img = get_field('banner_background');
             $end_html = '</ul></div>';
 
             echo $start_html;
+            if ($list) {
+               foreach ($list as $i => $item) {
+                  echo $item;
 
-            foreach ($list as $i => $item) {
-               echo $item;
-
-               if (($i + 1) !== $total && ($i + 1) % $per_column === 0) echo $end_html . $start_html;
+                  if (($i + 1) !== $total && ($i + 1) % $per_column === 0) echo $end_html . $start_html;
+               }
             }
 
             echo $end_html;
