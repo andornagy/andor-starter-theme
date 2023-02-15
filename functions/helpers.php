@@ -140,7 +140,7 @@ function getPersonYears($id = null)
    if ($call) $years[] = __('Call: ', 'squareeye') . esc_html($call);
    if ($silk) $years[] = __('Silk: ', 'squareeye') . esc_html($silk);
 
-   return implode(', ', $years);
+   return implode(' | ', $years);
 }
 
 /*
