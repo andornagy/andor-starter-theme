@@ -15,15 +15,17 @@ $email = get_field('email');
 $linkedin = get_field('linkedin');
 $twitter = get_field('twitter');
 
-$img = get_the_post_thumbnail($id, 'large');
-$banner_img = get_field('banner_background');
+$banner_image = get_field('banner_photo', $id);
+$img = $banner_image ? wp_get_attachment_image($banner_image['id'], 'large') : get_the_post_thumbnail($id, 'large');
+
+$banner_background = get_field('banner_background');
 ?>
 <section class="section person-banner">
-   <div class="person-banner__bg" <?php if ($banner_img) echo 'style="background-image:url(\'' . wp_get_attachment_url($banner_img) . '\');"'; ?>></div>
+   <div class="person-banner__bg" <?php if ($banner_background) echo 'style="background-image:url(\'' . wp_get_attachment_url($banner_background) . '\');"'; ?>></div>
    <div class="grid-container person-banner__inner">
       <?php
       if ($img) {
-         $img_style = $banner_img ? 'style="background-image:url(\'' . wp_get_attachment_url($banner_img) . '\');"' : '';
+         $img_style = $banner_background ? 'style="background-image:url(\'' . wp_get_attachment_url($banner_background) . '\');"' : '';
          echo '<div class="person-banner__img" ' . $img_style . '>' . $img . '</div>';
       }
       ?>
@@ -52,20 +54,20 @@ $banner_img = get_field('banner_background');
 
             if ($post_type === 'barrister') {
                // pdf 
-               if (get_field('pdf_generation', 'option')) {
+               if (get_field('pdf_generation', 'option'))
                   $list[] = '<li><i class="fa-solid fa-file-pdf"></i>' . do_shortcode(' [sqe-pdf-btn title="' . __('Save PDF', 'squareeye') . '" class="" container_class="" icon="" display="inline-block"]') . '</li>';
-               }
+
                // vcard
-               if (get_field('vcard_module', 'option')) {
+               if (get_field('vcard_module', 'option'))
                   $list[] = '<li><i class="fa-solid fa-address-card"></i>' . do_shortcode('[sqe-vcard-btn title="' . __('Download vCard', 'squareeye') . '" class="" display="inline-block"]') . '</li>';
-               }
+
 
                if ($policy)  $list[] = '<li><a href="' . esc_attr($policy) . '" target="_blank"><i class="fa-solid fa-user-secret"></i>' . __('Privacy policy', 'squareeye') . '</a></li>';
             }
 
-
             // Second, calculate columns
             $total = count($list);
+
             $per_column = ceil($total / 3); // three columns max
 
             $start_html = '<div class="cell large-4"><ul>';
