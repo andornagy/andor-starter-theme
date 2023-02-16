@@ -29,22 +29,13 @@ get_template_part('parts/titles/title-area');
          </div>
          <?php
          if ($areas->have_posts()) {
-            echo '<div class="cell large-6">';
-            echo '<h3 class="header--underline">Practice areas</h3>';
-            echo '<div class="grid-x grid-margin-x">';
-            $total = $areas->found_posts;
-            $per_column = ceil($total / 2);
-            echo '<div class="cell medium-6 flex-container flex-dir-column">';
+
+
             while ($areas->have_posts()) {
                $areas->the_post();
-               $link = get_the_permalink();
-               $title = get_the_title();
-               echo '<a href="' . esc_url($link) . '" title="' . esc_attr($title) . '">' . esc_html($title) . '</a>';
-               if ($areas->current_post && ($areas->current_post + 1) % $per_column === 0) echo '</div><div class="cell medium-6 flex-container flex-dir-column">';
+               get_template_part('parts/loop/loop', 'area');
             }
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
+
             wp_reset_postdata();
          }
          ?>

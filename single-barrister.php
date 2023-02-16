@@ -1,5 +1,37 @@
 <?php get_header();
+$content = get_the_content();
+$sections = get_field('profile_sections');
+$areas = get_field('area_sections');
 
+$related_news = new WP_Query([
+   'post_type' => 'post',
+   'post_status' => 'publish',
+   'posts_per_page' => 6,
+   'orderby' => 'date',
+   'order' => 'desc',
+   'meta_query' => [
+      [
+         'key' => 'related_barristers',
+         'value' => get_the_ID(),
+         'compare' => '='
+      ]
+   ]
+]);
+
+$related_events = new WP_Query([
+   'post_type' => 'event',
+   'post_status' => 'publish',
+   'posts_per_page' => 6,
+   'orderby' => 'start_date',
+   'order' => 'asc',
+   'meta_query' => [
+      [
+         'key' => 'related_barristers',
+         'value' => get_the_ID(),
+         'compare' => '='
+      ]
+   ]
+]);
 ?>
 
 <main class="section grid-container">
@@ -10,24 +42,117 @@
 
    <section class="grid-x grid-padding-x grid-padding-y main">
 
-      <div class="cell small-12 medium-2 large-3">
-         <?php get_sidebar('left-barrister'); ?>
-      </div>
+      <div class="grid-container">
+         <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="cell large-4 show-for-large">
+               <ul class="vertical tabs show-for-large sidebar-widget heading-line" data-tabs id="profile-tabs" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-offset="200" data-deep-link-smudge-delay="600">
+                  <li class="tabs-title is-active"><a href="#overview" aria-selected="true"><?php _e('Overview', 'squareeye'); ?></a></li>
+                  <?php
 
-      <div class="cell small-12 medium-8 large-6 content">
+                  if ($areas) {
+                     $current_area_i = 1;
+                     foreach ($areas as $area) {
+                        if ($area['hide_from_barrister']) continue;
+                        $area_title = $area['title_variation'] ? $area['title_variation'] : get_the_title($area['area']->ID);
+                        $area_slug = sanitize_title($area_title) . '-' . $current_area_i;
+                        $current_area_i++;
+                        echo '<li class="tabs-title"><a href="#' . esc_attr($area_slug) . '" title="' . esc_attr($area_title) . '">' . $area_title . '</a></li>';
+                     }
+                  }
 
-         <?php get_template_part('parts/person/logos'); ?>
+                  if ($sections) {
+                     foreach ($sections as $section) {
+                        echo '<li class="tabs-title"><a href="#' . sanitize_title($section['heading']) . '" title="' . esc_attr($section['heading']) . '">' . esc_html($section['heading']) . '</a></li>';
+                     }
+                  }
 
-         <?php get_template_part('parts/person/area-expertise'); ?>
+                  if ($related_news->have_posts()) {
+                     echo '<li class="tabs-title"><a href="#news" title="' . __('News', 'squareeye') . '">' . __('News', 'squareeye') . '</a></li>';
+                  }
 
-         <?php get_template_part('parts/person/profile-sections'); ?>
+                  if ($related_events->have_posts()) {
+                     echo '<li class="tabs-title"><a href="#events" title="' . __('Events', 'squareeye') . '">' . __('Events', 'squareeye') . '</a></li>';
+                  }
+                  ?>
+               </ul>
+            </div>
+            <div class="cell large-8">
+               <div class="tabs-content tabs-content--responsive vertical" data-tabs-content="profile-tabs">
+                  <div class="tabs-panel is-active" id="overview">
+                     <div class="person-overview">
+                        <?php the_content(); ?>
+                     </div>
+                  </div>
+                  <?php
+                  if ($areas) {
+                     $current_area_i = 1;
+                     foreach ($areas as $area) {
+                        if ($area['hide_from_barrister']) continue;
+                        $area_title = $area['title_variation'] ? $area['title_variation'] : get_the_title($area['area']->ID);
+                        $area_slug = sanitize_title($area_title) . '-' . $current_area_i;
+                        $current_area_i++;
 
-         <?php get_template_part('parts/layout/share'); ?>
 
-      </div>
 
-      <div class="cell small-12 medium-2 large-3">
-         <?php get_sidebar('right-barrister'); ?>
+                        $area_text = $area['text'];
+                        // $cases = $area['cases'];
+
+                        echo '<div class="tabs-panel" id="' . $area_slug . '">';
+                        echo '<h3>' . esc_html($area_title) . '</h3>';
+                        echo wpautop(wp_kses_post($area_text));
+                        // if ($cases) {
+                        //    echo '<h4>' . __('Featured cases', 'squareeye') . '</h4>';
+                        //    echo wpautop(wp_kses_post($cases));
+                        // }
+                        echo '</div>';
+                     }
+                  }
+
+                  if ($sections) {
+                     foreach ($sections as $section) {
+                        $heading = $section['heading'];
+                        $text = $section['text'];
+
+                        echo '<div class="tabs-panel" id="' . sanitize_title($heading) .  '">';
+
+                        echo '<h3>' . esc_html($heading) . '</h3>';
+                        echo wpautop(wp_kses_post($text));
+
+                        echo '</div>';
+                     }
+                  }
+
+                  if ($related_news->have_posts()) {
+                     echo '<div class="tabs-panel" id="news">';
+
+                     echo '<ul class="posts-list">';
+                     while ($related_news->have_posts()) {
+                        $related_news->the_post();
+                        get_template_part('parts/loop/loop', 'list');
+                     }
+                     echo '</ul>';
+                     echo '</div>';
+                     wp_reset_postdata();
+                  }
+
+                  if ($related_events->have_posts()) {
+                     echo '<div class="tabs-panel" id="events">';
+
+                     echo '<ul class="posts-list">';
+                     while ($related_events->have_posts()) {
+                        $related_events->the_post();
+                        get_template_part('parts/loop/loop', 'list');
+                     }
+                     echo '</ul>';
+                     echo '</div>';
+                     wp_reset_postdata();
+                  }
+                  ?>
+               </div>
+               <?php get_template_part('parts/layout/share'); ?>
+            </div>
+
+         </div>
       </div>
 
    </section>

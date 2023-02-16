@@ -1,6 +1,8 @@
 <?php get_header();
-
-$posts = getQuery('post', 'news', 12);
+/*
+* Template name: Events
+*/
+$posts = getQuery('post', 'insights', 12);
 
 ?>
 

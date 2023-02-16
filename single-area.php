@@ -18,8 +18,6 @@ $area_id = $id;
 
       <div class="cell small-12 medium-8 large-6 content">
 
-         <?php the_post_thumbnail('landscape'); ?>
-
          <?php the_content(); ?>
 
          <?php get_template_part('parts/layout/accordion'); ?>
@@ -125,10 +123,9 @@ $area_id = $id;
 
                   $args = array(
                      'id' => get_the_ID(),
-                     'columns' => 3,
                   );
 
-                  get_template_part('parts/loop/loop', '', $args);
+                  get_template_part('parts/loop/loop', 'list', $args);
                   if ($related_news->current_post >= 2) break;
                }
 
@@ -167,7 +164,7 @@ $area_id = $id;
                      'columns' => 3,
                   );
 
-                  get_template_part('parts/loop/loop', '', $args);
+                  get_template_part('parts/loop/loop', 'list', $args);
                   if ($related_publications->current_post >= 2) break;
                }
 
@@ -204,7 +201,7 @@ $area_id = $id;
                      'columns' => 3
                   );
 
-                  get_template_part('parts/loop/loop', 'event', $args);
+                  get_template_part('parts/loop/loop', 'list', $args);
 
                   if ($related_events->current_post >= 3) break;
                }
