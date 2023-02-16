@@ -32,6 +32,51 @@ $related_events = new WP_Query([
       ]
    ]
 ]);
+
+$related_cases = new WP_Query([
+   'post_type' => 'case',
+   'post_status' => 'publish',
+   'posts_per_page' => 6,
+   'orderby' => 'start_date',
+   'order' => 'asc',
+   'meta_query' => [
+      [
+         'key' => 'related_barristers',
+         'value' => get_the_ID(),
+         'compare' => '='
+      ]
+   ]
+]);
+
+$related_newsletters = new WP_Query([
+   'post_type' => 'newsletter',
+   'post_status' => 'publish',
+   'posts_per_page' => 6,
+   'orderby' => 'start_date',
+   'order' => 'asc',
+   'meta_query' => [
+      [
+         'key' => 'related_barristers',
+         'value' => get_the_ID(),
+         'compare' => '='
+      ]
+   ]
+]);
+
+$related_publications = new WP_Query([
+   'post_type' => 'publication',
+   'post_status' => 'publish',
+   'posts_per_page' => 6,
+   'orderby' => 'start_date',
+   'order' => 'asc',
+   'meta_query' => [
+      [
+         'key' => 'related_barristers',
+         'value' => get_the_ID(),
+         'compare' => '='
+      ]
+   ]
+]);
 ?>
 
 <main class="section grid-container">
@@ -72,6 +117,18 @@ $related_events = new WP_Query([
 
                   if ($related_events->have_posts()) {
                      echo '<li class="tabs-title"><a href="#events" title="' . __('Events', 'squareeye') . '">' . __('Events', 'squareeye') . '</a></li>';
+                  }
+
+                  if ($related_cases->have_posts()) {
+                     echo '<li class="tabs-title"><a href="#cases" title="' . __('Cases', 'squareeye') . '">' . __('Cases', 'squareeye') . '</a></li>';
+                  }
+
+                  if ($related_publications->have_posts()) {
+                     echo '<li class="tabs-title"><a href="#publications" title="' . __('Publications', 'squareeye') . '">' . __('Publications', 'squareeye') . '</a></li>';
+                  }
+
+                  if ($related_newsletters->have_posts()) {
+                     echo '<li class="tabs-title"><a href="#newsletters" title="' . __('Newsletters', 'squareeye') . '">' . __('Newsletters', 'squareeye') . '</a></li>';
                   }
                   ?>
                </ul>
@@ -141,6 +198,45 @@ $related_events = new WP_Query([
                      echo '<ul class="posts-list">';
                      while ($related_events->have_posts()) {
                         $related_events->the_post();
+                        get_template_part('parts/loop/loop', 'list');
+                     }
+                     echo '</ul>';
+                     echo '</div>';
+                     wp_reset_postdata();
+                  }
+
+                  if ($related_cases->have_posts()) {
+                     echo '<div class="tabs-panel" id="cases">';
+
+                     echo '<ul class="posts-list">';
+                     while ($related_cases->have_posts()) {
+                        $related_cases->the_post();
+                        get_template_part('parts/loop/loop', 'list');
+                     }
+                     echo '</ul>';
+                     echo '</div>';
+                     wp_reset_postdata();
+                  }
+
+                  if ($related_publications->have_posts()) {
+                     echo '<div class="tabs-panel" id="publications">';
+
+                     echo '<ul class="posts-list">';
+                     while ($related_publications->have_posts()) {
+                        $related_publications->the_post();
+                        get_template_part('parts/loop/loop', 'list');
+                     }
+                     echo '</ul>';
+                     echo '</div>';
+                     wp_reset_postdata();
+                  }
+
+                  if ($related_newsletters->have_posts()) {
+                     echo '<div class="tabs-panel" id="newsletters">';
+
+                     echo '<ul class="posts-list">';
+                     while ($related_newsletters->have_posts()) {
+                        $related_newsletters->the_post();
                         get_template_part('parts/loop/loop', 'list');
                      }
                      echo '</ul>';
