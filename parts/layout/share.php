@@ -1,7 +1,10 @@
 <?php
 
 $id = get_the_id();
+$sitename = get_bloginfo('name');
 $hideshare = get_field('hide_share_buttons');
+
+$title = get_the_title($id);
 $postUrl = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 
 if (!$hideshare == 'Yes') { ?>
