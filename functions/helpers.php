@@ -204,8 +204,10 @@ function sqeGetThumbnailURL($post_id = '', $thumbnail_size = 'medium')
 }
 
 
-function getClerkingTeam($id)
+function getClerkingTeam($id = '')
 {
+   $id = $id ? $id : get_the_ID();
+
    $barrister_team = !empty(get_field('clerking_team', $id)) ? get_field('clerking_team', $id) : null;
 
    $clerks = new WP_Query([
