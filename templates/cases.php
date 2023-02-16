@@ -3,7 +3,7 @@
 * Template name: Cases
 */
 
-$clerks = getQuery('case');
+$cases = getQuery('case');
 
 ?>
 
@@ -23,15 +23,16 @@ $clerks = getQuery('case');
          <div class="cell">
             <div id="response" class="grid-x grid-padding-x grid-padding-y">
                <?php
-               if ($clerks->have_posts()) {
-                  while ($clerks->have_posts()) {
-                     $clerks->the_post();
+               if ($cases->have_posts()) {
+                  while ($cases->have_posts()) {
+                     $cases->the_post();
                      $args = array(
                         'excerpt' => true,
                         'columns' => 4,
                      );
                      get_template_part('parts/loop/loop', get_post_type(), $args);
                   }
+                  wp_reset_query();
                } else {
                   echo '<div class="cell"><h2>' . __('No posts found.', 'squareeye') . '</h2></div>';
                }

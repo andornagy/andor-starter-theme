@@ -202,3 +202,34 @@ function sqeGetThumbnailURL($post_id = '', $thumbnail_size = 'medium')
 
    return $thumb_url;
 }
+
+
+function getClerkingTeam($id)
+{
+   $barrister_team = !empty(get_field('clerking_team', $id)) ? get_field('clerking_team', $id) : null;
+
+   $clerks = new WP_Query([
+      'post_type' => 'clerk',
+      'post_status' => 'publish',
+      'tax_query' => array(
+         array(
+            'taxonomy' => 'clerking_team',
+            'field' => 'slug',
+            'terms' => $barrister_team,
+         )
+      ),
+   ]);
+
+   echo '<div class="cell">';
+   echo '<h4>Contact the clerks</h4>';
+
+   if ($clerks->have_posts()) {
+      while ($clerks->have_posts()) {
+         $clerks->the_post();
+         get_template_part('parts/loop/loop', 'list');
+      }
+      wp_reset_query();
+   }
+
+   echo '</div>';
+}

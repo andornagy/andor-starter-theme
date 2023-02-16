@@ -90,6 +90,8 @@ $related_publications = new WP_Query([
       <div class="grid-container">
          <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell large-4 show-for-large">
+               <?php getClerkingTeam($id); ?>
+
                <ul class="vertical tabs show-for-large sidebar-widget heading-line" data-tabs id="profile-tabs" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-offset="200" data-deep-link-smudge-delay="600">
                   <li class="tabs-title is-active"><a href="#overview" aria-selected="true"><?php _e('Overview', 'squareeye'); ?></a></li>
                   <?php
