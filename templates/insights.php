@@ -1,6 +1,6 @@
 <?php get_header();
 /*
-* Template name: Events
+* Template name: Insights
 */
 $posts = getQuery('post', 'insights', 12);
 
