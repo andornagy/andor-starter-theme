@@ -15,19 +15,18 @@ $thumb_url = sqeGetThumbnailURL($id, 'square');
 
 ?>
 
-<div <?php post_class('posts-item posts-item__related' . esc_attr($columns)); ?>>
-   <a class="grid-x grid-margin-x grid-padding-y" href="<?php echo get_the_permalink($id); ?>" title="<?php echo $name; ?>">
-      <!--<div class="card-divider">Heading goes here</div>-->
-      <div class="cell posts-item__img rectangle-img small-4">
+<div <?php post_class('posts-item posts-item__related grid-x grid-margin-x grid-padding-y ' . esc_attr($columns)); ?>>
+   <div class="cell small-4">
+      <a class="posts-item__img square-img" href="<?php echo get_the_permalink($id); ?>" title="<?php echo $name; ?>">
          <img src="<?php echo $thumb_url; ?>" alt="<?php echo $name; ?>" />
-      </div>
-      <div class="cell small-8">
-         <span class="posts-item__name"><?php echo $name; ?></span>
-         <ul>
-            <li class="posts-item__job-title"><i class="fa-solid fa-user"></i><?php echo $title ?></li>
-            <li class="posts-item__phone"><i class="fa-solid fa-phone"></i><?php echo $phone ?></li>
-            <li class="posts-item__email"><i class="fa-solid fa-envelope"></i></i><?php echo $email ?></li>
-         </ul>
-      </div>
-   </a>
+      </a>
+   </div>
+   <div class="cell small-8">
+      <a class="" href="<?php echo get_the_permalink($id); ?>" title="<?php echo $name; ?>"><span class="posts-item__name"><?php echo $name; ?></span></a>
+      <ul>
+         <li class="posts-item__job-title"><i class="fa-solid fa-user"></i><?php echo $title ?></li>
+         <li class="posts-item__phone"><i class="fa-solid fa-phone"></i><?php echo $phone ?></li>
+         <li class="posts-item__email"><i class="fa-solid fa-envelope"></i></i><?php echo $email ?></li>
+      </ul>
+   </div>
 </div>

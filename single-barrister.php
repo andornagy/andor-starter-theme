@@ -90,7 +90,6 @@ $related_publications = new WP_Query([
       <div class="grid-container">
          <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell large-4 show-for-large">
-               <?php getClerkingTeam($id); ?>
 
                <ul class="vertical tabs show-for-large sidebar-widget heading-line" data-tabs id="profile-tabs" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-offset="200" data-deep-link-smudge-delay="600">
                   <li class="tabs-title is-active"><a href="#overview" aria-selected="true"><?php _e('Overview', 'squareeye'); ?></a></li>
@@ -134,6 +133,9 @@ $related_publications = new WP_Query([
                   }
                   ?>
                </ul>
+
+               <?php getClerkingTeam($id); ?>
+
             </div>
             <div class="cell large-8">
                <div class="tabs-content tabs-content--responsive vertical" data-tabs-content="profile-tabs">
@@ -157,7 +159,7 @@ $related_publications = new WP_Query([
                         // $cases = $area['cases'];
 
                         echo '<div class="tabs-panel" id="' . $area_slug . '">';
-                        echo '<h3>' . esc_html($area_title) . '</h3>';
+                        echo '<h2>' . esc_html($area_title) . '</h2>';
                         echo wpautop(wp_kses_post($area_text));
                         // if ($cases) {
                         //    echo '<h4>' . __('Featured cases', 'squareeye') . '</h4>';
@@ -174,7 +176,7 @@ $related_publications = new WP_Query([
 
                         echo '<div class="tabs-panel" id="' . sanitize_title($heading) .  '">';
 
-                        echo '<h3>' . esc_html($heading) . '</h3>';
+                        echo '<h2>' . esc_html($heading) . '</h2>';
                         echo wpautop(wp_kses_post($text));
 
                         echo '</div>';
@@ -183,6 +185,7 @@ $related_publications = new WP_Query([
 
                   if ($related_news->have_posts()) {
                      echo '<div class="tabs-panel" id="news">';
+                     echo '<h2>Related news</h2>';
 
                      echo '<ul class="posts-list">';
                      while ($related_news->have_posts()) {
@@ -196,6 +199,7 @@ $related_publications = new WP_Query([
 
                   if ($related_events->have_posts()) {
                      echo '<div class="tabs-panel" id="events">';
+                     echo '<h2>Related events</h2>';
 
                      echo '<ul class="posts-list">';
                      while ($related_events->have_posts()) {
@@ -209,6 +213,7 @@ $related_publications = new WP_Query([
 
                   if ($related_cases->have_posts()) {
                      echo '<div class="tabs-panel" id="cases">';
+                     echo '<h2>Related cases</h2>';
 
                      echo '<ul class="posts-list">';
                      while ($related_cases->have_posts()) {
@@ -222,6 +227,7 @@ $related_publications = new WP_Query([
 
                   if ($related_publications->have_posts()) {
                      echo '<div class="tabs-panel" id="publications">';
+                     echo '<h2>Related publications</h2>';
 
                      echo '<ul class="posts-list">';
                      while ($related_publications->have_posts()) {
@@ -236,6 +242,7 @@ $related_publications = new WP_Query([
                   if ($related_newsletters->have_posts()) {
                      echo '<div class="tabs-panel" id="newsletters">';
 
+                     echo '<h2>Related newsletter</h2>';
                      echo '<ul class="posts-list">';
                      while ($related_newsletters->have_posts()) {
                         $related_newsletters->the_post();

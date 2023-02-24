@@ -230,8 +230,8 @@ function getClerkingTeam($id = '')
       ),
    ]);
 
+   echo '<h3>Contact the clerks</h3>';
    echo '<div class="cell">';
-   echo '<h4>Contact the clerks</h4>';
 
    if ($clerks->have_posts()) {
       while ($clerks->have_posts()) {
