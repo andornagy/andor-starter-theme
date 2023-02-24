@@ -48,7 +48,7 @@ $banner_background = get_field('banner_background');
             if ($phone) $list[] = '<li><a href="tel:' . esc_attr($phone) . '" title="' . sprintf(__('Call %s', 'squareeye'), $title) . '"><i class="fa-solid fa-phone fa-fw"></i>' . esc_html($phone) . '</a></li>';
 
             // twitter
-            if ($twitter) $list[] = '<li><a href="https://twitter.com/' . esc_url($twitter) . '" title="' . __('Twitter', 'squareeye') . '" target="_blank"><i class="fa-brands fa-twitter fa-fw"></i>' . __('Twitter', 'squareeye') . '</a></li>';
+            if ($twitter) $list[] = '<li><a href="https://twitter.com/' . esc_html($twitter) . '" title="' . __('Twitter', 'squareeye') . '" target="_blank"><i class="fa-brands fa-twitter fa-fw"></i>' . __('Twitter', 'squareeye') . '</a></li>';
             // linked
             if ($linkedin) $list[] = '<li><a href="' . esc_attr($linkedin) . '" title="' . __('LinkedIn', 'squareeye') . '" target="_blank"><i class="fa-brands fa-linkedin fa-fw"></i>' . __('LinkedIn', 'squareeye') . '</a></li>';
 
