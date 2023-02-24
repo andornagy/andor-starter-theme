@@ -20,7 +20,10 @@ get_template_part('parts/titles/title-clerks');
             if ($clerks->have_posts()) {
                while ($clerks->have_posts()) {
                   $clerks->the_post();
-                  get_template_part('parts/loop/loop', 'clerk');
+                  $args = [
+                     'columns' => 4
+                  ];
+                  get_template_part('parts/loop/loop', 'clerk', $args);
                }
                wp_reset_postdata();
             } else {
