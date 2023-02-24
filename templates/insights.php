@@ -2,11 +2,11 @@
 /*
 * Template name: Insights
 */
-$posts = getQuery('post', 'insights', 12);
+$posts = getQuery('post', '', 12);
 
 ?>
 
-<?php get_template_part('parts/banners/banner'); ?>
+<?php get_template_part('parts/title/title'); ?>
 
 <main class="section grid-container">
 

@@ -236,7 +236,7 @@ function getClerkingTeam($id = '')
    if ($clerks->have_posts()) {
       while ($clerks->have_posts()) {
          $clerks->the_post();
-         get_template_part('parts/loop/loop', 'list');
+         get_template_part('parts/loop/loop', 'related-clerk');
       }
       wp_reset_query();
    }
