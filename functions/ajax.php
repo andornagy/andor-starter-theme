@@ -219,9 +219,9 @@ add_action('wp_ajax_nopriv_process_ajax', 'ajax_processor_function');
 function ajax_processor_function()
 {
    // Check for nonce security      
-   if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
-      die('Busted!');
-   }
+//    if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
+//       die('Busted!');
+//    }
 
    // Process loop here
    if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {
