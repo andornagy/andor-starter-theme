@@ -3,7 +3,19 @@
 * Template name: Public Access
 */
 
-$barristers = getQuery('barrister', 'public-access');
+$barristers = new WP_Query(array(
+   'post_type' => 'barrister',
+   'posts_per_page' => '-1',
+   'orderby' => 'menu_order',
+   'order' => 'ASC',
+   'tax_query' => array(
+      array(
+         'taxonomy' => 'barrister_category',
+         'field' => 'slug',
+         'terms' => 'public-access'
+      )
+   )
+));
 
 ?>
 
