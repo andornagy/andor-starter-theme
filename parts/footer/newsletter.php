@@ -18,11 +18,12 @@ Important parts:
 
 ?>
 <form class="newsletter" id="newsletter">
+   <h2>Subscribe</h2>
    <div class="newsletter__inner">
       <input type="hidden" name="form_id" value="<?php echo $form_id; ?>" />
-      <input type="text" class="sqe_gf_input_name" name="input_<?php echo $name_field_id; ?>" placeholder="Enter your name" />
-      <input type="text" class="sqe_gf_input_org" name="input_<?php echo $org_field_id; ?>" placeholder="Your Organization" />
-      <input type="text" class="sqe_gf_input_email" name="input_<?php echo $email_field_id; ?>" placeholder="Enter your email" />
+      <input type="text" class="sqe_gf_input_name" name="input_<?php echo $name_field_id; ?>" placeholder="Your name" />
+      <input type="text" class="sqe_gf_input_org" name="input_<?php echo $org_field_id; ?>" placeholder="Your organisation" />
+      <input type="text" class="sqe_gf_input_email" name="input_<?php echo $email_field_id; ?>" placeholder="Your email" />
       <button type="submit"><span class="show-for-sr">Submit</span><i class="fa-light fa-2x fa-circle-arrow-right"></i></button>
    </div>
    <div class="newsletter__notification"></div>
