@@ -208,7 +208,15 @@ function getClerkingTeam($id = '')
 {
    $id = $id ? $id : get_the_ID();
 
-   $barrister_team = !empty(get_field('clerking_team', $id)) ? get_field('clerking_team', $id) : null;
+   // $barrister_team = !empty(get_field('clerking_team', $id)) ? get_field('clerking_team', $id) : null;
+   $clerking_teams = get_the_terms($id, 'clerking_team');
+
+   $barrister_team = [];
+
+   // Barristers team list.
+   foreach ($clerking_teams as $team) {
+      $barrister_team[] .= $team->slug;
+   };
 
    $clerks = new WP_Query([
       'post_type' => 'clerk',
