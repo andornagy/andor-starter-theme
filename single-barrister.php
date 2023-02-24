@@ -92,7 +92,11 @@ $related_publications = new WP_Query([
             <div class="cell large-4 show-for-large">
 
                <ul class="vertical tabs show-for-large sidebar-widget heading-line" data-tabs id="profile-tabs" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-offset="200" data-deep-link-smudge-delay="600">
-                  <li class="tabs-title is-active"><a href="#overview" aria-selected="true"><?php _e('Overview', 'squareeye'); ?></a></li>
+                  <li class="tabs-title is-active">
+                     <a href="#overview" aria-selected="true">
+                        <h2><?php _e('Overview', 'squareeye'); ?></h2>
+                     </a>
+                  </li>
                   <?php
 
                   if ($areas) {
@@ -102,34 +106,34 @@ $related_publications = new WP_Query([
                         $area_title = $area['title_variation'] ? $area['title_variation'] : get_the_title($area['area']->ID);
                         $area_slug = sanitize_title($area_title) . '-' . $current_area_i;
                         $current_area_i++;
-                        echo '<li class="tabs-title"><a href="#' . esc_attr($area_slug) . '" title="' . esc_attr($area_title) . '">' . $area_title . '</a></li>';
+                        echo '<li class="tabs-title"><a href="#' . esc_attr($area_slug) . '" title="' . esc_attr($area_title) . '"><h2>' . $area_title . '</h2></a></li>';
                      }
                   }
 
                   if ($sections) {
                      foreach ($sections as $section) {
-                        echo '<li class="tabs-title"><a href="#' . sanitize_title($section['heading']) . '" title="' . esc_attr($section['heading']) . '">' . esc_html($section['heading']) . '</a></li>';
+                        echo '<li class="tabs-title"><a href="#' . sanitize_title($section['heading']) . '" title="' . esc_attr($section['heading']) . '"><h2>' . esc_html($section['heading']) . '</h2></a></li>';
                      }
                   }
 
                   if ($related_news->have_posts()) {
-                     echo '<li class="tabs-title"><a href="#news" title="' . __('News', 'squareeye') . '">' . __('News', 'squareeye') . '</a></li>';
+                     echo '<li class="tabs-title"><a href="#news" title="' . __('News', 'squareeye') . '"><h2>' . __('News', 'squareeye') . '</h2></a></li>';
                   }
 
                   if ($related_events->have_posts()) {
-                     echo '<li class="tabs-title"><a href="#events" title="' . __('Events', 'squareeye') . '">' . __('Events', 'squareeye') . '</a></li>';
+                     echo '<li class="tabs-title"><a href="#events" title="' . __('Events', 'squareeye') . '"><h2>' . __('Events', 'squareeye') . '</h2></a></li>';
                   }
 
                   if ($related_cases->have_posts()) {
-                     echo '<li class="tabs-title"><a href="#cases" title="' . __('Cases', 'squareeye') . '">' . __('Cases', 'squareeye') . '</a></li>';
+                     echo '<li class="tabs-title"><a href="#cases" title="' . __('Cases', 'squareeye') . '"><h2>' . __('Cases', 'squareeye') . '</h2></a></li>';
                   }
 
                   if ($related_publications->have_posts()) {
-                     echo '<li class="tabs-title"><a href="#publications" title="' . __('Publications', 'squareeye') . '">' . __('Publications', 'squareeye') . '</a></li>';
+                     echo '<li class="tabs-title"><a href="#publications" title="' . __('Publications', 'squareeye') . '"><h2>' . __('Publications', 'squareeye') . '</h2></a></li>';
                   }
 
                   if ($related_newsletters->have_posts()) {
-                     echo '<li class="tabs-title"><a href="#newsletters" title="' . __('Newsletters', 'squareeye') . '">' . __('Newsletters', 'squareeye') . '</a></li>';
+                     echo '<li class="tabs-title"><a href="#newsletters" title="' . __('Newsletters', 'squareeye') . '"><h2>' . __('Newsletters', 'squareeye') . '</h2></a></li>';
                   }
                   ?>
                </ul>
