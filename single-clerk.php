@@ -16,8 +16,6 @@
 
       <div class="cell small-12 medium-8 large-6 content">
 
-         <?php the_post_thumbnail('landscape'); ?>
-
          <?php the_content(); ?>
 
          <?php get_template_part('parts/layout/share'); ?>
