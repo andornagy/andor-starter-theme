@@ -138,7 +138,7 @@ $related_publications = new WP_Query([
                   ?>
                </ul>
 
-               <?php getClerkingTeam($id); ?>
+               <?php getBarristerRelatedClerks($id); ?>
 
             </div>
             <div class="cell large-8">

@@ -204,20 +204,23 @@ function sqeGetThumbnailURL($post_id = '', $thumbnail_size = 'medium')
 }
 
 
-function getClerkingTeam($id = '')
+function getBarristerRelatedClerks($id = '')
 {
    $id = $id ? $id : get_the_ID();
+
+   // Array of Related Clerk IDs
+   $clerkIDs = [];
 
    // $barrister_team = !empty(get_field('clerking_team', $id)) ? get_field('clerking_team', $id) : null;
    $clerking_teams = get_the_terms($id, 'clerking_team');
 
-   $barrister_team = [];
-
    // Barristers team list.
+   $barrister_team = [];
    foreach ($clerking_teams as $team) {
       $barrister_team[] .= $team->slug;
    };
 
+   // Get related clerks based on Clerking Team
    $clerks = new WP_Query([
       'post_type' => 'clerk',
       'post_status' => 'publish',
@@ -229,17 +232,41 @@ function getClerkingTeam($id = '')
          )
       ),
    ]);
+   if ($clerks->have_posts()) {
+      while ($clerks->have_posts()) {
+         $clerks->the_post();
+         $clerkIDs[] .= get_the_ID();
+      }
+      wp_reset_postdata();
+   }
+
+   // Get clerks based on relationship field
+   $additionalClerks = get_post_meta($id, 'related_clerks');
+   foreach ($additionalClerks as $additionalClerk) {
+      if (isset($additionalClerk)) {
+         if (!in_array($additionalClerk['ID'], $clerkIDs)) {
+            $clerkIDs[] .= $additionalClerk['ID'];
+         }
+      }
+   }
+
+   // Final query, of the related clerks by IDs
+   $related_clerks = new WP_Query(array('post_type' => 'clerk', 'post__in' => $clerkIDs));
 
    echo '<h2>Contact the clerks</h2>';
    echo '<div class="cell">';
 
-   if ($clerks->have_posts()) {
-      while ($clerks->have_posts()) {
-         $clerks->the_post();
-         get_template_part('parts/loop/loop', 'related-clerk');
-      }
-      wp_reset_query();
-   }
+   if ($related_clerks->have_posts()) {
+      while ($related_clerks->have_posts()) {
+         $related_clerks->the_post();
 
+         $args = array(
+            'id' => get_the_ID()
+         );
+
+         get_template_part('parts/loop/loop', 'related-clerk', $args);
+      };
+      wp_reset_postdata();
+   };
    echo '</div>';
 }
