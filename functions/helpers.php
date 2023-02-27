@@ -270,3 +270,28 @@ function getBarristerRelatedClerks($id = '')
    };
    echo '</div>';
 }
+
+
+// Function to convert phone number into proper dialable number when used in tel: link – please have it remove spaces, and if there is no international dialing code at the start, then add +44 at the start
+function getPersonPhoneNumber($id = '', $return = false)
+{
+
+   $id = $id ? $id : get_the_ID();
+
+   // Get phonenumber
+   $phoneNumber = get_field('phone', $id);
+
+   // Remove spaces
+   $newPhoneNumber = str_replace(' ', '', $phoneNumber);
+
+   // Add +44 country code to the beginning if not there.
+   if (!str_starts_with($newPhoneNumber, '+44')) {
+      $newPhoneNumber = '+44' . $newPhoneNumber;
+   }
+
+   if ($return == true) {
+      return $newPhoneNumber;
+   } else {
+      echo '<a href="tel:' . $newPhoneNumber . '">' . $phoneNumber . '</a>';
+   }
+}

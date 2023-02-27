@@ -140,6 +140,9 @@ $related_publications = new WP_Query([
 
                <?php getBarristerRelatedClerks($id); ?>
 
+               <?php getPersonPhoneNumber($id)
+               ?>
+
             </div>
             <div class="cell large-8">
                <div class="tabs-content tabs-content--responsive vertical" data-tabs-content="profile-tabs">
