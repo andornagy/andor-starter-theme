@@ -41,6 +41,9 @@
          } elseif (is_singular('publication')) {
             echo '<li><a href="' . site_url('publications') . '" title="' . __('Publications', 'squareeye') . '">' . __('Publications', 'squareeye') . '</a></li>' . $separator;
             echo '<li>' . get_the_title() . '</li>';
+         } elseif (is_singular('event')) {
+            echo '<li><a href="' . site_url('events') . '" title="' . __('Events', 'squareeye') . '">' . __('Events', 'squareeye') . '</a></li>' . $separator;
+            echo '<li>' . get_the_title() . '</li>';
          } elseif (is_single()) {
             $blog_id = get_option('page_for_posts', true);
             echo '<li><a href="' . get_the_permalink($blog_id) . '" title="' . get_the_title($blog_id) . '">' . get_the_title($blog_id) . '</a></li>' . $separator;
