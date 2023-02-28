@@ -9,18 +9,14 @@ $cases = getQuery('case');
 
 <?php get_template_part('parts/titles/title'); ?>
 
-<main class="section grid-container">
-
-   <?php get_template_part('parts/layout/breadcrumbs'); ?>
-
-   <section class="grid-x grid-padding-x grid-padding-y main">
-      <div class="cell small-12">
-         <?php ajaxFilters('case'); ?>
-      </div>
-
-      <div class="cell small-12 content">
-
-         <div class="cell">
+<main class="section">
+   <div class="grid-container">
+      <?php get_template_part('parts/layout/breadcrumbs'); ?>
+      <section class="grid-x grid-padding-x grid-padding-y main">
+         <div class="cell small-12">
+            <?php ajaxFilters('case'); ?>
+         </div>
+         <div class="cell small-12 content">
             <div id="response" class="grid-x grid-padding-x grid-padding-y">
                <?php
                if ($cases->have_posts()) {
@@ -38,14 +34,10 @@ $cases = getQuery('case');
                }
                echo ajaxPagination('case');
                ?>
-
             </div>
          </div>
-
-      </div>
-
-   </section>
-
+      </section>
+   </div>
 </main>
 
 <?php get_footer(); ?>

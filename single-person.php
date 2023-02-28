@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php get_template_part('parts/banners/banner', 'person'); ?>
+<?php get_template_part('parts/title/title', 'person'); ?>
 
 <main class="section grid-container">
 

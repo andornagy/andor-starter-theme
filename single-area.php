@@ -4,7 +4,7 @@ $id = get_the_ID();
 $area_id = $id;
 ?>
 
-<?php get_template_part('parts/banners/banner', 'area'); ?>
+<?php get_template_part('parts/title/title', 'area'); ?>
 
 <main class="section grid-container">
 

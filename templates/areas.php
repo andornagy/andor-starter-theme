@@ -19,14 +19,12 @@ $areas = new WP_Query(array(
    )
 ));
 
-get_template_part('parts/titles/title-area');
+get_template_part('parts/title/title');
 ?>
 <main class="section">
    <div class="grid-container">
-      <div class="grid-x grid-padding-x grid-padding-y">
-         <div class="cell">
-            <?php get_template_part('parts/page/breadcrumbs'); ?>
-         </div>
+      <?php get_template_part('parts/layout/breadcrumbs'); ?>
+      <section class="grid-x grid-padding-x grid-padding-y main">
          <?php
          if ($areas->have_posts()) {
 
@@ -39,7 +37,7 @@ get_template_part('parts/titles/title-area');
             wp_reset_postdata();
          }
          ?>
-      </div>
+      </section>
    </div>
 </main>
 <?php

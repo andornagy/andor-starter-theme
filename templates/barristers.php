@@ -2,25 +2,18 @@
 /*
 * Template name: Barristers
 */
-?>
-
-<?php get_header(); ?>
-
-<?php get_template_part('parts/titles/title-barrister'); ?>
-
-<?php
 
 $barristers = getQuery('barrister');
 
 $barristers_cats = getBarristersByShowOnArchive(); // query.php
 
-?>
+get_header(); ?>
+
+<?php get_template_part('parts/title/title'); ?>
 
 <main class="section">
    <div class="grid-container">
-
-      <?php get_template_part('parts/page/breadcrumbs'); ?>
-
+      <?php get_template_part('parts/layout/breadcrumbs'); ?>
       <section class="grid-x grid-padding-x grid-padding-y main">
 
          <div class="cell">

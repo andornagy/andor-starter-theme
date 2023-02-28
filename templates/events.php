@@ -31,67 +31,63 @@ $past_events = new WP_Query(array(
 ));
 ?>
 
-<?php get_template_part('parts/titles/title'); ?>
+<?php get_template_part('parts/title/title'); ?>
 
-<main class="section grid-container">
-
-   <?php get_template_part('parts/page/breadcrumbs'); ?>
-
-   <section class="grid-x grid-padding-x grid-padding-y main">
-      <div class="cell">
-         <?php ajaxFilters('barrister'); ?>
-      </div>
-      <div class="cell small-12 content">
-         <div class="cell small-12">
-            <h2>Future events</h2>
+<main class="section">
+   <div class="grid-container">
+      <?php get_template_part('parts/layout/breadcrumbs'); ?>
+      <section class="grid-x grid-padding-x grid-padding-y main">
+         <div class="cell">
+            <?php ajaxFilters('event'); ?>
          </div>
-         <div class="cell small-12 grid-x grid-padding-x grid-padding-y">
-            <?php
-            if ($future_events->have_posts()) {
-               while ($future_events->have_posts()) {
-                  $future_events->the_post();
+         <div class="cell small-12 content">
+            <div class="cell small-12">
+               <h2>Future events</h2>
+            </div>
+            <div class="cell small-12 grid-x grid-padding-x grid-padding-y">
+               <?php
+               if ($future_events->have_posts()) {
+                  while ($future_events->have_posts()) {
+                     $future_events->the_post();
 
-                  $args = array(
-                     'excerpt' => true,
-                     'columns' => 3,
-                  );
+                     $args = array(
+                        'excerpt' => true,
+                        'columns' => 3,
+                     );
 
-                  get_template_part('parts/loop/loop', 'event', $args);
+                     get_template_part('parts/loop/loop', 'event', $args);
+                  }
+                  wp_reset_postdata();
+               } else {
+                  echo '<div class="cell"><h4>' . __('No posts found.', 'albion') . '</h4></div>';
+               }; ?>
+            </div>
+            <div class="cell small-12">
+               <h2>Past events</h2>
+            </div>
+            <div class="cell small-12 grid-x grid-padding-x grid-padding-y">
+               <?php
+               if ($past_events->have_posts()) {
+                  while ($past_events->have_posts()) {
+                     $past_events->the_post();
+
+                     $args = array(
+                        'excerpt' => true,
+                        'columns' => 3
+                     );
+
+                     get_template_part('parts/loop/loop', 'event', $args);
+                  }
+                  wp_reset_postdata();
+               } else {
+                  echo '<div class="cell"><h4>' . __('No posts found.', 'albion') . '</h4></div>';
                }
-               wp_reset_postdata();
-            } else {
-               echo '<div class="cell"><h4>' . __('No posts found.', 'albion') . '</h4></div>';
-            }; ?>
+               echo ajaxPagination('event');
+               ?>
+            </div>
          </div>
-         <div class="cell small-12">
-            <h2>Past events</h2>
-         </div>
-         <div class="cell small-12 grid-x grid-padding-x grid-padding-y">
-            <?php
-            if ($past_events->have_posts()) {
-               while ($past_events->have_posts()) {
-                  $past_events->the_post();
-
-                  $args = array(
-                     'excerpt' => true,
-                     'columns' => 3
-                  );
-
-                  get_template_part('parts/loop/loop', 'event', $args);
-               }
-               wp_reset_postdata();
-            } else {
-               echo '<div class="cell"><h4>' . __('No posts found.', 'albion') . '</h4></div>';
-            }
-            echo ajaxPagination('event');
-            ?>
-         </div>
-
-
-      </div>
-
-   </section>
-
+      </section>
+   </div>
 </main>
 
 <?php get_footer(); ?>

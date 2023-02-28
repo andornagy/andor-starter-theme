@@ -1,10 +1,8 @@
 <?php get_header(); ?>
 
-<?php get_template_part('parts/banners/banner', 'clerk'); ?>
+<?php get_template_part('parts/title/title', 'clerk'); ?>
 
 <main class="section grid-container">
-
-   <?php get_template_part('parts/person/banner', 'person'); ?>
 
    <?php get_template_part('parts/layout/breadcrumbs'); ?>
 
