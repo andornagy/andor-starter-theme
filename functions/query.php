@@ -43,6 +43,12 @@ function getQuery($type, $cat = null, $limit = null)
    // Posts per page
    $args['posts_per_page'] = $type === 'barrister' ? -1 : ($limit ? $limit : 12);
 
+   // Set order to desc if posts
+   if ($type === 'post') {
+      $args['orderby'] = 'date';
+      $args['order'] = 'DESC';
+   }
+
    // Current page
    if (isset($_REQUEST['pg']) && absint($_REQUEST['pg']) > 0) {
       $args['paged'] = absint($_REQUEST['pg']);
@@ -63,7 +69,7 @@ function getQuery($type, $cat = null, $limit = null)
    };
 
    // Categories
-   if ($cat && $type !== 'barrister') {
+   if (($cat !== null) && $type !== 'barrister') {
       if (is_numeric($cat)) $args['cat'] = $cat;
       else $args['category_name'] = $cat;
    }
