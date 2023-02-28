@@ -15,11 +15,10 @@ $speakers = get_field('speakers', $id);
 
 $booking_url = get_field('booking_url', $id);
 
-$downloads = get_field('downloads', $id);
 ?>
 
 <div class="cell event__details">
-   <h3>Event details</h3>
+   <h2>Event details</h2>
    <ul>
       <?php
 
@@ -42,21 +41,9 @@ $downloads = get_field('downloads', $id);
    <?php
 
    if ($booking_url && ($start_date > $today)) {
-      echo '<p><a href="' . $booking_url . '" class="button" target="_blank">Book now</a></p>';
+      echo '<a href="' . $booking_url . '" class="button" target="_blank">Book now</a>';
    }
 
    ?>
-   <?php if ($downloads) {
-      echo '<h3>Downloads</h3>';
 
-      echo '<ul>';
-      foreach ($downloads as $download) {
-         // echo '<pre>';
-         // var_dump($download);
-         // echo '</pre>';
-
-         echo '<li><a href="#">' . $download['file']['filename'] . '</a></li>';
-      }
-      echo '</ul>';
-   } ?>
 </div>

@@ -1,11 +1,6 @@
 <?php get_header();
 
 $id = get_the_id();
-
-$video_text = get_field('video_text');
-$video = get_field('video');
-
-
 ?>
 
 <?php get_template_part('parts/title/title', 'event'); ?>
@@ -23,16 +18,8 @@ $video = get_field('video');
          <div class="cell thumbnail">
             <?php the_content(); ?>
          </div>
-         <div class="cell video">
-            <?php
-            if ($video) {
-               echo '<h2>Watch the video</h2>';
-               echo '<p>' . esc_html($video_text) . '</p>';
-               echo $video;
-            }
-            ?>
-         </div>
 
+         <?php get_template_part('parts/event/event', 'videos') ?>
          <?php get_template_part('parts/layout/share'); ?>
 
       </div>
