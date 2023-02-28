@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+
+$id = get_the_ID();
+
+get_header(); ?>
 
 <?php get_template_part('parts/title/title'); ?>
 
@@ -16,8 +20,8 @@
 
          <?php the_post_thumbnail('landscape'); ?>
 
-         <div class="meta">
-            <span class="date"><?php the_date(); ?></span>
+         <div class="cell meta">
+            <span class="date"><?php echo get_the_time(get_option('date_format'), $id); ?></span>
          </div>
 
          <?php the_content(); ?>
