@@ -1,5 +1,5 @@
 <?php
-$id = get_the_ID();
+$id = isset($args['id']) && $args['id'] ? $args['id'] : get_the_ID();
 
 $downloads = get_field('downloads', $id);
 

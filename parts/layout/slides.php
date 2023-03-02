@@ -1,20 +1,31 @@
 <?php
+$id = isset($args['id']) && $args['id'] ? $args['id'] : get_the_ID();
 
-$slides = get_field('featured_content');
+$slides = get_field('slides', $id);
 
-if ($slides) {
+if (!empty($slides)) {
+
 ?>
    <section class="section home-featured section--gray section-shape--bottom section-shape--top section--big large-padding-top-0">
       <div class="orbit orbit--dark" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
          <div class="orbit-wrapper">
             <div class="orbit-container">
                <?php
+
+
+
                foreach ($slides as $i => $slide) {
+                  // echo '<pre>';
+                  // var_dump($slide);
+                  // echo '</pre>';
+
+
                   $title = $slide['title'];
+                  $subTitle = $slide['subtitle'];
                   $text = $slide['text'];
                   $img_id = $slide['image'];
                   $img = isset($img_id) && $img_id ? wp_get_attachment_image($img_id, 'large') : '';
-                  $btn_text = $slide['button_text'];
+                  $btn_label = $slide['button_label'];
                   $btn_link = $slide['button_link'];
 
                   if (!$title || !$img || !$text) continue;
@@ -36,8 +47,8 @@ if ($slides) {
                               <?php echo wpautop(wp_kses_post($text)); ?>
                            </div>
                            <?php
-                           if (isset($btn_text) && $btn_text && isset($btn_link) && $btn_link) {
-                              echo '<a href="' . esc_url($btn_link) . '" class="button primary smooth-scroll">' . esc_html($btn_text) . '</a>';
+                           if (isset($btn_label) && $btn_label && isset($btn_link) && $btn_link) {
+                              echo '<a href="' . get_permalink($btn_link) . '" class="button primary smooth-scroll">' . esc_html($btn_label) . '</a>';
                            }
                            ?>
                         </div>
