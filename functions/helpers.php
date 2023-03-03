@@ -105,8 +105,10 @@ function makePhoneClickable($num)
 function sqe_date_format($date)
 {
    if ($date) {
+
+      $date = strtr($date, '/', '-');
       $format_out = get_option('date_format');
-      // $output = DateTimeImmutable::createFromFormat('Ymd', $date);
+
       $output = date($format_out, strtotime($date));
 
       return $output;
