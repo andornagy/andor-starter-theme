@@ -8,7 +8,7 @@ if (isset($args['columns'])) {
 $thumb_url = sqeGetThumbnailURL($id, 'landscape');
 ?>
 
-<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" id="post-<?php the_ID(); ?>" <?php post_class('posts-item cell large-2 medium-4 small-6'); ?>>
+<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" id="post-<?php the_ID(); ?>" class="posts-item <?php echo $columns ?>">
    <div class="posts-item__img rectangle-img">
       <img src="<?php echo $thumb_url; ?>" alt="<?php echo $name; ?>" />
    </div>

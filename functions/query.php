@@ -418,12 +418,12 @@ function getPosts($params = array())
 
 // Get barrister categories where 'show on filter' is set to 1
 // Used to populate filter and list on barristers.php
-
-function getPublicBarristerCategories()
+// $type = 'barrister/people';
+function getPublicBarristerCategories($type = 'barrister')
 {
 
    $barcats = get_terms(array(
-      'taxonomy' => 'barrister_category',
+      'taxonomy' => $type . '_category',
       'hide_empty' => true,
    ));
 
@@ -432,7 +432,12 @@ function getPublicBarristerCategories()
       foreach ($barcats as $barcat) {
 
          $include = false;
-         $include = get_term_meta($barcat->term_id, 'show_on_filter', true);
+         if ($type === 'barrister') {
+            $include = get_term_meta($barcat->term_id, 'show_on_filter', true);
+         } elseif ($type === 'people') {
+            $include = get_term_meta($barcat->term_id, 'display', true);
+         }
+
 
          if ($include) {
             $newdata =  array(
