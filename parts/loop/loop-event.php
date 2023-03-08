@@ -15,7 +15,7 @@ $event_time = sqe_time_format($start_time);
 ?>
 <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" id="post-<?php the_ID(); ?>" <?php post_class('posts-item ' . esc_attr($columns)); ?>>
    <div class="posts-item__img rectangle-img">
-      <img src="<?php echo $thumb_url; ?>" alt="<?php echo $name; ?>" />
+      <img src="<?php echo $thumb_url; ?>" alt="<?php echo get_the_title($id); ?>" />
    </div>
    <div class="posts-item__content">
       <h3 class="posts-item__title">

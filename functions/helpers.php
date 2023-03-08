@@ -266,7 +266,7 @@ function getBarristerRelatedClerks($id = '')
             'id' => get_the_ID()
          );
 
-         get_template_part('parts/loop/loop', 'related-clerk', $args);
+         get_template_part('parts/related-loop/related', 'clerk', $args);
       };
       wp_reset_postdata();
    };

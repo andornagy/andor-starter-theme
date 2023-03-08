@@ -1,6 +1,6 @@
 <?php
 $id = isset($args['id']) && $args['id'] ? $args['id'] : get_the_ID();
-$name = get_the_title($id);
+
 $title = get_field('job_title', $id) ? get_field('job_title', $id) : '';
 $phone = get_field('phone', $id) ? get_field('phone', $id) : '';
 $email = get_field('email', $id) ? get_field('email', $id) : '';
@@ -18,7 +18,7 @@ $thumb_url = sqeGetThumbnailURL($id, 'square');
 <div <?php post_class('posts-item posts-item__related grid-x grid-margin-x grid-padding-y ' . esc_attr($columns)); ?>>
    <div class="cell small-4">
       <a class="posts-item__img square-img" href="<?php echo get_the_permalink($id); ?>" title="<?php echo $name; ?>">
-         <img src="<?php echo $thumb_url; ?>" alt="<?php echo $name; ?>" />
+         <img src="<?php echo $thumb_url; ?>" alt="<?php echo get_the_title($id); ?>" />
       </a>
    </div>
    <div class="cell small-8">

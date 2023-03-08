@@ -10,10 +10,6 @@ $other_logos = !empty(get_field('logos')) ? get_field('logos') : null;
 
    if ($barrister_logos) {
 
-      echo '<pre>';
-      // var_dump($individual_logos);
-      echo '</pre>';
-
       foreach ($barrister_logos as $barrister_logo) {
          if (array_key_exists($barrister_logo, $individual_logos)) {
             echo '<div class="cell small-3 text-center">';

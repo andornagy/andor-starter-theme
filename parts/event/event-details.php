@@ -41,7 +41,7 @@ $booking_url = get_field('booking_url', $id);
    <?php
 
    if ($booking_url && ($start_date > $today)) {
-      echo '<a href="' . $booking_url . '" class="button" target="_blank">Book now</a>';
+      echo '<a href="' . $booking_url . '" title="Book your ticket for ' . get_the_title($id) . '." class="button" target="_blank">Book now</a>';
    }
 
    ?>

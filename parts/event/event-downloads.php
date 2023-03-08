@@ -11,7 +11,7 @@ $downloads = get_field('downloads', $id);
       echo '<ul>';
       foreach ($downloads as $download) {
 
-         echo '<li><a href="#">' . $download['file']['filename'] . '</a></li>';
+         echo '<li><a href="'  . $download['file']['url'] .  '">' . $download['file']['filename'] . '</a></li>';
       }
       echo '</ul>';
    } ?>
