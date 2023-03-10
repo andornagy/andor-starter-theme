@@ -107,7 +107,8 @@ function ajaxFilters($type, $cat = null)
                 'post_type' => 'barrister',
                 'posts_per_page' => -1,
                 'post_status' => 'publish',
-                'orderby' => 'title',
+                'orderby' => 'meta_value',
+                'meta_key' => 'surname',
                 'order' => 'ASC'
             ));
             $options = [];

@@ -6,9 +6,7 @@ function displaySiteLogo()
 
 add_shortcode('site_logo', 'displaySiteLogo');
 
-/*
-* DISPLAY CURRENT YEAR
-*/
+/* Display current year  ________________________________________________________ */
 
 function displayCurrentYear()
 {
@@ -119,51 +117,49 @@ function displayChambersContacts()
 
 add_shortcode('chambers_contacts', 'displayChambersContacts');
 
-/*
-* ACCORDIONS
-*/
-
-function showAccordion($atts)
-{
-
-    $a = shortcode_atts(array(
-        'openfirst' => false,
-    ), $atts);
-
-    $sections = get_field('accordion_sections');
-    $openfirst = get_field('open_first');
-
-    $output = '';
+/* Accordion  ________________________________________________________ */
 
 
-    if ($sections) {
+function DisplayAccordion($atts) {
+	
+		 $a = shortcode_atts(array(
+	        'openfirst' => false,
+	    ), $atts);
+			
+		$output = '<ul class="accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true" data-deep-link="true">';
+		
+		$counter = 0;
+		
+	    while( have_rows('accordion_sections') ) : the_row();
+	    
+	    $counter++;
+	
+	        $heading = get_sub_field('heading');
+	        $text = get_sub_field('text');
+	        $image = get_sub_field('image');
+	        
+	        $output .= '<li class="accordion-item';
+	        if ($openfirst && $counter == 1) { $output .= ' is-active'; }
+	        $output .= '" data-accordion-item>';
+			$output .= '<a href="#" class="accordion-title">'.$heading.'</a>';
+			$output .= '<div class="accordion-content" data-tab-content>';
+			if ($image) {
+				$imgurl = $image['sizes']['medium'];
+				$output .= '<img src="'.$imgurl.'" alt="'.$heading.'" />';
+			}
+	     	$output .= $text;
+	     	$output .= '</div>';
+		 	$output .= '</li>';
+	
+	    endwhile;
+    
+		$output .= '</ul>';
+		
+		return $output;
 
-        $output = '<ul class="accordion" data-multi-expand="true" data-accordion data-deep-link="true" data-allow-all-closed="true" role="tablist">';
-        $counter = 0;
-        foreach ($sections as $section) {
-            $counter++;
-            $title = $section['heading'];
-            $slug = sanitize_title($title);
-            $text = $section['text'];
-            $output .= '<li class="accordion-item';
-            if ($openfirst and ($counter == 1)) {
-                $output .= ' is-active';
-            }
-            $output .= '" data-accordion-item>';
-            $output .= '<a href="#' . $slug . '" class="accordion-title">' . $title . '</a>';
-            $output .= '<div class="accordion-content" data-tab-content id="' . $slug . '">';
-            $output .= $text;
-            $output .= '</div>';
-            $output .= '</li>';
-        }
-        $output .= '</ul>';
-    }
-
-    return $output;
-}
-
-add_shortcode('accordions', 'showAccordions');
-
+		}
+		
+add_shortcode('accordion','DisplayAccordion');
 
 
 

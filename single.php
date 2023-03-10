@@ -24,6 +24,8 @@
             
             <?php get_template_part('parts/layout/share'); ?>
             
+            <?php get_template_part('parts/layout/cta'); ?>
+            
         </div>
         
         <div class="cell small-12 medium-2 large-3">
