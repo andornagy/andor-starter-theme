@@ -8,6 +8,7 @@ get_header(); ?>
 
 <main class="section grid-container">
 
+
    <?php get_template_part('parts/layout/breadcrumbs'); ?>
 
    <section class="grid-x grid-padding-x grid-padding-y main">
@@ -27,6 +28,8 @@ get_header(); ?>
          <?php the_content(); ?>
 
          <?php get_template_part('parts/layout/share'); ?>
+         
+         <?php get_template_part('parts/layout/cta'); ?>
 
       </div>
 

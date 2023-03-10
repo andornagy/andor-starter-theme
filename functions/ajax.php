@@ -43,6 +43,137 @@ function displayFilterCheckbox($options, $slug, $label = '')
 function ajaxFilters($type, $cat = null)
 {
 
+/*
+
+// TS made some changes in this block which need to be merged - but what were they?
+
+    $output = '';
+
+    if ($type) {
+        echo '<form id="filters" class="filters" action="" method="POST">';
+
+        // Start of wrapper
+        echo '<div class="grid-x grid-margin-x grid-padding-y">';
+        // Filters here
+
+        // POSTS CATEGORIES
+        if ($type === 'post') {
+            $post_categories = get_terms(array(
+                'taxonomy' => 'category',
+                'orderby' => 'menu_order',
+                'order' => 'ASC'
+            ));
+            $options = [];
+
+            foreach ($post_categories as $post_category) {
+                if ($post_category->term_id === 1) continue;
+                $options[$post_category->slug] = $post_category->name;
+            }
+            displayFilterSelect($options, 'cat', __('All posts', 'squareeye'));
+        }
+
+        // BARRISTERS CATEGORIES
+        if ($type === 'barrister') {
+            $barrister_cats = get_terms(array(
+                'taxonomy' => 'barrister_category',
+                'orderby' => 'menu_order',
+                'order' => 'ASC'
+            ));
+            $options = [];
+            foreach ($barrister_cats as $barrister_cat) {
+                $options[$barrister_cat->slug] = $barrister_cat->name;
+            }
+            displayFilterSelect($options, 'seniority', __('Seniority', 'squareeye'));
+        }
+
+        // AREAS
+        if ($type === 'post' || $type === 'barrister') {
+            $areas = new WP_Query(array(
+                'post_type' => 'area',
+                'posts_per_page' => -1,
+                'post_status' => 'publish',
+                'post_parent' => 0,
+                'orderby' => 'title',
+                'order' => 'ASC'
+            ));
+            $options = [];
+            while ($areas->have_posts()) {
+                $areas->the_post();
+                $options[get_the_ID()] = get_the_title();
+            }
+            wp_reset_postdata();
+            displayFilterSelect($options, 'a', __('All areas of expertise', 'squareeye'));
+        }
+
+        // BARRISTERS
+        if ($type === 'post') {
+            $barristers = new WP_Query(array(
+                'post_type' => 'barrister',
+                'posts_per_page' => -1,
+                'post_status' => 'publish',
+                'orderby' => 'meta_value',
+                'meta_key' => 'surname',
+                'order' => 'ASC'
+            ));
+            $options = [];
+            while ($barristers->have_posts()) {
+                $barristers->the_post();
+                $options[get_the_ID()] = get_the_title();
+            }
+            wp_reset_postdata();
+            displayFilterSelect($options, 'b', __('All barristers', 'squareeye'));
+        }
+
+        // YEAR
+        if ($type === 'post') {
+            $years = array();
+            $cat_obj = is_numeric($cat) ? get_category($cat) : get_category_by_slug($cat);
+            $years = $cat_obj ? getPostsYears('post', $cat_obj->term_id) : getPostsYears('post');
+            $options = [];
+            foreach ($years as $year) {
+                $options[$year] = $year;
+            }
+            displayFilterSelect($options, 'y', __('All years', 'squareeye'));
+        }
+
+        // SEARCH POSTS
+        if ($type === 'post') {
+            $current = isset($_GET['kw']) ? $_GET['kw'] : '';
+            echo '<div class="cell medium-6 large-2">';
+            echo '<input type="text" name="kw" class="input__search filter__item filter__item--reset" value="' . esc_attr($current) . '" placeholder="' . __('Search', 'squareeye') . '">';
+            echo '</div>';
+        }
+
+        // SEARCH BARRISTERS
+        if ($type === 'barrister') {
+            $current = isset($_GET['title']) ? $_GET['title'] : '';
+            echo '<div class="cell medium-6 large-2">';
+            echo '<input type="text" name="title" class="input__search filter__item filter__item--reset" value="' . esc_attr($current) . '" placeholder="' . __('Search name', 'squareeye') . '">';
+            echo '</div>';
+        }
+
+        // RESET
+        echo '<div class="cell medium-6 large-2">';
+        echo '<button type="button" class="reset hollow button primary">' . __('Reset', 'squareeye') . '</button>';
+        echo '</div>';
+
+        // End of wrapper
+        echo '</div>';
+
+        if ($cat) echo '<input type="hidden" name="cat" value="' . esc_attr($cat) . '">';
+        //echo '<input type="hidden" name="slug" value="' . basename(get_permalink(get_the_ID())) . '">';
+        echo '<input type="hidden" name="type" value="' . esc_attr($type) . '">';
+        echo '<input type="hidden" name="pg" value="">';
+        echo '</form>';
+    }
+
+    return $output;
+
+// end of TS changes
+
+*/
+
+
    $output = '';
 
    if ($type) {
@@ -160,6 +291,7 @@ function ajaxFilters($type, $cat = null)
    }
 
    return $output;
+
 }
 
 /*

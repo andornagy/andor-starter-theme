@@ -21,6 +21,8 @@
          <?php get_template_part('/parts/layout/accordion'); ?>
 
          <?php get_template_part('/parts/layout/share'); ?>
+         
+         <?php get_template_part('parts/layout/cta'); ?>
 
       </div>
 
