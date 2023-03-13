@@ -123,3 +123,9 @@ if (!function_exists('wp_body_open')) {
       do_action('wp_body_open');
    }
 }
+
+// Disable Gutenberg style files
+add_filter('wp_enqueue_scripts', function () {
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+}, 100);
