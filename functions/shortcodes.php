@@ -31,7 +31,9 @@ function displayBarristerYears($atts)
     if (function_exists('get_field')) {
         $call = get_field('call_year', $a['id']);
         $calloverride = get_field('call_override', $a['id']);
-        if ($calloverride) { $call = $calloverride; }
+        if ($calloverride) {
+            $call = $calloverride;
+        }
         $silk = get_field('silk_year', $a['id']);
 
         if ($call || $silk) {
@@ -50,8 +52,6 @@ function displayBarristerYears($atts)
 }
 
 add_shortcode('barrister_years', 'displayBarristerYears');
-
-
 
 
 /* Chambers contact details  ________________________________________________________ */
@@ -117,6 +117,7 @@ function displayChambersContacts()
 
 add_shortcode('chambers_contacts', 'displayChambersContacts');
 
+
 /* Accordion  ________________________________________________________ */
 
 
@@ -167,7 +168,7 @@ add_shortcode('accordion','DisplayAccordion');
 /* Display event date(s)  ________________________________________________________ */
 
 
-function displayEventDates($atts)
+function DisplayEventDates($atts)
 {
     $a = shortcode_atts(array(
         'class' => null,
@@ -209,10 +210,9 @@ function displayEventDates($atts)
         }
 
         $output .= '</span>';
-    }
-
-    return $output;
+        
 }
 
-add_shortcode('event_dates', 'displayEventDates');
+
+add_shortcode('event_dates', 'DisplayEventDates');
 

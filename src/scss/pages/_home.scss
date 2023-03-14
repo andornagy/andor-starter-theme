@@ -1,0 +1,34 @@
+.home {
+   &-insights {
+      .splide__arrows {
+         position: relative;
+         display: flex;
+         justify-content: flex-end;
+
+         .splide__arrow {
+            position: relative;
+            opacity: 1;
+            transform: none;
+            top: auto;
+
+            svg {
+               height: 2.5rem;
+               width: 2.5rem;
+
+               path {
+                  fill: $primary-color;
+                  transition: fill $transition-time;
+               }
+            }
+
+            &:hover {
+               svg {
+                  path {
+                     fill: $secondary-color;
+                  }
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,56 @@
+.profile-sections-wrapper {
+   border: none;
+   .accordion-item {
+      border: none;
+      margin-bottom: 0.5rem;
+      .accordion-title {
+         border: none;
+         border-bottom: 1px solid #2f2f2e;
+         padding: 0.5rem 0;
+         text-decoration: none;
+         color: $black;
+         font-family: $header-font-family;
+         font-weight: 600;
+         line-height: rem-calc(22);
+         font-size: rem-calc(20);
+         &:hover {
+            background-color: $white !important;
+         }
+         &:focus {
+            background: none !important;
+         }
+      }
+      &.is-active {
+         background-color: $white;
+         i {
+            transform: rotate(180deg);
+            color: $secondary-color;
+         }
+      }
+
+      i {
+         float: right;
+         transform: rotate(0);
+         transition: transform 0.4s;
+         font-size: 16px;
+         color: #2f2f2e;
+      }
+   }
+
+   .accordion {
+      border: none;
+   }
+
+   .accordion-content {
+      border: none;
+      padding: 0.75rem 0.25rem;
+   }
+
+   // :last-child:not(.is-active) > .accordion-title {
+   //    border: none;
+   // }
+
+   :last-child > .accordion-content:last-child {
+      border: none;
+   }
+}
