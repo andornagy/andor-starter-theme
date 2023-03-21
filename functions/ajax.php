@@ -43,7 +43,7 @@ function displayFilterCheckbox($options, $slug, $label = '')
 function ajaxFilters($type, $cat = null)
 {
 
-/*
+   /*
 
 // TS made some changes in this block which need to be merged - but what were they?
 
@@ -111,6 +111,7 @@ function ajaxFilters($type, $cat = null)
                 'post_type' => 'barrister',
                 'posts_per_page' => -1,
                 'post_status' => 'publish',
+        // #1 - was orderby title, not meta_value
                 'orderby' => 'meta_value',
                 'meta_key' => 'surname',
                 'order' => 'ASC'
@@ -291,7 +292,6 @@ function ajaxFilters($type, $cat = null)
    }
 
    return $output;
-
 }
 
 /*
@@ -351,9 +351,9 @@ add_action('wp_ajax_nopriv_process_ajax', 'ajax_processor_function');
 function ajax_processor_function()
 {
    // Check for nonce security      
-//    if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
-//       die('Busted!');
-//    }
+   //    if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
+   //       die('Busted!');
+   //    }
 
    // Process loop here
    if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {

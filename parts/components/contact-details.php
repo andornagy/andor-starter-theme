@@ -7,7 +7,7 @@ foreach ($contactDetails as $info) {
 
    switch ($info) {
       case 'phone':
-         echo '<li><a href="tel:' . esc_html($link) . '" title="' . esc_attr($info) . '" target="_blank" rel="noopener noreferrer"><span class="show-for-sr">' . esc_html($info) . '</span><i class="fa-solid fa-phone fa-fw"></i>' . esc_html($link) . '</a></li>';
+         echo '<li><a href="tel:' . esc_html(makePhoneClickable($link)) . '" title="' . esc_attr($info) . '" target="_blank" rel="noopener noreferrer"><span class="show-for-sr">' . esc_html($info) . '</span><i class="fa-solid fa-phone fa-fw"></i>' . esc_html($link) . '</a></li>';
          break;
 
       case 'email':

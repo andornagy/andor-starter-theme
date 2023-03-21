@@ -98,6 +98,12 @@ function makePhoneClickable($num)
 {
    $num = str_replace('(0)', '', $num);
    $num = str_replace(' ', '', trim($num));
+
+   // Add +44 country code to the beginning if not there.
+   if (!str_starts_with($num, '+44')) {
+      $num = '+44' . $num;
+   }
+
    return $num;
 }
 
@@ -129,7 +135,6 @@ function sqe_time_format($time)
 /*
 * GET PERSON YEARS
 */
-
 function getPersonYears($id = null)
 {
    if (!$id) $id = get_the_ID();
@@ -144,6 +149,7 @@ function getPersonYears($id = null)
 
    return implode(' | ', $years);
 }
+
 
 /*
 * GET EVENT DATE 
@@ -205,7 +211,9 @@ function sqeGetThumbnailURL($post_id = '', $thumbnail_size = 'medium')
    return $thumb_url;
 }
 
-
+/*
+* GET RELATED CLERKS FROM SET CLERKING TEAMS AND RELATIONSHIP FIELD
+*/
 function getBarristerRelatedClerks($id = '')
 {
    $id = $id ? $id : get_the_ID();
@@ -271,29 +279,4 @@ function getBarristerRelatedClerks($id = '')
       wp_reset_postdata();
    };
    echo '</div>';
-}
-
-
-// Function to convert phone number into proper dialable number when used in tel: link – please have it remove spaces, and if there is no international dialing code at the start, then add +44 at the start
-function getPersonPhoneNumber($id = '', $return = false)
-{
-
-   $id = $id ? $id : get_the_ID();
-
-   // Get phonenumber
-   $phoneNumber = get_field('phone', $id);
-
-   // Remove spaces
-   $newPhoneNumber = str_replace(' ', '', $phoneNumber);
-
-   // Add +44 country code to the beginning if not there.
-   if (!str_starts_with($newPhoneNumber, '+44')) {
-      $newPhoneNumber = '+44' . $newPhoneNumber;
-   }
-
-   if ($return == true) {
-      return $newPhoneNumber;
-   } else {
-      echo '<a href="tel:' . $newPhoneNumber . '">' . $phoneNumber . '</a>';
-   }
 }
