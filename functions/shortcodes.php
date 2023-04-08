@@ -1,7 +1,7 @@
 <?php
 function displaySiteLogo()
 {
-   return '<a href="' . site_url() . '" class="site-logo"><img src="' . get_stylesheet_directory_uri() . '/assets/imgs/logo.png" alt="' . get_bloginfo('name') . '" /></a>';
+   return get_custom_logo();
 }
 
 add_shortcode('site_logo', 'displaySiteLogo');
