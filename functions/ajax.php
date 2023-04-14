@@ -50,7 +50,7 @@ function ajaxFilters($type, $cat = null)
     $output = '';
 
     if ($type) {
-        echo '<form id="filters" class="filters" action="" method="POST">';
+        echo '<form id="filters" class="filters" method="POST">';
 
         // Start of wrapper
         echo '<div class="grid-x grid-margin-x grid-padding-y">';
@@ -178,7 +178,7 @@ function ajaxFilters($type, $cat = null)
    $output = '';
 
    if ($type) {
-      echo '<form id="filters" class="filters" action="" method="POST">';
+      echo '<form id="filters" class="filters" method="POST">';
 
       // Start of wrapper
       echo '<div class="grid-x grid-margin-x grid-padding-y">';
