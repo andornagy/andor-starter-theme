@@ -68,7 +68,8 @@
                                  </div>
                               </nav>
                            </div>
-                           <button class="nav__burger hide-for-large" aria-label="<?php _e('Open menu', 'squareeye'); ?>" data-toggle="offCanvas">
+                           <button class="nav__burger hide-for-large" data-toggle="offCanvas">
+                              <span class="show-for-sr"><?php _e('Open menu', 'squareeye'); ?></span>
                               <span class="nav__burger--1"></span>
                               <span class="nav__burger--2"></span>
                               <span class="nav__burger--3"></span>
