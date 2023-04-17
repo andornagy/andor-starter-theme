@@ -54,7 +54,7 @@
                                  ));
                                  ?>
                                  <div class="nav-search">
-                                    <a href="<?php echo esc_url(site_url('/?s=')); ?>" title="<?php _e('Search', 'squareeye'); ?>" class="nav-search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                    <a href="<?php echo esc_url(site_url('/?s=')); ?>" aria-label="<?php _e('Open search', 'squareeye'); ?>" title="<?php _e('Search', 'squareeye'); ?>" class="nav-search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
                                     <div class="sub-menu" id="header-search">
                                        <div class="sub-menu__arrow"></div>
                                        <div class="grid-container padding-vertical-2">
@@ -68,7 +68,7 @@
                                  </div>
                               </nav>
                            </div>
-                           <button class="nav__burger hide-for-large" data-toggle="offCanvas">
+                           <button class="nav__burger hide-for-large" aria-label="<?php _e('Open menu', 'squareeye'); ?>" data-toggle="offCanvas">
                               <span class="nav__burger--1"></span>
                               <span class="nav__burger--2"></span>
                               <span class="nav__burger--3"></span>
