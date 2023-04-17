@@ -45,7 +45,7 @@ $banner_background = get_field('banner_background');
             // email
             if ($email) $list[] = '<li><a href="mailto:' . esc_attr($email) . '" title="' . sprintf(__('Email %s', 'squareeye'), $title) . '"><i class="fa-solid fa-envelope fa-fw"></i>' . esc_html($email) . '</a></li>';
             // phone
-            if ($phone) $list[] = '<li><a href="tel:' .  getPersonPhoneNumber($id, true) . '" title="' . sprintf(__('Call %s', 'squareeye'), $title) . '"><i class="fa-solid fa-phone fa-fw"></i>' . esc_html($phone) . '</a></li>';
+            if ($phone) $list[] = '<li><a href="tel:' .  makePhoneClickable($phone) . '" title="' . sprintf(__('Call %s', 'squareeye'), $title) . '"><i class="fa-solid fa-phone fa-fw"></i>' . esc_html($phone) . '</a></li>';
 
             // twitter
             if ($twitter) $list[] = '<li><a href="https://twitter.com/' . esc_html($twitter) . '" title="' . __('Twitter', 'squareeye') . '" target="_blank"><i class="fa-brands fa-twitter fa-fw"></i>' . __('Twitter', 'squareeye') . '</a></li>';

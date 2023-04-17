@@ -1,6 +1,9 @@
 <?php
 	
 	$callout = get_field('cta_callout_box');
+
+if ($callout) {
+
 	$heading = get_field('cta_heading');
 	$text = get_field('cta_text');
 	$label = get_field('cta_button_label');
@@ -27,5 +30,4 @@
 		if ($callout) { echo '</div>'; }
 	
 	echo '</section>';
-
-?>
+}

@@ -334,7 +334,7 @@ function ajaxPagination($type, $cat = null)
          );
 
          echo '<div class="cell cell--no-line padding-vertical-1 flex-container align-middle">';
-         echo '<ul class="pagination">' . paginate_links($paginateArgs) . '</ul>';
+         echo '<div class="pagination">' . paginate_links($paginateArgs) . '</div>';
          echo '</div>';
       }
    }

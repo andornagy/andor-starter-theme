@@ -1,6 +1,6 @@
 <?php
 $contactDetails = ['phone', 'fax', 'email', 'dx'];
-
+echo '<ul class="contact-list">';
 foreach ($contactDetails as $info) {
    $link = get_field($info, 'option');
    if (!$link) continue;
@@ -23,3 +23,4 @@ foreach ($contactDetails as $info) {
          break;
    }
 }
+echo '</ul>';
