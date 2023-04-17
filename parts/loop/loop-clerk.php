@@ -1,13 +1,10 @@
 <?php
 $id = isset($args['id']) && $args['id'] ? $args['id'] : get_the_ID();
-
 $columns = 'cell large-4 medium-6';
 if (isset($args['columns'])) {
    $columns = getColumns($args['columns'], $columns); // see helpers.php
 }
-
 $thumb_url = sqeGetThumbnailURL($id, 'landscape');
-
 ?>
 
 <div <?php post_class('posts-item ' . esc_attr($columns)); ?>>

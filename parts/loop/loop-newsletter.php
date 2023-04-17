@@ -7,13 +7,13 @@ if (isset($args['columns'])) {
 
 $thumb_url = sqeGetThumbnailURL($id, 'landscape');
 ?>
-<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" id="post-<?php the_ID(); ?>" <?php post_class('posts-item ' . esc_attr($columns)); ?>>
+<a href="<?php the_permalink(); ?>" title="<?php echo get_the_title($id); ?>" id="post-<?php the_ID(); ?>" <?php post_class('posts-item ' . esc_attr($columns)); ?>>
    <div class="posts-item__img rectangle-img">
       <img src="<?php echo $thumb_url; ?>" alt="<?php echo get_the_title($id); ?>" />
    </div>
    <div class="posts-item__content">
       <h3 class="posts-item__title">
-         <?php the_title(); ?>
+         <?php echo get_the_title($id); ?>
       </h3>
       <div class="posts-item__meta margin-bottom-1"><?php echo get_the_time(get_option('date_format'), $id); ?></div>
       <?php echo has_excerpt() ? wpautop(get_the_excerpt()) : wpautop(wp_trim_words(get_the_content(), 24, '...')); ?>
