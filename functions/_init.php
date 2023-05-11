@@ -125,8 +125,9 @@ if (!function_exists('wp_body_open')) {
    }
 }
 
-// Disable Gutenberg style files
-add_filter('wp_enqueue_scripts', function () {
-   wp_dequeue_style('wp-block-library');
-   wp_dequeue_style('wp-block-library-theme');
+// Disable gutenberb CSS
+add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('wc-blocks-style'); // Remove WooCommerce block CSS
 }, 100);
