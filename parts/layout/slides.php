@@ -9,7 +9,7 @@ if (!empty($slides)) {
    <section class="section home-featured section--gray section-shape--bottom section-shape--top section--big large-padding-top-0">
       <div class="orbit orbit--dark" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
          <div class="orbit-wrapper">
-            <div class="orbit-container">
+            <ul class="orbit-container">
                <?php
 
 
@@ -58,7 +58,7 @@ if (!empty($slides)) {
                   echo '</li>';
                }
                ?>
-            </div>
+            </ul>
             <?php
             if (count($slides) > 1) {
             ?>

@@ -32,13 +32,13 @@ function sqe_enqueue_scripts()
    wp_add_inline_script('custom-vars', $data);
 }
 
-/*
-* PRELOAD CUSTOM FONTS FOR BETTER CLS
-*/
-function sqe_preload_fonts()
-{
+/* Preload custom fonts for better CLS  ________________________________________________________ */
+
+// function sqe_preload_fonts()
+// {
    // echo '<link rel="preload" as="font" href="' . get_theme_file_uri('/assets/fonts/FuturaPT-Book.woff') . '" type="font/woff2" crossorigin="anonymous">
    // <link rel="preload" as="font" href="' . get_theme_file_uri('/assets/fonts/FuturaPT-Book.woff2') . '" type="font/woff2" crossorigin="anonymous">';
 
-}
-add_action('wp_head', 'sqe_preload_fonts', 1);
+// }
+// add_action('wp_head', 'sqe_preload_fonts', 1);
+

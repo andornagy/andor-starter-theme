@@ -1,0 +1,219 @@
+// variables
+// --------------------------
+
+$fa-css-prefix          : fa !default;
+$fa-style               : 900 !default;
+$fa-style-family        : "Font Awesome 6 Pro" !default;
+
+$fa-display             : inline-block !default;
+
+$fa-fw-width            : fa-divide(20em, 16) !default;
+$fa-inverse             : #fff !default;
+
+$fa-border-color        : #eee !default;
+$fa-border-padding      : .2em .25em .15em !default;
+$fa-border-radius       : .1em !default;
+$fa-border-style        : solid !default;
+$fa-border-width        : .08em !default;
+
+$fa-size-scale-2xs      : 10 !default;
+$fa-size-scale-xs       : 12 !default;
+$fa-size-scale-sm       : 14 !default;
+$fa-size-scale-base     : 16 !default;
+$fa-size-scale-lg       : 20 !default;
+$fa-size-scale-xl       : 24 !default;
+$fa-size-scale-2xl      : 32 !default;
+
+$fa-sizes: (
+  "2xs"                 : $fa-size-scale-2xs,
+  "xs"                  : $fa-size-scale-xs,
+  "sm"                  : $fa-size-scale-sm,
+  "lg"                  : $fa-size-scale-lg,
+  "xl"                  : $fa-size-scale-xl,
+  "2xl"                 : $fa-size-scale-2xl
+) !default;
+
+$fa-li-width            : 2em !default;
+$fa-li-margin           : $fa-li-width * fa-divide(5, 4) !default;
+
+$fa-pull-margin         : .3em !default;
+
+$fa-primary-opacity     : 1 !default;
+$fa-secondary-opacity   : .4 !default;
+
+$fa-stack-vertical-align: middle !default;
+$fa-stack-width         : ($fa-fw-width * 2) !default;
+$fa-stack-z-index       : auto !default;
+
+$fa-font-display        : block !default;
+$fa-font-path           : "../webfonts" !default;
+
+$fa-var-person: \f183;
+$fa-var-male: \f183;
+$fa-var-cloud: \f0c2;
+$fa-var-bars: \f0c9;
+$fa-var-navicon: \f0c9;
+$fa-var-lock: \f023;
+$fa-var-angle-right: \f105;
+$fa-var-user: \f007;
+$fa-var-user-group: \f500;
+$fa-var-user-friends: \f500;
+$fa-var-bars-sort: \e0ae;
+$fa-var-image: \f03e;
+$fa-var-address-card: \f2bb;
+$fa-var-contact-card: \f2bb;
+$fa-var-vcard: \f2bb;
+$fa-var-circle-envelope: \e10c;
+$fa-var-envelope-circle: \e10c;
+$fa-var-file-word: \f1c2;
+$fa-var-circle-phone: \e11b;
+$fa-var-phone-circle: \e11b;
+$fa-var-phone: \f095;
+$fa-var-quote-right: \f10e;
+$fa-var-quote-right-alt: \f10e;
+$fa-var-headphones: \f025;
+$fa-var-file-pdf: \f1c1;
+$fa-var-image-landscape: \e1b5;
+$fa-var-landscape: \e1b5;
+$fa-var-comment: \f075;
+$fa-var-envelope: \f0e0;
+$fa-var-mobile-screen: \f3cf;
+$fa-var-mobile-android-alt: \f3cf;
+$fa-var-images: \f302;
+$fa-var-download: \f019;
+$fa-var-id-card: \f2c2;
+$fa-var-drivers-license: \f2c2;
+$fa-var-house: \f015;
+$fa-var-home: \f015;
+$fa-var-home-alt: \f015;
+$fa-var-home-lg-alt: \f015;
+$fa-var-image-polaroid: \f8c4;
+$fa-var-angle-down: \f107;
+$fa-var-quotes: \e234;
+$fa-var-magnifying-glass: \f002;
+$fa-var-search: \f002;
+$fa-var-bars-filter: \e0ad;
+$fa-var-quote-left: \f10d;
+$fa-var-quote-left-alt: \f10d;
+$fa-var-angle-up: \f106;
+$fa-var-angle-left: \f104;
+$fa-var-image-portrait: \f3e0;
+$fa-var-portrait: \f3e0;
+$fa-var-square-envelope: \f199;
+$fa-var-envelope-square: \f199;
+$fa-var-video: \f03d;
+$fa-var-video-camera: \f03d;
+$fa-var-notdef: \e1fe;
+
+$fa-var-mailchimp: \f59e;
+$fa-var-vimeo-v: \f27d;
+$fa-var-google: \f1a0;
+$fa-var-linkedin-in: \f0e1;
+$fa-var-square-twitter: \f081;
+$fa-var-twitter-square: \f081;
+$fa-var-skype: \f17e;
+$fa-var-stripe-s: \f42a;
+$fa-var-wordpress: \f19a;
+$fa-var-stripe: \f429;
+$fa-var-facebook-f: \f39e;
+$fa-var-square-facebook: \f082;
+$fa-var-facebook-square: \f082;
+$fa-var-linkedin: \f08c;
+$fa-var-vimeo: \f40a;
+$fa-var-instagram: \f16d;
+$fa-var-facebook: \f09a;
+$fa-var-whatsapp: \f232;
+$fa-var-twitter: \f099;
+$fa-var-telegram: \f2c6;
+$fa-var-telegram-plane: \f2c6;
+$fa-var-square-whatsapp: \f40c;
+$fa-var-whatsapp-square: \f40c;
+$fa-var-slack: \f198;
+$fa-var-slack-hash: \f198;
+
+$fa-icons: (
+  "person": $fa-var-person,
+  "male": $fa-var-male,
+  "cloud": $fa-var-cloud,
+  "bars": $fa-var-bars,
+  "navicon": $fa-var-navicon,
+  "lock": $fa-var-lock,
+  "angle-right": $fa-var-angle-right,
+  "user": $fa-var-user,
+  "user-group": $fa-var-user-group,
+  "user-friends": $fa-var-user-friends,
+  "bars-sort": $fa-var-bars-sort,
+  "image": $fa-var-image,
+  "address-card": $fa-var-address-card,
+  "contact-card": $fa-var-contact-card,
+  "vcard": $fa-var-vcard,
+  "circle-envelope": $fa-var-circle-envelope,
+  "envelope-circle": $fa-var-envelope-circle,
+  "file-word": $fa-var-file-word,
+  "circle-phone": $fa-var-circle-phone,
+  "phone-circle": $fa-var-phone-circle,
+  "phone": $fa-var-phone,
+  "quote-right": $fa-var-quote-right,
+  "quote-right-alt": $fa-var-quote-right-alt,
+  "headphones": $fa-var-headphones,
+  "file-pdf": $fa-var-file-pdf,
+  "image-landscape": $fa-var-image-landscape,
+  "landscape": $fa-var-landscape,
+  "comment": $fa-var-comment,
+  "envelope": $fa-var-envelope,
+  "mobile-screen": $fa-var-mobile-screen,
+  "mobile-android-alt": $fa-var-mobile-android-alt,
+  "images": $fa-var-images,
+  "download": $fa-var-download,
+  "id-card": $fa-var-id-card,
+  "drivers-license": $fa-var-drivers-license,
+  "house": $fa-var-house,
+  "home": $fa-var-home,
+  "home-alt": $fa-var-home-alt,
+  "home-lg-alt": $fa-var-home-lg-alt,
+  "image-polaroid": $fa-var-image-polaroid,
+  "angle-down": $fa-var-angle-down,
+  "quotes": $fa-var-quotes,
+  "magnifying-glass": $fa-var-magnifying-glass,
+  "search": $fa-var-search,
+  "bars-filter": $fa-var-bars-filter,
+  "quote-left": $fa-var-quote-left,
+  "quote-left-alt": $fa-var-quote-left-alt,
+  "angle-up": $fa-var-angle-up,
+  "angle-left": $fa-var-angle-left,
+  "image-portrait": $fa-var-image-portrait,
+  "portrait": $fa-var-portrait,
+  "square-envelope": $fa-var-square-envelope,
+  "envelope-square": $fa-var-envelope-square,
+  "video": $fa-var-video,
+  "video-camera": $fa-var-video-camera,
+  "notdef": $fa-var-notdef,
+);
+
+$fa-brand-icons: (
+  "mailchimp": $fa-var-mailchimp,
+  "vimeo-v": $fa-var-vimeo-v,
+  "google": $fa-var-google,
+  "linkedin-in": $fa-var-linkedin-in,
+  "square-twitter": $fa-var-square-twitter,
+  "twitter-square": $fa-var-twitter-square,
+  "skype": $fa-var-skype,
+  "stripe-s": $fa-var-stripe-s,
+  "wordpress": $fa-var-wordpress,
+  "stripe": $fa-var-stripe,
+  "facebook-f": $fa-var-facebook-f,
+  "square-facebook": $fa-var-square-facebook,
+  "facebook-square": $fa-var-facebook-square,
+  "linkedin": $fa-var-linkedin,
+  "vimeo": $fa-var-vimeo,
+  "instagram": $fa-var-instagram,
+  "facebook": $fa-var-facebook,
+  "whatsapp": $fa-var-whatsapp,
+  "twitter": $fa-var-twitter,
+  "telegram": $fa-var-telegram,
+  "telegram-plane": $fa-var-telegram-plane,
+  "square-whatsapp": $fa-var-square-whatsapp,
+  "whatsapp-square": $fa-var-whatsapp-square,
+  "slack": $fa-var-slack,
+  "slack-hash": $fa-var-slack-hash,
+);

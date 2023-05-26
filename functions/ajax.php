@@ -43,14 +43,14 @@ function displayFilterCheckbox($options, $slug, $label = '')
 function ajaxFilters($type, $cat = null)
 {
 
-/*
+   /*
 
 // TS made some changes in this block which need to be merged - but what were they?
 
     $output = '';
 
     if ($type) {
-        echo '<form id="filters" class="filters" action="" method="POST">';
+        echo '<form id="filters" class="filters" method="POST">';
 
         // Start of wrapper
         echo '<div class="grid-x grid-margin-x grid-padding-y">';
@@ -111,6 +111,7 @@ function ajaxFilters($type, $cat = null)
                 'post_type' => 'barrister',
                 'posts_per_page' => -1,
                 'post_status' => 'publish',
+        // #1 - was orderby title, not meta_value
                 'orderby' => 'meta_value',
                 'meta_key' => 'surname',
                 'order' => 'ASC'
@@ -177,7 +178,7 @@ function ajaxFilters($type, $cat = null)
    $output = '';
 
    if ($type) {
-      echo '<form id="filters" class="filters" action="" method="POST">';
+      echo '<form id="filters" class="filters" method="POST">';
 
       // Start of wrapper
       echo '<div class="grid-x grid-margin-x grid-padding-y">';
@@ -291,7 +292,6 @@ function ajaxFilters($type, $cat = null)
    }
 
    return $output;
-
 }
 
 /*
@@ -334,7 +334,7 @@ function ajaxPagination($type, $cat = null)
          );
 
          echo '<div class="cell cell--no-line padding-vertical-1 flex-container align-middle">';
-         echo '<ul class="pagination">' . paginate_links($paginateArgs) . '</ul>';
+         echo '<div class="pagination">' . paginate_links($paginateArgs) . '</div>';
          echo '</div>';
       }
    }
@@ -351,9 +351,9 @@ add_action('wp_ajax_nopriv_process_ajax', 'ajax_processor_function');
 function ajax_processor_function()
 {
    // Check for nonce security      
-//    if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
-//       die('Busted!');
-//    }
+   //    if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
+   //       die('Busted!');
+   //    }
 
    // Process loop here
    if (isset($_REQUEST['type']) && !empty($_REQUEST['type'])) {

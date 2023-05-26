@@ -13,11 +13,13 @@ if (in_array($postType, $articles)) {
 }
 
 ?>
-<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" id="post-<?php the_ID(); ?>" class="cell posts-item__list">
+<li class="cell posts-item__list">
    <div class="posts-item__content">
-      <h3 class="posts-item__title">
-         <?php the_title(); ?>
-      </h3>
+      <a href="<?php the_permalink(); ?>" title="<?php echo get_the_title($id); ?>">
+         <h3 class="posts-item__title">
+            <?php echo get_the_title($id); ?>
+         </h3>
+      </a>
       <?php echo $meta ? '<span class="posts-item__meta">' .  $meta . '</span>' : ''; ?>
    </div>
-</a>
+</li>

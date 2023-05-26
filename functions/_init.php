@@ -112,6 +112,7 @@ if (!function_exists('sqe_theme_remove_recent_comments_style')) :
    }
 endif;
 
+// Check if wp_body_open hook exists or not, if missing add it.
 if (!function_exists('wp_body_open')) {
    function wp_body_open()
    {
@@ -123,3 +124,10 @@ if (!function_exists('wp_body_open')) {
       do_action('wp_body_open');
    }
 }
+
+// Disable gutenberb CSS
+add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('wc-blocks-style'); // Remove WooCommerce block CSS
+}, 100);
