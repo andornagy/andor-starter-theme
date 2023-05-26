@@ -14,6 +14,8 @@ function sqe_enqueue_scripts()
 
    wp_enqueue_style('print-css', get_theme_file_uri('/assets/css/print.css'), array(), filemtime(get_theme_file_path('/assets/css/print.css')), 'print');
 
+   wp_enqueue_style('fontawesome-css', get_theme_file_uri('/assets/fonts/fontawesome/css/all.min.css'), array(), filemtime(get_theme_file_path('/assets/fonts/fontawesome/css/all.min.css')), 'all');
+
    wp_enqueue_script('theme-js', get_theme_file_uri('/dist/bundle.js'), array('jquery'), filemtime(get_theme_file_path('/dist/bundle.js')), true);
 
    wp_register_script('custom-vars', '',);
@@ -30,9 +32,8 @@ function sqe_enqueue_scripts()
    wp_add_inline_script('custom-vars', $data);
 }
 
-/*
-* PRELOAD CUSTOM FONTS FOR BETTER CLS
-*/
+/* Preload custom fonts for better CLS  ________________________________________________________ */
+
 // function sqe_preload_fonts()
 // {
    // echo '<link rel="preload" as="font" href="' . get_theme_file_uri('/assets/fonts/FuturaPT-Book.woff') . '" type="font/woff2" crossorigin="anonymous">
@@ -40,3 +41,4 @@ function sqe_enqueue_scripts()
 
 // }
 // add_action('wp_head', 'sqe_preload_fonts', 1);
+
