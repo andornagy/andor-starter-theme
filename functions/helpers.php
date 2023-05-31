@@ -156,34 +156,45 @@ function getPersonYears($id = null)
 */
 function getEventDate($id = null)
 {
-   if (!$id) $id = get_the_ID();
-
    $start_date = get_field('start_date', $id);
    $start_time = get_field('start_time', $id);
+
+
    $end_date = get_field('end_date', $id);
    $end_time = get_field('end_time', $id);
 
-   $start_date_obj = strtotime($start_date);
-   $end_date_obj = strtotime($end_date);
 
-   $date_str = '';
+   // If no start date, then return nothing
+   if (!$start_date) return '';
 
-   if (date('Ymd', $start_date_obj) === date('Ymd', $end_date_obj)) {
-      $date_str = '<span>' . date('F j, Y', $start_date_obj) . '</span>';
-      if ($start_time) {
-         $date_str .= ' <span>' . $start_time;
-         if ($end_time) $date_str .= '-' . $end_time;
-         $date_str .= '</span>';
-      }
+   // Convert to time objects
+   $date_format = "d/m/Y";
+   $start_date_obj = DateTime::createFromFormat($date_format, $start_date);
+   $end_date_obj = DateTime::createFromFormat($date_format, $end_date);
+
+   // Prepare date array
+   $date_arr = [];
+
+   // If no end date or end date = start date
+   if (!$end_date_obj || $start_date_obj->format('Ymd') === $end_date_obj->format('Ymd')) {
+      // Show just start date
+      $date_arr[] = $start_date_obj->format('F j, Y');
+
+      // If start time exists, then display start time
+      // If end time exists, then add end time to start time
+      if ($start_time)
+         $date_arr[] = $end_time ? $start_time . ' - ' . $end_time : $start_time;
    } else {
-      $date_str = '<span>' . date('F j, Y', $start_date_obj);
+      $date_str = $start_date_obj->format('F j, Y');
+
       if ($start_time) $date_str .= ' ' . $start_time;
-      $date_str .= '</span> - <span>' . date('F j, Y', $end_date_obj);
-      if ($end_time) $date_str .= ' ' . $end_time;
-      $date_str .= '<span>';
+      if ($end_date) $date_str .= ' - ' . $end_date_obj->format('F j, Y');
+      if ($end_date && $end_time) $date_str .= ' ' . $end_time;
+
+      $date_arr[] = $date_str;
    }
 
-   return wp_kses_post($date_str);
+   return implode(' | ', $date_arr);
 }
 
 /*
