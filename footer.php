@@ -5,12 +5,15 @@
             <div class="cell medium-2 footer-menu-wrapper">
                <?php
                // Main menu
-               wp_nav_menu(array(
-                  'menu' => 'Footer menu',
-                  'items_wrap' => '<ul>%3$s</ul>',
-                  'container' => '',
-                  'depth' => 1,
-               ));
+
+               if (has_nav_menu('footer-menu')) {
+                  wp_nav_menu(array(
+                     'theme_location' => 'footer-menu',
+                     'items_wrap' => '<ul>%3$s</ul>',
+                     'container' => '',
+                     'depth' => 1,
+                  ));
+               }
                ?>
             </div>
             <div class="cell medium-4 footer-contacts-wrapper">

@@ -17,13 +17,15 @@
          </button>
          <nav class="nav nav--mobile margin-bottom-2">
             <?php
-            wp_nav_menu(array(
-               'theme_location' => 'main-menu',
-               'items_wrap' => '<ul class="vertical menu drilldown" data-drilldown data-parent-link=true data-close-on-click=true data-auto-height=true data-animate-height=true>%3$s</ul>',
-               'container' => '',
-               'depth' => 2,
-               'walker' => new Mobile_Menu_Walker()
-            ));
+            if (has_nav_menu('main-menu')) {
+               wp_nav_menu(array(
+                  'theme_location' => 'main-menu',
+                  'items_wrap' => '<ul class="vertical menu drilldown" data-drilldown data-parent-link=true data-close-on-click=true data-auto-height=true data-animate-height=true>%3$s</ul>',
+                  'container' => '',
+                  'depth' => 2,
+                  'walker' => new Mobile_Menu_Walker()
+               ));
+            }
             ?>
          </nav>
          <?php get_search_form(); ?>
@@ -45,13 +47,15 @@
                               <nav class="nav nav--main flex-container align-middle align-right">
                                  <?php
                                  // Main menu
-                                 wp_nav_menu(array(
-                                    'theme_location' => 'main-menu',
-                                    'items_wrap' => '<ul class="menu align-right">%3$s</ul>',
-                                    'container' => '',
-                                    'depth' => 2,
-                                    'walker' => new Desktop_Menu_Walker()
-                                 ));
+                                 if (has_nav_menu('main-menu')) {
+                                    wp_nav_menu(array(
+                                       'theme_location' => 'main-menu',
+                                       'items_wrap' => '<ul class="menu align-right">%3$s</ul>',
+                                       'container' => '',
+                                       'depth' => 2,
+                                       'walker' => new Desktop_Menu_Walker()
+                                    ));
+                                 }
                                  ?>
                                  <div class="nav-search">
                                     <a href="<?php echo esc_url(site_url('/?s=')); ?>" aria-label="<?php _e('Open search', 'squareeye'); ?>" title="<?php _e('Search', 'squareeye'); ?>" class="nav-search__icon"><i class="fa-solid fa-magnifying-glass"></i></a>
