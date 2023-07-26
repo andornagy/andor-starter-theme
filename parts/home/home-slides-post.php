@@ -9,7 +9,7 @@ $insights = new WP_Query([
 
 if ($insights->have_posts()) {
 ?>
-   <section class="section home-insights">
+   <section class="section home-insights padding-vertical-3">
       <div class="grid-container">
          <div class="splide" role="group" aria-label="<?php _e('Insights carousel', 'squareye'); ?>" data-per-page="4" data-per-page-medium="2" data-per-page-small="1">
             <div class="flex-container align-middle align-justify margin-bottom-2">

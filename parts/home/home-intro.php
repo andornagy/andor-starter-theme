@@ -3,7 +3,7 @@ $about = get_field('home_about');
 if (isset($about['enable']) && $about['enable']) :
    $img = isset($about['image']) && $about['image'] ? wp_get_attachment_image($about['image'], 'large') : '';
 ?>
-   <section class="section home-about section--gray section-shape--bottom section--big large-padding-bottom-0">
+   <section class="section home-intro bg-primary padding-vertical-3">
       <div class="grid-container">
          <div class="grid-x grid-margin-x">
             <div class="cell large-padding-bottom-3 large-margin-bottom-2 <?php echo $img ? 'large-5' : ''; ?>">

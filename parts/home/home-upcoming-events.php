@@ -14,7 +14,7 @@ $future_events = new WP_Query(array(
 
 ?>
 
-<section class="section home-upcoming_eventss">
+<section class="section home-upcoming_events padding-vertical-3">
    <div class="grid-container">
       <h2 class="separator-left">Upcoming events</h2>
       <div class="grid-x grid-margin-x grid-padding-y">

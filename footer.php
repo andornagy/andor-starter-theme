@@ -1,5 +1,5 @@
-<footer class="footer">
-   <section class="footer-top">
+<footer class="section footer">
+   <section class="footer-top padding-vertical-3">
       <div class=" grid-container">
          <div class="grid-x grid-padding-x grid-padding-y">
             <div class="cell medium-2 footer-menu-wrapper">

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<main class="section grid-container">
+<main class="section">
 
    <?php get_template_part('parts/layout/slides') ?>
    <?php get_template_part('parts/home/home', 'intro') ?>

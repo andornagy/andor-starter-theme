@@ -4,7 +4,7 @@ $posts = getQuery('post', '', 4);
 
 ?>
 
-<section class="section home-featured_news">
+<section class="section home-featured_news padding-vertical-3">
    <div class="grid-container">
       <h2 class="separator-left">Featured news</h2>
       <div class="grid-x grid-margin-x grid-padding-y">
