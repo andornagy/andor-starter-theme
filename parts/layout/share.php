@@ -14,7 +14,7 @@ if (!$hideshare == 'Yes') { ?>
       <ul class="menu share">
          <li><a target="_blank" class="share-button share-twitter" href="https://twitter.com/intent/tweet?url=<?php echo $postUrl; ?>&text=<?php echo the_title(); ?>&via=<?php the_author_meta('twitter'); ?>" title="Tweet this"><i class="fa-brands fa-twitter"></i></a></li>
          <li><a target="_blank" class="share-button share-linkedin" href="https://linkedin.com/shareArticle?mini=true&url=<?php echo $postUrl; ?>&title=<?php echo $title; ?>&source=<?php echo $sitename; ?>" title="Share on LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
-         <li><a target="_blank" class="share-button share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $postUrl; ?>" title="Share on facebook"><i class="fa-brands fa-facebook"></i></a></li>
+         <li><a target="_blank" class="share-button share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $postUrl; ?>" title="Share on facebook"><i class="fa-brands fa-square-facebook"></i></a></li>
       </ul>
    </section>
 
