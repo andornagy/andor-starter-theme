@@ -1,20 +1,20 @@
 # Theme guide
 
--   [Startup theme](#startup-theme)
--   [Get GIT repo](#get-git-repo)
--   [Theme structure](#theme-structure)
--   [NPM setup](#npm-setup)
--   [Development build](#development-build)
--   [Production build](#production-build)
--   [DeployHQ setup](#deployhq-setup)
--   [CSS: Foundation settings](#css-foundation-settings)
--   [CSS: Add foundation modules](#css-add-foundation-modules)
--   [CSS: Edit existing custom modules](#css-edit-existing-custom-modules)
--   [CCS: Add custom modules](#css-add-custom-modules)
--   [JS: Add foundation modules](#js-add-foundation-modules)
--   [JS: Edit existing custom modules](#js-edit-existing-custom-modules)
--   [JS: Add custom modules](#js-add-custom-modules)
--   [Solutions](#solutions)
+- [Startup theme](#startup-theme)
+- [Get GIT repo](#get-git-repo)
+- [Theme structure](#theme-structure)
+- [NPM setup](#npm-setup)
+- [Development build](#development-build)
+- [Production build](#production-build)
+- [DeployHQ setup](#deployhq-setup)
+- [CSS: Foundation settings](#css-foundation-settings)
+- [CSS: Add foundation modules](#css-add-foundation-modules)
+- [CSS: Edit existing custom modules](#css-edit-existing-custom-modules)
+- [CCS: Add custom modules](#css-add-custom-modules)
+- [JS: Add foundation modules](#js-add-foundation-modules)
+- [JS: Edit existing custom modules](#js-edit-existing-custom-modules)
+- [JS: Add custom modules](#js-add-custom-modules)
+- [Solutions](#solutions)
 
 ## Startup theme
 
@@ -35,13 +35,13 @@ Before pushing this theme to a new client-related repo, delete this **Startup th
 To install the theme from git within a command line navigate to `\theme\` folder in your WordPress installation and execute the following command:
 
 ```
-git clone https://github.com/SquareEyeLtd/sqe-starter-legal-foundation.git
+git clone https://github.com/andornagy/andor-starter-theme
 ```
 
 Or you can create theme folder manually right away, navigate to the created folder within a command line and execute the following command:
 
 ```
-git clone https://github.com/SquareEyeLtd/sqe-starter-legal-foundation.git .
+git clone https://github.com/andornagy/andor-starter-theme .
 ```
 
 ## Theme structure
@@ -89,8 +89,8 @@ Once you get the theme from the git you need to install all dependencies.
 
 First, make sure that you have NPM installed on your computer:
 
--   [Windows](https://phoenixnap.com/kb/install-node-js-npm-on-windows)
--   [Mac](https://treehouse.github.io/installation-guides/mac/node-mac.html)
+- [Windows](https://phoenixnap.com/kb/install-node-js-npm-on-windows)
+- [Mac](https://treehouse.github.io/installation-guides/mac/node-mac.html)
 
 Once you got NPM installed, use command line to navigate to the theme folder and run the following command:
 
