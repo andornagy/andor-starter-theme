@@ -1,6 +1,6 @@
-@import "_settings";
-@import "../../node_modules/foundation-sites/scss/foundation";
-@import "../../node_modules/motion-ui/src/motion-ui.scss";
+@import '_settings';
+@import '../../node_modules/foundation-sites/scss/foundation';
+@import '../../node_modules/motion-ui/src/motion-ui.scss';
 
 // Prototypying utilities
 @include foundation-prototype-spacing;
@@ -71,13 +71,13 @@
 * CUSTOM MODULES
 */
 
-@import "./mixins";
-@import "./base";
-@import "./layout";
-@import "./components";
-@import "./loops";
-@import "./archives";
-@import "./pages";
-@import "./person";
-@import "./utils";
-@import "./vendor";
+@import './mixins';
+@import './base';
+@import './layout';
+@import './components';
+@import './loops';
+@import './archives';
+@import './pages';
+@import './person';
+@import './utils';
+@import './vendor';
