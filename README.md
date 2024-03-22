@@ -18,7 +18,7 @@
 
 ## Startup theme
 
-To start with the startup theme just download the zip version of `sqe-starter-legal-foundation` repo and install it on the website. Do the following steps right after the initial installation:
+To start with the startup theme just download the zip version of `andor-starter-theme` repo and install it on the website. Do the following steps right after the initial installation:
 
 1. Rename theme folder and edit `style.css` (change theme name);
 2. Edit `functions.php`: change `WEBSITE_NAME` and `WEBSITE_SLUG` definitions at the top of the file;
