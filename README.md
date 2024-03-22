@@ -26,7 +26,7 @@ To start with the startup theme just download the zip version of `sqe-starter-le
 4. Set up NPM and files compilation (guides below);
 5. Develop the theme (you can start with editing `src\css\_settings.scss` to set default theme styling);
 
-Before pushing this theme to a new client-related repo, delete this **Startup theme** section from the **README.md** file, rename **sqe-starter-legal-foundation** to the actual theme slug and change git repo links.
+Before pushing this theme to a new client-related repo, delete this **Startup theme** section from the **README.md** file, rename **andor-starter-theme** to the actual theme slug and change git repo links.
 
 ## Get GIT repo
 
